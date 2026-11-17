@@ -2,7 +2,7 @@
 
 <p align="center"><img src="docs/images/examples/11-sequence-light.png" alt="Hình sequence vẽ bằng skill" width="620"></p>
 
-Biến một đoạn văn kỹ thuật thành hình Excalidraw nét vẽ tay - không phải hàng hộp nối mũi tên, mà hình làm cho thời gian thành độ dài, dữ liệu thành ô có giá trị thật, giới hạn thành một đường kẻ.
+Biến một đoạn văn kỹ thuật, hay một ý tưởng còn thô mới chỉ có chữ, thành hình Excalidraw nét vẽ tay - không phải hàng hộp nối mũi tên, mà hình làm cho thời gian thành độ dài, dữ liệu thành ô có giá trị thật, giới hạn thành một đường kẻ.
 Skill cho Claude Code, hoặc agent nào đọc được SKILL.md: bạn đưa đoạn văn, agent viết spec JSON ngắn, chạy một lệnh, ra bốn file.
 
 ```
@@ -21,6 +21,16 @@ fig-dark.png     bản xem trước, chế độ tối
 
 Xem skill vẽ ra gì khi bốn model AI thi nhau vẽ: [32 hình, tám đề](https://drawing-excalidraw-figures.vercel.app/#so-sanh).
 
+## Không chỉ cho kỹ thuật
+
+Một pitch kinh doanh, một khái niệm cần giảng, một đoạn note rối lúc 2 giờ sáng, một quy trình nội bộ: ý nào cũng có hình dạng riêng.
+Với ý tưởng thô, skill viết thêm một câu "ý này thực chất nói rằng...", liệt kê khái niệm, quan hệ và chỗ căng thẳng bằng đúng chữ của người viết, rồi chọn hình theo cấu trúc của ý: vòng nhân quả, ma trận 2x2, phễu, concept map, timeline, swimlane.
+Nếu có người để hỏi, skill đưa bản nháp đầu tiên và hỏi "đúng ý bạn chưa?" trước khi trau chuốt.
+
+<p align="center"><img src="docs/images/y-tuong/ghi-chu-light.png" alt="Note về quyết định nghỉ việc vẽ thành timeline" width="620"></p>
+
+Bốn đề phi kỹ thuật nằm trong `evals/`, kết quả và bài học trong `references/lessons-from-runs.md`.
+
 ## Luật chịu lực
 
 **Vẽ HÌNH DẠNG của ý tưởng, không vẽ danh sách thành phần.**
@@ -33,7 +43,7 @@ không đoán, mọi luật đều có nguồn ghi trong `references/sources.md`
 ## Quy trình sáu bước
 
 1. Viết đúng một câu: "Nhìn hình này, người đọc THẤY ... mà đoạn văn không cho thấy." Không viết được câu đó thì không vẽ.
-2. Ghi danh sách sự thật: actor, bước, nhánh lỗi, số thật lấy nguyên từ nguồn.
+2. Ghi danh sách sự thật: actor, bước, nhánh lỗi, số thật lấy nguyên từ nguồn. Với ý tưởng thô: khái niệm, quan hệ, chỗ căng thẳng và điều người viết muốn người đọc tin.
 3. Chọn loại hình theo cái cần thấy (sequence, swimlane, state, ER, byte cells, timeline, threshold...).
 4. Viết spec JSON - chép template từ `examples/`, không viết từ đầu.
 5. Render bằng `ve.py`.
@@ -79,9 +89,9 @@ cp -R drawing-excalidraw-figures ~/.claude/skills/
 Chạy `python3 scripts/ve.py spec.json` là ra bốn file.
 Cú pháp đầy đủ của mọi phần tử: `references/spec.md`.
 
-## Hai mươi lăm loại hình có template sẵn
+## Hai mươi chín loại hình có template sẵn
 
-`examples/` chứa 25 template: request flow, anatomy, byte cells, timeline, threshold, before/after, two views, ẩn dụ vật lý, failure branch, decision tree, sequence (kể cả alt/opt/loop), state machine, ER table, hash ring, code evidence, layer lanes, progressive series, layer stack, curve, icon, swimlane, composite state, ER crow's foot, system two flows.
+`examples/` chứa 29 template: request flow, anatomy, byte cells, timeline, threshold, before/after, two views, ẩn dụ vật lý, failure branch, decision tree, sequence (kể cả alt/opt/loop), state machine, ER table, hash ring, code evidence, layer lanes, progressive series, layer stack, curve, icon, swimlane, composite state, ER crow's foot, system two flows, vòng nhân quả, ma trận 2x2, phễu, concept map.
 
 Mỗi template là một spec JSON chạy được, nhãn tiếng Việt.
 
@@ -111,7 +121,7 @@ engine/             engine render thật (Excalidraw + Playwright Chromium)
 .cache/             bundle Excalidraw dựng sẵn; dựng lại bằng scripts/excalidraw-bundle.mjs
 assets/             icons.json 188 icon + font Nunito, Patrick Hand, IBM Plex Mono
 references/         luật loại hình, cú pháp spec, ngôn ngữ hình, checklist soi hình
-examples/           25 template spec JSON
+examples/           29 template spec JSON
 evals/              bộ đề đánh giá
 docs/               landing page + bộ so sánh bốn model
 ```

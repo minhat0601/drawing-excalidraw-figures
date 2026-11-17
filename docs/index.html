@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>drawing-excalidraw-figures - vẽ hình kỹ thuật bằng tay, tự động</title>
-<meta name="description" content="Skill cho Claude Code: biến một đoạn văn kỹ thuật thành hình Excalidraw thật từ một spec JSON ngắn. Kèm bộ so sánh 32 hình do 4 model AI vẽ cùng một bộ đề.">
+<meta name="description" content="Skill cho Claude Code: biến một đoạn văn kỹ thuật, hay một ý tưởng còn thô, thành hình Excalidraw thật từ một spec JSON ngắn. Kèm bộ so sánh 32 hình do 4 model AI vẽ cùng một bộ đề.">
 <meta property="og:title" content="drawing-excalidraw-figures - hình Excalidraw cho tài liệu kỹ thuật">
-<meta property="og:description" content="Đưa một đoạn văn kỹ thuật, agent viết spec JSON, một lệnh ra hình vẽ tay thật - sửa tiếp trên excalidraw.com, đúng màu hai chế độ, render offline.">
+<meta property="og:description" content="Đưa một đoạn văn kỹ thuật hay một ý tưởng còn thô, agent viết spec JSON, một lệnh ra hình vẽ tay thật - sửa tiếp trên excalidraw.com, đúng màu hai chế độ, render offline.">
 <meta property="og:url" content="https://drawing-excalidraw-figures.vercel.app/">
 <meta property="og:image" content="https://drawing-excalidraw-figures.vercel.app/images/examples/11-sequence-light.png">
 <meta property="og:type" content="website">
@@ -216,6 +216,13 @@ footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
 .iconlib .tab.on{display:block}
 .iconlib .tab img{width:100%;height:auto;display:block;border-radius:8px;cursor:zoom-in}
 .iconlib .tab p{font:16px var(--hand);color:var(--muted);margin:10px 2px 0}
+.ytuong{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:30px}
+.ytuong figure{margin:0;background:var(--card);border:1px solid var(--line);border-radius:11px;padding:14px;display:flex;flex-direction:column;gap:12px}
+.ytuong blockquote{margin:0;font:16px/1.45 var(--hand);color:var(--muted);border-left:3px solid var(--line);padding:2px 0 2px 12px}
+.ytuong blockquote b{color:var(--ink);font-weight:400}
+.ytuong img{width:100%;height:340px;object-fit:contain;display:block;border-radius:8px;cursor:zoom-in}
+.ytuong figcaption{font:15px var(--hand);color:var(--muted)}
+@media (max-width:760px){.ytuong{grid-template-columns:1fr}.ytuong img{height:auto}}
 /* lightbox */
 #lb{position:fixed;inset:0;z-index:100;background:var(--overlay);display:none;
   align-items:center;justify-content:center;padding:30px;cursor:zoom-out}
@@ -258,6 +265,7 @@ footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
       <a href="#cach-hoat-dong">Cách hoạt động</a>
       <a href="#co-che">Cơ chế</a>
       <a href="#loai-hinh">Loại hình</a>
+      <a href="#y-tuong">Ý tưởng</a>
       <a href="#icon">Icon</a>
       <a href="#so-sanh">So sánh 4 model</a>
       <a href="#cai-dat">Cài đặt</a>
@@ -272,7 +280,7 @@ footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
       <h1>Ý tưởng kỹ thuật đáng được
         <span class="gach-chan">vẽ tay<svg viewBox="0 0 120 12" preserveAspectRatio="none" aria-hidden="true"><path d="M3 8 Q 30 2 60 7 T 117 5" fill="none" stroke="var(--err)" stroke-width="3.2" stroke-linecap="round"/></svg></span>.
       </h1>
-      <p class="mo">Skill vẽ hình cho Claude Code: bạn đưa một đoạn văn kỹ thuật, agent viết một spec JSON ngắn, một lệnh là ra <b>hình Excalidraw thật</b> - kéo vào excalidraw.com sửa tiếp được, đúng màu ở cả chế độ sáng và tối, render offline.</p>
+      <p class="mo">Skill vẽ hình cho Claude Code: bạn đưa một đoạn văn kỹ thuật - hoặc một ý tưởng còn thô mới chỉ có chữ - agent viết một spec JSON ngắn, một lệnh là ra <b>hình Excalidraw thật</b> - kéo vào excalidraw.com sửa tiếp được, đúng màu ở cả chế độ sáng và tối, render offline.</p>
       <div class="cta">
         <div class="term"><code><span class="k">git clone</span> https://github.com/nv-minh/drawing-excalidraw-figures.git<br>&nbsp;&nbsp;~/.claude/skills/drawing-excalidraw-figures</code><button id="copy">Chép</button></div>
       </div>
@@ -410,7 +418,7 @@ footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
 
 <section id="loai-hinh" style="padding-top:20px">
   <div class="wrap">
-    <h2>Hai mươi lăm loại hình, template sẵn</h2>
+    <h2>Hai mươi chín loại hình, template sẵn</h2>
     <p class="lead" style="font-size:16.5px;color:var(--muted);max-width:70ch;margin:4px 0 0">Mỗi loại một template JSON chạy được - chép ra, sửa chữ, là có hình.</p>
     <div class="nhom">
       <div>
@@ -429,6 +437,10 @@ footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
         <h3>Trực giác</h3>
         <ul><li>ẩn dụ vật lý</li><li>two views</li><li>layer stack</li><li>layer lanes</li><li>188 icon thư viện</li></ul>
       </div>
+      <div>
+        <h3>Ý tưởng</h3>
+        <ul><li>vòng nhân quả</li><li>ma trận 2x2</li><li>phễu</li><li>concept map</li></ul>
+      </div>
     </div>
     <div class="mau">
       <figure><img data-base="images/examples/11-sequence" src="images/examples/11-sequence-light.png" alt="Sequence có khung alt" loading="lazy"><figcaption>sequence với khung alt/else</figcaption></figure>
@@ -437,6 +449,19 @@ footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
       <figure><img data-base="images/examples/08-metaphor-token-bucket" src="images/examples/08-metaphor-token-bucket-light.png" alt="Ẩn dụ xô token" loading="lazy"><figcaption>ẩn dụ cái xô token</figcaption></figure>
       <figure><img data-base="images/examples/16-layer-lanes" src="images/examples/16-layer-lanes-light.png" alt="Layer lanes" loading="lazy"><figcaption>layer lanes: tầng nào làm việc gì</figcaption></figure>
       <figure><img data-base="images/examples/05-threshold" src="images/examples/05-threshold-light.png" alt="Thanh so ngưỡng" loading="lazy"><figcaption>thanh vượt ngưỡng nét đứt</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="y-tuong" style="padding-top:20px">
+  <div class="wrap">
+    <h2>Không chỉ cho kỹ thuật</h2>
+    <p class="lead" style="font-size:16.5px;color:var(--muted);max-width:70ch;margin:4px 0 0">Một ý còn thô, mới chỉ là vài dòng chữ, cũng có hình dạng riêng. Skill tìm câu "ý này thực chất nói rằng...", giữ đúng chữ của người viết, rồi vẽ đúng chỗ căng thẳng của ý đó. Bốn hình dưới đây do Opus vẽ từ đúng những đoạn trích đó, không chỉnh tay.</p>
+    <div class="ytuong">
+      <figure><blockquote><b>Pitch kinh doanh:</b> "team muốn giảm giá theo. mình thì nghĩ khác … khách quen hài lòng thì họ kéo bạn bè tới … cái vòng đó chậm nhưng nó tự chạy."</blockquote><img data-base="images/y-tuong/kinh-doanh" src="images/y-tuong/kinh-doanh-light.png" alt="Pitch kinh doanh vẽ thành hình" loading="lazy"><figcaption>một bên ngõ cụt, một bên vòng tự chạy</figcaption></figure>
+      <figure><blockquote><b>Giảng dạy:</b> "điểm tôi muốn học sinh thấy: không con bướm nào đổi màu cả, chỉ là con nào hợp môi trường thì sống sót … nên tỷ lệ trong quần thể thay đổi."</blockquote><img data-base="images/y-tuong/giang-day" src="images/y-tuong/giang-day-light.png" alt="Giảng dạy vẽ thành hình" loading="lazy"><figcaption>đếm được từng con qua các thế hệ</figcaption></figure>
+      <figure><blockquote><b>Ghi chú lúc 2 giờ sáng:</b> "tiền tiết kiệm đủ sống khoảng 8 tháng nếu startup sập … cái mình sợ là 5 năm nữa vẫn ngồi đây và hối hận vì không thử."</blockquote><img data-base="images/y-tuong/ghi-chu" src="images/y-tuong/ghi-chu-light.png" alt="Ghi chú lúc 2 giờ sáng vẽ thành hình" loading="lazy"><figcaption>8 tháng có lối ra, 5 năm thì không</figcaption></figure>
+      <figure><blockquote><b>Quy trình nội bộ:</b> "khoản dưới 2 triệu thì trưởng nhóm duyệt xong chuyển thẳng kế toán chi. từ 2 triệu trở lên … thiếu hoá đơn đỏ thì trả lại nhân viên bổ sung"</blockquote><img data-base="images/y-tuong/quy-trinh" src="images/y-tuong/quy-trinh-light.png" alt="Quy trình nội bộ vẽ thành hình" loading="lazy"><figcaption>ba vai, một ngưỡng, một đường trả lại</figcaption></figure>
     </div>
   </div>
 </section>
@@ -641,6 +666,9 @@ gal.addEventListener('click', e => {
   const f = e.target.closest('.fig'); if (!f) return;
   const b = f.querySelector('b').textContent, s = f.closest('.de').querySelector('h3').textContent;
   moLb(f, b + ' - ' + s);
+});
+document.querySelectorAll('.ytuong figure').forEach(f => {
+  f.addEventListener('click', () => moLb(f, f.querySelector('figcaption').textContent));
 });
 document.querySelectorAll('.mau figure').forEach(f => {
   f.addEventListener('click', () => moLb(f, f.querySelector('figcaption').textContent));
