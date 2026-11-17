@@ -32,6 +32,8 @@
   --overlay:rgba(17,26,43,.55);
   --shadow:rgba(17,26,43,.07);
   --hover:#FFFFFF;
+  --lit-dark:#24272D;
+  --lit-light:#F4EFE4;
   --bg:#E8EDF4;
   --grid:#D5DEEA;
   --code-kw:#5B8DFF;
@@ -135,6 +137,8 @@
   --overlay:rgba(0,0,0,.66);
   --shadow:rgba(0,0,0,.45);
   --hover:#1F2A38;
+  --lit-dark:#24272D;
+  --lit-light:#F4EFE4;
   --bg:#0A1526;
   --grid:#13223A;
   --code-kw:#5B8DFF;
@@ -190,6 +194,8 @@
   --overlay:rgba(0,0,0,.66);
   --shadow:rgba(0,0,0,.45);
   --hover:#1F2A38;
+  --lit-dark:#24272D;
+  --lit-light:#F4EFE4;
   --bg:#0A1526;
   --grid:#13223A;
   --code-kw:#5B8DFF;

@@ -33,6 +33,10 @@ NEN = dict(T.FILL_LIGHT, **{'fill-soft': T.LIGHT['fill-soft']})
 # Code block: dark background in BOTH themes. The hex of --pre-bg equals --ink in the light
 # theme, so it cannot go through tokenize(); use two sentinel hexes and swap them by hand first.
 CANH_NEN, CANH_CHU = '#0B1021', '#DDE7F7'
+# Literal object colors (a dark moth, a soot-black trunk, white paper): same value in BOTH themes,
+# because the figure's meaning is that brightness. Every other token flips in the dark theme.
+# The hexes are the --lit-* values themselves and match no other token, so they survive tokenize().
+LIT = {'lit-dark': T.UI_TOKENS['lit-dark'][0], 'lit-light': T.UI_TOKENS['lit-light'][0]}
 SHAPES = ('box', 'ellipse', 'diamond')
 ACCENT = {'l3', 'l4', 'l6', 'l7', 'err', 'warn', 'node', 'heap', 'hot'}
 
@@ -49,8 +53,10 @@ def chet(msg):
 def mau(v):
     if v == 'code-fg':
         return CANH_CHU
+    if v in LIT:
+        return LIT[v]
     if v not in MAU:
-        chet(f"color '{v}' is not a token. Use: {' '.join(MAU)}")
+        chet(f"color '{v}' is not a token. Use: {' '.join(MAU)} {' '.join(LIT)}")
     return MAU[v]
 
 
@@ -61,9 +67,11 @@ def nen(v):
         return CANH_NEN
     if v == 'ink':
         return MAU['ink']
+    if v in LIT:
+        return LIT[v]
     k = 'fill-soft' if v == 'soft' else f'fill-{v}'
     if k not in NEN:
-        chet(f"fill '{v}' does not exist. Use: soft {' '.join(x[5:] for x in T.FILL_LIGHT)}")
+        chet(f"fill '{v}' does not exist. Use: soft {' '.join(x[5:] for x in T.FILL_LIGHT)} {' '.join(LIT)}")
     return NEN[k]
 
 
@@ -1641,6 +1649,8 @@ def ve(pg, base, src, ra):
     svg = re.sub(r'font-family="Cascadia[^"]*"', "font-family=\"'IBM Plex Mono', monospace\"", svg)
     svg = re.sub(re.escape(CANH_NEN), 'var(--pre-bg)', svg, flags=re.I)
     svg = re.sub(re.escape(CANH_CHU), 'var(--pre-fg)', svg, flags=re.I)
+    for k, hx in LIT.items():
+        svg = re.sub(re.escape(hx), f'var(--{k})', svg, flags=re.I)
     svg = X._fix_mask_luminance(T.tokenize(svg))      # same as the engine's PATCH 8 (VÁ 8): masks do not flip with the theme
     svg = code_bg_rects(mask_rects_to_paths(svg))
     sot = T.audit(svg)

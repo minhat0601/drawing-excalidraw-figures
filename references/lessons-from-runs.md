@@ -117,6 +117,24 @@ Use Sonnet for figures that follow a template closely, and add one instruction: 
 - Lets two arrows converge on one edge point (both the auto-approve and the manual-approve paths entering the top of the same success box). Pick `toAt` positions per incoming arrow before rendering.
 - First system-design draft ran 871 units wide; folding a floating note into the component it describes (the worker box carried "> 1M follower: không fan-out" itself) brought it to 779 without losing a fact.
 
+## Rough ideas and non-technical sources
+
+Source: a third batch on 2026-11-17 after the skill learned rough ideas: four non-technical tasks (a coffee-shop pricing pitch, natural selection for a class, a 2 a.m. note about leaving a job, an expense-approval process), each drawn once by Sonnet 5.5 and Opus 5.5.
+All eight runs drew the idea the writer meant; on the two open-ended tasks both models independently found the same core (8 months with an exit against 5 years ending in regret; a loop against a dead end).
+
+**What worked.**
+- The "This idea really says that" sentence. Every run wrote it, and every run then dropped the side claims instead of cramming them in. The personal note became a time axis in both models: "8 tháng" and "5 năm" are lengths, so the bounded risk and the long one are seen, not read.
+- Keeping the writer's words. Opus put the writer's own verbs on the arrows (`kéo tới`, `thành khách quen`, `nhận ra ngay`) instead of `+`; that reads better than signs for a pitch. Use signs when the writer reasons about more and less, verbs when the writer tells a story.
+- Countable things in a teaching figure. Opus drew every moth across generations (1/10, 2/10, 4/10 dark, then a 50-moth grid at 98%) and crossed out the students' wrong idea first; the reader watches the proportion change and sees no moth change colour.
+
+**Habits to drop.**
+- Drawing a literally dark thing in `ink`. Both moth runs drew dark moths and the sooty trunk in `ink`, which flips to light in the dark theme, so the dark PNG taught the opposite. Use `lit-dark` / `lit-light` for a real brightness (added after this batch).
+- Leaving a loop's arrows unlabelled when the loop is the point. One run drew the loop with bare arrows; a reader cannot tell "brings" from "blocks". Label every edge of the loop the idea is about.
+- Two figures in one when the idea has two options: fine when they share rows that line up across the divide (Opus put "hạt rẻ" level with "chất lượng"), busy when they do not.
+
+A regression check ran the three technical evals with Sonnet on the new skill: Kafka lag and MVCC passed every grader.
+OOM 137 missed the "limit line" grader, and an A/B against the skill before this change chose the same angle ("two causes, one exit code 137"), so the miss comes from how the lesson reads, not from the change.
+
 ## Numbers
 
 | | Sonnet 5.5 | Opus 5.5 | Fable 5.2 | GLM 5.3 |

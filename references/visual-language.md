@@ -53,6 +53,7 @@ The karanpratapsingh set gives every service an arbitrary color, which looks nic
 | `hot` | The path of exactly one request through the figure |
 | `l2` | Neutral structure that must separate from the background: frames, buckets, unemphasized bars |
 | `l6` `l7` `heap` | Only when the lesson has already assigned a meaning to that color |
+| `lit-dark` `lit-light` | The real brightness of a physical thing when that brightness is the point (camouflage, day and night, ink on paper). Same in both themes, never carries text, not an accent |
 
 Usage rules:
 

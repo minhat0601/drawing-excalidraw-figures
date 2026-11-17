@@ -38,6 +38,7 @@ The tool is silent about most of these; `references/lessons-from-runs.md` rules 
 
 - In `-dark.png`, all text is still readable and every stroke still visible.
 - A `solid` fill in the dark theme does not swallow the text inside it.
+- A thing whose real brightness is the point (a dark moth, a night sky, white paper) is still dark or light in `-dark.png`. If it flipped, it is drawn in a theme token: use `lit-dark` / `lit-light`.
 - The tool prints no `✗` line. Every `•` line is fixed or has a clear reason to stay.
 
 ## When to stop

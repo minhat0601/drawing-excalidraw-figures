@@ -59,6 +59,13 @@ UI_TOKENS = {
     # mang thông tin. KHÔNG thay --paper: --paper vẫn là nền của sơ đồ và bài
     # đọc, hàng nghìn phép đo tương phản dựa vào nó. tools/contrast.py::
     # gate_chrome_tokens() đo chữ và màu chủ đề trên --bg.
+    # Màu "thật" của vật thể (bướm sẫm, thân cây ám khói, tờ giấy trắng): GIỐNG
+    # NHAU ở cả hai theme, vì nghĩa của hình nằm ở chính độ sáng tối đó. Mọi
+    # token khác đảo ở dark mode, nên một con bướm sẫm vẽ bằng `ink` sẽ thành
+    # bướm sáng - hai lần chạy eval chọn lọc tự nhiên đều vấp đúng chỗ này.
+    # Không mang chữ: --ink tự đảo nên luôn có một theme chữ chìm vào nền này.
+    'lit-dark':  ('#24272D', '#24272D'),
+    'lit-light': ('#F4EFE4', '#F4EFE4'),
     'bg':        ('#E8EDF4', '#0A1526'),
     'grid':      ('#D5DEEA', '#13223A'),
 }
