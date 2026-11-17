@@ -405,7 +405,7 @@ python3 scripts/ve.py --icons
 python3 scripts/ve.py a.json --col 1100          # preview and font check at another column width
 ```
 
-`--col` is for figures that will not sit in the site's 666px reading column (a business document, a slide, a wiki page).
+`--col` is for figures that will not sit in the default 666px reading column (a business document, a slide, a wiki page).
 Never use it to silence the font check on a figure meant for the site.
 
 Each figure prints one summary line, its `✗` and `•` lines, then a `→ LOOK:` block with the two PNG paths to open.

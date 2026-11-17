@@ -8,9 +8,10 @@ Pass 1 matters most and is skipped most, because pass 2 and 3 errors are easier 
 - **Coverage**: go down the fact list from step 2 of the workflow. Every actor is drawn, every main step has a mark, every alternative and error branch has its own frame, edge or node, and each branch label says the same condition as the source ("timeout", not "other error"). Add what is missing or state why it is left out.
 - Cover the caption. Does the figure say the "the reader SEES ..." sentence written in step 1?
 - **Drop the text**: imagine all text erased. Does the remaining structure suggest the idea, or is it just a row of identical boxes?
-- **What is learned**: is there at least one real value (measurement, command name, key name, error code), or only generic labels?
+- **What is learned**: is there at least one real value (measurement, command name, key name, error code), or only generic labels? For a rough idea the test changes: are the concepts in the writer's own words, and does every arrow carry the relation the writer stated, not one you added?
 - **One most prominent point**: where does the eye land first? Is that the main idea?
-- **Stranger**: what can an engineer who has not read the lesson retell after 10 seconds with this figure? If you would have to say "ignore this part", delete that part.
+- **Writer recognizes it** (rough idea only): would the writer look at it and say "yes, that is what I meant", without you explaining? The tension from the idea list must be visible as a shape (two arrows pulling apart, a loop, a gap), not only written in a label.
+- **Stranger**: what can a reader who has not read the source retell after 10 seconds with this figure? If you would have to say "ignore this part", delete that part.
 - Does every arrow answer "what flows here, in which direction"?
 - Is every label true? Check numbers and names against the lesson, do not trust memory.
 
@@ -65,3 +66,5 @@ Do not stop after the first round just because there are no hard errors: the fir
 | Dozens of identical cells to type | Writing JSON by hand | Write a small script that generates the spec |
 | Arrow winds around and cuts across the figure | Two related things placed far apart | Move them closer, do not bend the arrow |
 | Figure needs three paragraphs to understand | Several ideas crammed into one figure | One figure, one idea: split it |
+| Rough idea drawn as a mind map of every word | Concepts listed, relations skipped | Keep the 4 to 7 concepts on the main relation, label every edge with its verb, drop the rest |
+| Concept map where every node links to every other | No claim chosen | Go back to the "This idea really says that" sentence, keep only edges that serve it |

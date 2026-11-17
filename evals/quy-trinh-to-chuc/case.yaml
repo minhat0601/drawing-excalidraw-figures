@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: quy-trinh-to-chuc
+expected_outcome: |
+  The figure is a swimlane of the expense reimbursement process with the three roles, the 2 million VND threshold as a branch, the return path when the invoice is missing, and the 5 working day payment limit.

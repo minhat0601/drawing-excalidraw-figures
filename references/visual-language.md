@@ -62,6 +62,7 @@ Usage rules:
 - Color by requirement: when a figure serves three requirements, write each requirement in one color, then color the components and arrows serving it the same.
 - `hachure` for countable things and for "waste" (padding, waiting regions). `solid` for regions, states, bands.
 - Red is always reserved for failure. The Everoot source uses red for "requirement 1" in one frame and "failure" in another, so the reader can no longer trust the color.
+- Causal signs are not colors. In a causal loop or concept map, `+` and `-` go as text on the arrow (`+` same direction, `-` opposite), and every arrow stays `ink`. Color goes only on the one loop or path the idea is about (`l4`), and `err` only on a loop that ends in harm. Coloring every `-` red would tell the reader that every slowing effect is a failure, which is rarely what the writer meant.
 
 ## Layout
 
@@ -108,9 +109,9 @@ A bucket, a circle with a bold arc, two layer stacks of different heights do.
 
 The "what is learned" test: does the reader learn one concrete thing from the figure, or does it only name the boxes?
 
-## Site constraints
+## Default constraints
 
-- The reading column is 666px wide at the viewport `precheck.py` measures. A wider figure is scaled down, and its text with it.
+- The default reading column is 666px wide, the width of a typical article or docs column. A wider figure is scaled down, and its text with it. For a slide, a wiki page or a wide screen, preview with `--col N` and keep the same rule at that width.
 - Keep width under about 800 units: size-16 text then stays above 13px on screen and the size-15 labels of the prebuilt macros at 12.5px. The source figures have a median width of 1,106, so their layouts cannot be copied as is.
 - When short on room, stack vertically (height does not shrink text) or split into two figures.
 - Colors come only from token names. Tokens invert their values in the dark theme, so the figure fits both themes automatically.

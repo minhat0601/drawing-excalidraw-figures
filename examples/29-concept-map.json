@@ -1,0 +1,17 @@
+{"_": "Concept map: 5 to 7 concepts, each edge labelled with the verb that joins them (làm tăng, đẩy lên, làm giảm), read left to right from causes to effects. The concept the lesson is about is l4 in the middle; the harm at the end is err. A concept with no labelled edge does not belong. Use for teaching a concept or untangling a note full of related ideas.",
+ "elements": [
+ {"t":"box","id":"in","x":0,"y":0,"w":170,"h":56,"text":"in thêm tiền"},
+ {"t":"box","id":"lt","x":0,"y":170,"w":170,"h":56,"text":"tiền lưu thông"},
+ {"t":"box","id":"ls","x":0,"y":340,"w":170,"h":56,"text":"lãi suất tăng"},
+ {"t":"box","id":"nc","x":300,"y":0,"w":170,"h":56,"text":"cầu vượt cung"},
+ {"t":"box","id":"gc","x":300,"y":170,"w":170,"h":56,"text":"giá cả chung","color":"l4","weight":3},
+ {"t":"box","id":"sm","x":600,"y":170,"w":170,"h":56,"text":"sức mua 1 đồng"},
+ {"t":"box","id":"tk","x":600,"y":340,"w":170,"h":56,"text":"tiền tiết kiệm","color":"err"},
+ {"t":"arrow","from":"in","to":"lt","text":"làm tăng"},
+ {"t":"arrow","from":"ls","to":"lt","text":"kéo giảm"},
+ {"t":"arrow","from":"lt","to":"gc","text":"đẩy lên"},
+ {"t":"arrow","from":"nc","to":"gc","text":"đẩy lên"},
+ {"t":"arrow","from":"gc","to":"sm","text":"làm giảm"},
+ {"t":"arrow","from":"sm","to":"tk","text":"làm mất giá","color":"err"},
+ {"t":"text","x":385,"y":250,"text":"lạm phát = giá cả chung\ntăng liên tục","align":"center","color":"l4","size":16}
+ ]}

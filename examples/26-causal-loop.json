@@ -1,0 +1,20 @@
+{"_": "Causal loop: concepts in a ring, every arrow carries its sign (+ same direction, - opposite) as text, all arrows ink. The loop the idea is about is named in its centre in l4; a second, balancing loop is named beside it. Use for 'A feeds B feeds A' ideas in business, teaching or personal notes.",
+ "elements": [
+ {"t":"box","id":"hl","x":250,"y":0,"w":170,"h":52,"text":"khách hài lòng","color":"l4"},
+ {"t":"box","id":"tm","x":490,"y":110,"w":150,"h":52,"text":"truyền miệng"},
+ {"t":"box","id":"km","x":430,"y":290,"w":130,"h":52,"text":"khách mới"},
+ {"t":"box","id":"dt","x":110,"y":290,"w":130,"h":52,"text":"doanh thu"},
+ {"t":"box","id":"cl","x":30,"y":110,"w":170,"h":52,"text":"đầu tư chất lượng"},
+ {"t":"box","id":"qt","x":420,"y":430,"w":210,"h":52,"text":"nhân viên quá tải"},
+ {"t":"arrow","from":"hl","to":"tm","text":"+","bend":-20,"size":24},
+ {"t":"arrow","from":"tm","to":"km","text":"+","bend":-20,"size":24},
+ {"t":"arrow","from":"km","to":"dt","text":"+","bend":-24,"size":24},
+ {"t":"arrow","from":"dt","to":"cl","text":"+","bend":-20,"size":24},
+ {"t":"arrow","from":"cl","to":"hl","text":"+","bend":-20,"size":24},
+ {"t":"arrow","from":"km","to":"qt","text":"+","size":24},
+ {"t":"text","x":335,"y":170,"text":"R","align":"center","color":"l4","size":40},
+ {"t":"arrow","points":[[632,456],[780,456],[780,26],[424,26]],"sharp":true,"text":"−","size":28,"labelAt":0.5,"labelDx":18},
+ {"t":"text","x":335,"y":220,"text":"vòng tự khuếch đại","align":"center","color":"l4","size":18},
+ {"t":"text","x":705,"y":250,"text":"B","align":"center","color":"muted","size":32},
+ {"t":"text","x":705,"y":292,"text":"vòng\ncân bằng","align":"center","color":"muted","size":16}
+ ]}

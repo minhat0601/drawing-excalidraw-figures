@@ -1,6 +1,6 @@
 # Figure types: when to use, how to build, where they break
 
-Contents: [1 Request flow](#1-request-flow) · [2 Anatomy](#2-anatomy) · [3 Byte cells](#3-byte-cells) · [4 Timeline](#4-timeline) · [5 Threshold](#5-threshold) · [6 Before and after](#6-before-and-after) · [7 Two views](#7-two-views) · [8 Physical metaphor](#8-physical-metaphor) · [9 Failure branch](#9-failure-branch) · [10 Decision tree](#10-decision-tree) · [11 Sequence](#11-sequence) · [12 State machine](#12-state-machine) · [13 ER and tables](#13-er-and-tables) · [14 Hash ring](#14-hash-ring) · [15 Code block](#15-code-block) · [16 Layer lanes](#16-layer-lanes) · [17 Progressive build](#17-progressive-build) · [18 Layer stack](#18-layer-stack) · [19 Curve](#19-curve) · [20 Icons](#20-icons) · [21 Sequence with fragments](#21-sequence-with-fragments) · [22 Business flow in swimlanes](#22-business-flow-in-swimlanes) · [23 Composite state](#23-composite-state) · [24 ER with crow's foot](#24-er-with-crows-foot) · [25 System design with two flows](#25-system-design-with-two-flows) · [Rare figure types](#rare-figure-types) · [Building a new figure from primitives](#building-a-new-figure-from-primitives)
+Contents: [1 Request flow](#1-request-flow) · [2 Anatomy](#2-anatomy) · [3 Byte cells](#3-byte-cells) · [4 Timeline](#4-timeline) · [5 Threshold](#5-threshold) · [6 Before and after](#6-before-and-after) · [7 Two views](#7-two-views) · [8 Physical metaphor](#8-physical-metaphor) · [9 Failure branch](#9-failure-branch) · [10 Decision tree](#10-decision-tree) · [11 Sequence](#11-sequence) · [12 State machine](#12-state-machine) · [13 ER and tables](#13-er-and-tables) · [14 Hash ring](#14-hash-ring) · [15 Code block](#15-code-block) · [16 Layer lanes](#16-layer-lanes) · [17 Progressive build](#17-progressive-build) · [18 Layer stack](#18-layer-stack) · [19 Curve](#19-curve) · [20 Icons](#20-icons) · [21 Sequence with fragments](#21-sequence-with-fragments) · [22 Business flow in swimlanes](#22-business-flow-in-swimlanes) · [23 Composite state](#23-composite-state) · [24 ER with crow's foot](#24-er-with-crows-foot) · [25 System design with two flows](#25-system-design-with-two-flows) · [26 Causal loop](#26-causal-loop) · [27 Matrix 2x2](#27-matrix-2x2) · [28 Funnel](#28-funnel) · [29 Concept map](#29-concept-map) · [Rare figure types](#rare-figure-types) · [Building a new figure from primitives](#building-a-new-figure-from-primitives)
 
 Each section points to a file in `examples/`.
 Copy that file, then edit it.
@@ -497,6 +497,64 @@ Enter and leave the client on different sides, or drop the return when the statu
 - Put each path's "how imbalance shows" note inside its own frame, the same muted size, so the two costs read side by side.
 - A short dashed reply from a node's side to the client's side, looping left of the LB, says "answered before the slow work runs" without a return across the figure.
 - Run: SD 03 §3.2.1 (`sd03-hai-duong-phan-phoi`).
+
+## 26 Causal loop
+
+**Use when** the idea is a cycle of causes: A grows B, B grows C, C feeds back into A, possibly with a second loop that slows it down.
+Common in business ("happy customers bring more customers"), economics, habits, team dynamics.
+**Template:** `26-causal-loop.json`.
+
+- Four to six concepts placed on a ring, each a short noun phrase in the writer's words ("khách hài lòng", not "customer satisfaction index").
+- Every arrow carries a sign as its label: `+` when more of A gives more of B, `-` when more of A gives less of B. Size 24 so the sign is not lost.
+- All arrows stay `ink`. The sign carries the meaning; color goes only on the loop's name.
+- Name each loop in the space it encloses: `R` with "vòng tự khuếch đại" for a reinforcing loop (even number of `-`), `B` with "vòng cân bằng" for a balancing one (odd number of `-`). The loop the idea is about is `l4`, the other `muted`.
+- A balancing loop that leaves the ring takes an outside route (`points` with `sharp`) along the figure's edge, so it never crosses the ring.
+- Curve the ring arrows with the same `bend` sign so the whole ring turns one way.
+
+**Common failure:** drawing a list of causes as a ring when the last one does not really feed the first.
+If the writer never said C changes A, it is a chain: use a left-to-right concept map instead.
+
+## 27 Matrix 2x2
+
+**Use when** two forces or criteria pull against each other and options sit in the four combinations: impact and effort, price and quality, urgent and important, risk and reward.
+**Template:** `27-matrix-2x2.json`.
+
+- Two axes as `arrow`s from a shared origin at bottom-left, with the axis name at the tip and `thấp` / `cao` in `muted` at both ends.
+- Four equal boxes. Each box title is a verdict (`làm ngay`, `bỏ qua`), not a coordinate (`cao-thấp`).
+- Under each title, the writer's own items as short bullets: the items are what the reader learns.
+- Accent only the quadrant the idea argues for (`l4`, weight 3, no fill so the text keeps full contrast). Mark the quadrant to avoid `muted` and `dashed`.
+- Keep quadrants just tall enough for their items; empty space inside a quadrant reads as "nothing belongs here".
+
+**Common failure:** a 2x2 where the two axes are not independent (cost and price), so two quadrants are impossible.
+Then the idea is a spectrum: draw one axis with options as points on it.
+
+## 28 Funnel
+
+**Use when** many things enter, fewer pass each stage, and the point is where they are lost: sales, hiring, sign-ups, applications, a learning path.
+**Template:** `28-funnel.json`.
+
+- One closed `line` trapezoid per stage, each one's bottom edge as wide as the next one's top, so width reads as "how many are left".
+- Inside each stage: the real count large (size 24), the stage name small under it.
+- Between stages, a dotted leader to the right with the pass rate worded as `12% đi tiếp`. A bare `12%` beside a narrowing shape is read as a loss rate.
+- The stage with the biggest loss is the only `err` mark. The stage the idea is about (usually the last) is `l4` fill with `ink` text: `l4` text on an `l4` fill vanishes in the dark theme.
+- With no numbers in the source, keep the shape, drop the rates, and do not invent counts.
+
+**Common failure:** stage widths drawn to scale. Ten thousand against forty-five makes the last stage a sliver too narrow for its label; keep a fixed step in width and let the numbers carry the scale.
+
+## 29 Concept map
+
+**Use when** several concepts relate to each other and the reader must see how: teaching a concept, untangling a messy note, explaining a policy.
+**Template:** `29-concept-map.json`.
+
+- Five to seven concepts. More than seven turns into a mind map of every word; split it.
+- Every edge is labelled with the verb that joins its two ends (`làm tăng`, `đẩy lên`, `là một phần của`, `cần`). An unlabelled edge says only "related", which the reader already assumed.
+- Lay causes on the left, effects on the right, so the map reads in one direction; side influences come in from above or below.
+- The concept the lesson is about sits in the middle in `l4` with weight 3. A short definition under it in `l4` text works as the anchor.
+- The harm at the end of the chain, if the idea has one, is `err` with its edge.
+- Keep at least 120 units between boxes on a horizontal edge: verb labels are 60 to 90 units wide and need line on both sides.
+
+**Common failure:** every concept linked to every other.
+Go back to the "This idea really says that" sentence of step 1 and keep only the edges that serve it.
 
 ## Rare figure types
 

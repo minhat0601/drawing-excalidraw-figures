@@ -1,0 +1,23 @@
+{"_": "2x2 matrix: two trade-off axes as arrows with low/high at the ends, four equal quadrants, a short verdict as each quadrant's title and the writer's real items under it. Only the quadrant the idea argues for is accented (l4); the one to avoid is muted and dashed. Use for prioritising, positioning, or any 'two forces' idea.",
+ "elements": [
+ {"t":"box","id":"q1","x":90,"y":40,"w":310,"h":140,"color":"l4","weight":3},
+ {"t":"box","id":"q2","x":420,"y":40,"w":310,"h":140},
+ {"t":"box","id":"q3","x":90,"y":200,"w":310,"h":140},
+ {"t":"box","id":"q4","x":420,"y":200,"w":310,"h":140,"color":"muted","dashed":true},
+ {"t":"text","x":110,"y":56,"text":"làm ngay","color":"l4","size":24},
+ {"t":"text","x":110,"y":100,"text":"• gọi lại 3 khách sắp huỷ\n• sửa nút thanh toán lỗi","size":18},
+ {"t":"text","x":440,"y":56,"text":"lên kế hoạch","size":24},
+ {"t":"text","x":440,"y":100,"text":"• mở thêm kênh bán sỉ\n• tuyển trưởng nhóm","size":18},
+ {"t":"text","x":110,"y":216,"text":"làm khi rảnh","size":24},
+ {"t":"text","x":110,"y":260,"text":"• đổi ảnh bìa trang\n• dọn hộp thư","size":18},
+ {"t":"text","x":440,"y":216,"text":"bỏ qua","color":"muted","size":24},
+ {"t":"text","x":440,"y":260,"text":"• làm lại logo\n• app riêng cho cửa hàng","color":"muted","size":18},
+ {"t":"arrow","points":[[70,350],[70,10]],"weight":2},
+ {"t":"arrow","points":[[70,350],[750,350]],"weight":2},
+ {"t":"text","x":60,"y":14,"text":"tác động","align":"right","size":18},
+ {"t":"text","x":60,"y":60,"text":"cao","align":"right","color":"muted","size":16},
+ {"t":"text","x":60,"y":310,"text":"thấp","align":"right","color":"muted","size":16},
+ {"t":"text","x":410,"y":362,"text":"công sức","align":"center","size":18},
+ {"t":"text","x":110,"y":362,"text":"thấp","color":"muted","size":16},
+ {"t":"text","x":730,"y":362,"text":"cao","align":"right","color":"muted","size":16}
+ ]}
