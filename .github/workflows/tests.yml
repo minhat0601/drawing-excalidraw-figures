@@ -1,0 +1,22 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Cài dependencies
+        # Không cần Node: bundle Excalidraw (.cache/exca.bundle.js) và fonts
+        # (assets/fonts/) đã commit trong repo, render chạy offline hoàn toàn.
+        run: |
+          pip install -r requirements.txt pytest
+          python -m playwright install chromium --with-deps
+      - name: Chạy tests
+        run: python -m pytest -v

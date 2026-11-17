@@ -35,7 +35,9 @@ NEN = dict(T.FILL_LIGHT, **{'fill-soft': T.LIGHT['fill-soft']})
 CANH_NEN, CANH_CHU = '#0B1021', '#DDE7F7'
 # Literal object colors (a dark moth, a soot-black trunk, white paper): same value in BOTH themes,
 # because the figure's meaning is that brightness. Every other token flips in the dark theme.
-# The hexes are the --lit-* values themselves and match no other token, so they survive tokenize().
+# The hexes are the --lit-* values themselves; they must be swapped to var(--lit-*) BEFORE
+# tokenize() - both sit within _nearest's 30-unit radius of ink/paper, so tokenize() alone
+# would absorb them (see tests/test_theme.py::test_lit_hex_song_sot_*).
 LIT = {'lit-dark': T.UI_TOKENS['lit-dark'][0], 'lit-light': T.UI_TOKENS['lit-light'][0]}
 SHAPES = ('box', 'ellipse', 'diamond')
 ACCENT = {'l3', 'l4', 'l6', 'l7', 'err', 'warn', 'node', 'heap', 'hot'}

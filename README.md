@@ -123,8 +123,16 @@ assets/             icons.json 188 icon + font Nunito, Patrick Hand, IBM Plex Mo
 references/         luật loại hình, cú pháp spec, ngôn ngữ hình, checklist soi hình
 examples/           29 template spec JSON
 evals/              bộ đề đánh giá
+tests/              unit cho theme/renderer + golden render cả 29 ví dụ
 docs/               landing page + bộ so sánh bốn model
 ```
+
+## Tests
+
+Chuẩn bị: `pip install -r requirements.txt pytest` (riêng golden render cần `playwright install chromium`).
+`python3 -m pytest` chạy 69 phép thử: unit cho hệ màu (`engine/theme.py`), cổng token và biên dịch spec (`scripts/ve.py`), dựng icon (`scripts/build_icons.py`), và một golden render chạy `ve.py` thật trên cả 29 ví dụ rồi soát màu ngoài token, hex lit thô, cảnh `.excalidraw` hợp lệ.
+Muốn bỏ bước render (~80 giây): `python3 -m pytest -m "not slow"`.
+GitHub Actions chạy đủ cả bộ ở `.github/workflows/tests.yml`; bundle và font đã commit trong repo nên CI không cần Node và chạy offline.
 
 ## Nguồn và giấy phép
 
