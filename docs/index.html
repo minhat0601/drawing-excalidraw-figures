@@ -210,6 +210,12 @@ h1{font:400 clamp(38px,4.4vw,56px)/1.14 var(--hand);margin:0 0 18px;letter-spaci
 footer{border-top:1px solid var(--line);padding:34px 0 46px;font-size:13.5px;color:var(--muted)}
 footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
 
+.iconlib{margin-top:30px}
+.iconlib .figswitch{margin:0 0 16px}
+.iconlib .tab{display:none}
+.iconlib .tab.on{display:block}
+.iconlib .tab img{width:100%;height:auto;display:block;border-radius:8px;cursor:zoom-in}
+.iconlib .tab p{font:16px var(--hand);color:var(--muted);margin:10px 2px 0}
 /* lightbox */
 #lb{position:fixed;inset:0;z-index:100;background:var(--overlay);display:none;
   align-items:center;justify-content:center;padding:30px;cursor:zoom-out}
@@ -252,6 +258,7 @@ footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
       <a href="#cach-hoat-dong">Cách hoạt động</a>
       <a href="#co-che">Cơ chế</a>
       <a href="#loai-hinh">Loại hình</a>
+      <a href="#icon">Icon</a>
       <a href="#so-sanh">So sánh 4 model</a>
       <a href="#cai-dat">Cài đặt</a>
       <button id="theme" aria-label="Đổi chế độ sáng tối"><svg id="icon-den" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M20.5 14.5 A 8.5 8.5 0 1 1 9.5 3.5 A 7 7 0 0 0 20.5 14.5 Z"/></svg><svg id="icon-sang" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true" style="display:none"><circle cx="12" cy="12" r="4.5"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg><span id="theme-lbl">Chế độ tối</span></button>
@@ -430,6 +437,18 @@ footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
       <figure><img data-base="images/examples/08-metaphor-token-bucket" src="images/examples/08-metaphor-token-bucket-light.png" alt="Ẩn dụ xô token" loading="lazy"><figcaption>ẩn dụ cái xô token</figcaption></figure>
       <figure><img data-base="images/examples/16-layer-lanes" src="images/examples/16-layer-lanes-light.png" alt="Layer lanes" loading="lazy"><figcaption>layer lanes: tầng nào làm việc gì</figcaption></figure>
       <figure><img data-base="images/examples/05-threshold" src="images/examples/05-threshold-light.png" alt="Thanh so ngưỡng" loading="lazy"><figcaption>thanh vượt ngưỡng nét đứt</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="icon" style="padding-top:20px">
+  <div class="wrap">
+    <h2>188 icon dựng sẵn cho sơ đồ hạ tầng</h2>
+    <p class="lead" style="font-size:16.5px;color:var(--muted);max-width:70ch;margin:4px 0 0">AWS, Azure, GCP, cơ sở dữ liệu và công cụ phổ biến. Gọi theo tên, skill tự tô màu theo chủ đề sáng hoặc tối.</p>
+    <div class="iconlib">
+      <div class="figswitch" id="icontabs"><button data-tab="aws" class="on">AWS</button><button data-tab="azure">Azure</button><button data-tab="gcp">GCP</button><button data-tab="db">Database và công cụ</button></div>
+      <div class="tab on" id="tab-aws"><img data-base="images/icons/icons-aws" src="images/icons/icons-aws-light.png" alt="Bộ icon AWS" loading="lazy"><p>39 dịch vụ AWS: tính toán, lưu trữ, CSDL, mạng, bảo mật. Luôn ghi tên sản phẩm làm nhãn dưới icon.</p></div><div class="tab" id="tab-azure"><img data-base="images/icons/icons-azure" src="images/icons/icons-azure-light.png" alt="Bộ icon Azure" loading="lazy"><p>19 dịch vụ Azure: VM, App Service, SQL, Cosmos DB, Key Vault, Event Hubs. Luôn ghi tên sản phẩm làm nhãn dưới icon.</p></div><div class="tab" id="tab-gcp"><img data-base="images/icons/icons-gcp" src="images/icons/icons-gcp-light.png" alt="Bộ icon GCP" loading="lazy"><p>29 dịch vụ Google Cloud: Compute, GKE, BigQuery, Pub/Sub, Spanner. Luôn ghi tên sản phẩm làm nhãn dưới icon.</p></div><div class="tab" id="tab-db"><img data-base="images/icons/icons-db" src="images/icons/icons-db-light.png" alt="Bộ icon Database và công cụ" loading="lazy"><p>Logo PostgreSQL, MySQL, Cassandra, Elasticsearch, Redis, Neo4j, Kafka, Kubernetes, Terraform. Luôn ghi tên sản phẩm làm nhãn dưới icon.</p></div>
+      <p style="font:15px var(--mono,monospace);color:var(--muted);margin-top:14px"><code>{"t":"icon","name":"gcp-bigquery","x":0,"y":0,"h":60,"text":"BigQuery"}</code> - xem đủ danh sách bằng <code>python3 scripts/ve.py --icons</code></p>
     </div>
   </div>
 </section>
@@ -626,6 +645,11 @@ gal.addEventListener('click', e => {
 document.querySelectorAll('.mau figure').forEach(f => {
   f.addEventListener('click', () => moLb(f, f.querySelector('figcaption').textContent));
 });
+document.querySelectorAll('#icontabs button').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('#icontabs button').forEach(x => x.classList.toggle('on', x === b));
+  document.querySelectorAll('.iconlib .tab').forEach(t => t.classList.toggle('on', t.id === 'tab-' + b.dataset.tab));
+}));
+document.querySelectorAll('.iconlib .tab').forEach(t => t.addEventListener('click', () => moLb(t, t.querySelector('p').textContent)));
 function dongLb(){ lb.classList.remove('open'); document.body.style.overflow = ''; }
 lb.addEventListener('click', dongLb);
 addEventListener('keydown', e => { if (e.key === 'Escape') dongLb(); });
