@@ -221,6 +221,9 @@ footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
 .ytuong blockquote{margin:0;font:16px/1.45 var(--hand);color:var(--muted);border-left:3px solid var(--line);padding:2px 0 2px 12px}
 .ytuong blockquote b{color:var(--ink);font-weight:400}
 .ytuong img{width:100%;height:340px;object-fit:contain;display:block;border-radius:8px;cursor:zoom-in}
+.ytuong .mdl{display:flex;gap:6px}
+.ytuong .mdl button{font:14px var(--hand);color:var(--muted);background:var(--card);border:1.5px solid var(--line);border-radius:99px;padding:3px 12px;cursor:pointer}
+.ytuong .mdl button.on{color:var(--l4);border-color:var(--l4);background:var(--fill-soft)}
 .ytuong figcaption{font:15px var(--hand);color:var(--muted)}
 @media (max-width:760px){.ytuong{grid-template-columns:1fr}.ytuong img{height:auto}}
 /* lightbox */
@@ -456,12 +459,12 @@ footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
 <section id="y-tuong" style="padding-top:20px">
   <div class="wrap">
     <h2>Không chỉ cho kỹ thuật</h2>
-    <p class="lead" style="font-size:16.5px;color:var(--muted);max-width:70ch;margin:4px 0 0">Một ý còn thô, mới chỉ là vài dòng chữ, cũng có hình dạng riêng. Skill tìm câu "ý này thực chất nói rằng...", giữ đúng chữ của người viết, rồi vẽ đúng chỗ căng thẳng của ý đó. Bốn hình dưới đây do Opus vẽ từ đúng những đoạn trích đó, không chỉnh tay.</p>
+    <p class="lead" style="font-size:16.5px;color:var(--muted);max-width:70ch;margin:4px 0 0">Một ý còn thô, mới chỉ là vài dòng chữ, cũng có hình dạng riêng. Skill tìm câu "ý này thực chất nói rằng...", giữ đúng chữ của người viết, rồi vẽ đúng chỗ căng thẳng của ý đó. Mỗi đoạn trích được Opus và Sonnet vẽ một lần, không chỉnh tay - bấm tên model để đổi hình.</p>
     <div class="ytuong">
-      <figure><blockquote><b>Pitch kinh doanh:</b> "team muốn giảm giá theo. mình thì nghĩ khác … khách quen hài lòng thì họ kéo bạn bè tới … cái vòng đó chậm nhưng nó tự chạy."</blockquote><img data-base="images/y-tuong/kinh-doanh" src="images/y-tuong/kinh-doanh-light.png" alt="Pitch kinh doanh vẽ thành hình" loading="lazy"><figcaption>một bên ngõ cụt, một bên vòng tự chạy</figcaption></figure>
-      <figure><blockquote><b>Giảng dạy:</b> "điểm tôi muốn học sinh thấy: không con bướm nào đổi màu cả, chỉ là con nào hợp môi trường thì sống sót … nên tỷ lệ trong quần thể thay đổi."</blockquote><img data-base="images/y-tuong/giang-day" src="images/y-tuong/giang-day-light.png" alt="Giảng dạy vẽ thành hình" loading="lazy"><figcaption>đếm được từng con qua các thế hệ</figcaption></figure>
-      <figure><blockquote><b>Ghi chú lúc 2 giờ sáng:</b> "tiền tiết kiệm đủ sống khoảng 8 tháng nếu startup sập … cái mình sợ là 5 năm nữa vẫn ngồi đây và hối hận vì không thử."</blockquote><img data-base="images/y-tuong/ghi-chu" src="images/y-tuong/ghi-chu-light.png" alt="Ghi chú lúc 2 giờ sáng vẽ thành hình" loading="lazy"><figcaption>8 tháng có lối ra, 5 năm thì không</figcaption></figure>
-      <figure><blockquote><b>Quy trình nội bộ:</b> "khoản dưới 2 triệu thì trưởng nhóm duyệt xong chuyển thẳng kế toán chi. từ 2 triệu trở lên … thiếu hoá đơn đỏ thì trả lại nhân viên bổ sung"</blockquote><img data-base="images/y-tuong/quy-trinh" src="images/y-tuong/quy-trinh-light.png" alt="Quy trình nội bộ vẽ thành hình" loading="lazy"><figcaption>ba vai, một ngưỡng, một đường trả lại</figcaption></figure>
+      <figure><blockquote><b>Pitch kinh doanh:</b> "team muốn giảm giá theo. mình thì nghĩ khác … khách quen hài lòng thì họ kéo bạn bè tới … cái vòng đó chậm nhưng nó tự chạy."</blockquote><div class="mdl" role="group" aria-label="Chọn model"><button class="on" data-b="images/y-tuong/kinh-doanh" data-c="một bên ngõ cụt, một bên vòng tự chạy">Opus 5.5</button><button data-b="images/y-tuong/kinh-doanh-sonnet" data-c="chuỗi ngõ cụt trên, vòng khách quen dưới">Sonnet 5.5</button></div><img data-base="images/y-tuong/kinh-doanh" src="images/y-tuong/kinh-doanh-light.png" alt="Pitch kinh doanh vẽ thành hình" loading="lazy"><figcaption>một bên ngõ cụt, một bên vòng tự chạy</figcaption></figure>
+      <figure><blockquote><b>Giảng dạy:</b> "điểm tôi muốn học sinh thấy: không con bướm nào đổi màu cả, chỉ là con nào hợp môi trường thì sống sót … nên tỷ lệ trong quần thể thay đổi."</blockquote><div class="mdl" role="group" aria-label="Chọn model"><button class="on" data-b="images/y-tuong/giang-day" data-c="đếm được từng con qua các thế hệ">Opus 5.5</button><button data-b="images/y-tuong/giang-day-sonnet" data-c="hai thân cây, cùng những con bướm, chỉ tỷ lệ đổi">Sonnet 5.5</button></div><img data-base="images/y-tuong/giang-day" src="images/y-tuong/giang-day-light.png" alt="Giảng dạy vẽ thành hình" loading="lazy"><figcaption>đếm được từng con qua các thế hệ</figcaption></figure>
+      <figure><blockquote><b>Ghi chú lúc 2 giờ sáng:</b> "tiền tiết kiệm đủ sống khoảng 8 tháng nếu startup sập … cái mình sợ là 5 năm nữa vẫn ngồi đây và hối hận vì không thử."</blockquote><div class="mdl" role="group" aria-label="Chọn model"><button class="on" data-b="images/y-tuong/ghi-chu" data-c="8 tháng có lối ra, 5 năm thì không">Opus 5.5</button><button data-b="images/y-tuong/ghi-chu-sonnet" data-c="thanh 8 tháng ngắn, thanh 5 năm dài">Sonnet 5.5</button></div><img data-base="images/y-tuong/ghi-chu" src="images/y-tuong/ghi-chu-light.png" alt="Ghi chú lúc 2 giờ sáng vẽ thành hình" loading="lazy"><figcaption>8 tháng có lối ra, 5 năm thì không</figcaption></figure>
+      <figure><blockquote><b>Quy trình nội bộ:</b> "khoản dưới 2 triệu thì trưởng nhóm duyệt xong chuyển thẳng kế toán chi. từ 2 triệu trở lên … thiếu hoá đơn đỏ thì trả lại nhân viên bổ sung"</blockquote><div class="mdl" role="group" aria-label="Chọn model"><button class="on" data-b="images/y-tuong/quy-trinh" data-c="ba vai, một ngưỡng, một đường trả lại">Opus 5.5</button><button data-b="images/y-tuong/quy-trinh-sonnet" data-c="ba vai, nhánh 2 triệu, đường nộp lại">Sonnet 5.5</button></div><img data-base="images/y-tuong/quy-trinh" src="images/y-tuong/quy-trinh-light.png" alt="Quy trình nội bộ vẽ thành hình" loading="lazy"><figcaption>ba vai, một ngưỡng, một đường trả lại</figcaption></figure>
     </div>
   </div>
 </section>
@@ -473,7 +476,7 @@ footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
     <div class="iconlib">
       <div class="figswitch" id="icontabs"><button data-tab="aws" class="on">AWS</button><button data-tab="azure">Azure</button><button data-tab="gcp">GCP</button><button data-tab="db">Database và công cụ</button></div>
       <div class="tab on" id="tab-aws"><img data-base="images/icons/icons-aws" src="images/icons/icons-aws-light.png" alt="Bộ icon AWS" loading="lazy"><p>39 dịch vụ AWS: tính toán, lưu trữ, CSDL, mạng, bảo mật. Luôn ghi tên sản phẩm làm nhãn dưới icon.</p></div><div class="tab" id="tab-azure"><img data-base="images/icons/icons-azure" src="images/icons/icons-azure-light.png" alt="Bộ icon Azure" loading="lazy"><p>19 dịch vụ Azure: VM, App Service, SQL, Cosmos DB, Key Vault, Event Hubs. Luôn ghi tên sản phẩm làm nhãn dưới icon.</p></div><div class="tab" id="tab-gcp"><img data-base="images/icons/icons-gcp" src="images/icons/icons-gcp-light.png" alt="Bộ icon GCP" loading="lazy"><p>29 dịch vụ Google Cloud: Compute, GKE, BigQuery, Pub/Sub, Spanner. Luôn ghi tên sản phẩm làm nhãn dưới icon.</p></div><div class="tab" id="tab-db"><img data-base="images/icons/icons-db" src="images/icons/icons-db-light.png" alt="Bộ icon Database và công cụ" loading="lazy"><p>Logo PostgreSQL, MySQL, Cassandra, Elasticsearch, Redis, Neo4j, Kafka, Kubernetes, Terraform. Luôn ghi tên sản phẩm làm nhãn dưới icon.</p></div>
-      <p style="font:15px var(--mono,monospace);color:var(--muted);margin-top:14px"><code>{"t":"icon","name":"gcp-bigquery","x":0,"y":0,"h":60,"text":"BigQuery"}</code> - xem đủ danh sách bằng <code>python3 scripts/ve.py --icons</code></p>
+      <p style="font:15px var(--mono,monospace);color:var(--muted);margin-top:14px;overflow-wrap:anywhere"><code>{"t":"icon","name":"gcp-bigquery","x":0,"y":0,"h":60,"text":"BigQuery"}</code> - xem đủ danh sách bằng <code>python3 scripts/ve.py --icons</code></p>
     </div>
   </div>
 </section>
@@ -668,7 +671,15 @@ gal.addEventListener('click', e => {
   moLb(f, b + ' - ' + s);
 });
 document.querySelectorAll('.ytuong figure').forEach(f => {
-  f.addEventListener('click', () => moLb(f, f.querySelector('figcaption').textContent));
+  const img = f.querySelector('img'), cap = f.querySelector('figcaption');
+  f.querySelectorAll('.mdl button').forEach(b => b.addEventListener('click', e => {
+    e.stopPropagation();
+    f.querySelectorAll('.mdl button').forEach(x => x.classList.toggle('on', x === b));
+    img.dataset.base = b.dataset.b;
+    img.src = b.dataset.b + (dark ? '-dark.png' : '-light.png');
+    cap.textContent = b.dataset.c;
+  }));
+  img.addEventListener('click', () => moLb(f, f.querySelector('.mdl .on').textContent + ': ' + cap.textContent));
 });
 document.querySelectorAll('.mau figure').forEach(f => {
   f.addEventListener('click', () => moLb(f, f.querySelector('figcaption').textContent));
