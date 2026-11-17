@@ -156,14 +156,14 @@ h1{font:400 clamp(40px,4.8vw,60px)/1.14 var(--hand);margin:0 0 18px;letter-spaci
 .de details{max-width:88ch}
 .de summary{cursor:pointer;font-size:14.5px;color:var(--l4)}
 .de .q{font-size:14.5px;color:var(--muted);margin:8px 0 0;line-height:1.6}
-.cot4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.cot4{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
 .fig{margin:0;background:var(--paper);border:1px solid var(--line);border-radius:11px;padding:11px;
   cursor:zoom-in;transition:transform .18s,box-shadow .18s;display:flex;flex-direction:column}
 .fig:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
 .fig figcaption{display:flex;justify-content:space-between;align-items:baseline;gap:8px;padding:0 2px 8px}
 .fig figcaption b{font:17px var(--hand);font-weight:400}
 .fig figcaption span{font:11.5px var(--mono);color:var(--muted);white-space:nowrap}
-.fig img{width:100%;height:238px;object-fit:contain;border-radius:6px;display:block;border:1px solid var(--line);background:var(--card)}
+.fig img{width:100%;height:360px;object-fit:contain;display:block;border-radius:8px}
 .fig p{font-size:12.5px;color:var(--muted);margin:7px 2px 0;line-height:1.45;flex:1}
 
 /* hiện dần khi cuộn tới - chỉ dùng ở gallery */
@@ -194,7 +194,6 @@ footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
   .hero .wrap{grid-template-columns:1fr;gap:40px}
   .muc4{grid-template-columns:repeat(2,1fr)}
   .cacbuoc{grid-template-columns:repeat(2,1fr)}
-  .cot4{grid-template-columns:repeat(2,1fr)}
   .mau{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:620px){
@@ -344,7 +343,7 @@ footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
 <section class="sosanh" id="so-sanh">
   <div class="wrap">
     <h2>Cùng một skill, bốn model, tám đề</h2>
-    <p class="lead">Mỗi model vẽ cả tám đề đúng một lần, dùng một bản skill. Đây là cách nhanh nhất để thấy skill cho ra gì: bấm vào hình để xem cỡ gốc, bật theme tối để kiểm tra mọi hình đều sống được trong tối.</p>
+    <p class="lead">Mỗi model vẽ cả tám đề đúng một lần, dùng một bản skill. Bấm vào hình để xem cỡ gốc, bật theme tối để kiểm tra mọi hình đều sống được trong tối.</p>
     <table>
       <thead><tr><th>Model</th><th>Thời gian TB</th><th>Token TB</th><th>Vòng render TB</th></tr></thead>
       <tbody>
