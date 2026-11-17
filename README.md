@@ -109,7 +109,7 @@ SKILL.md            bản dẫn đầy đủ của skill - agent đọc file nà
 scripts/ve.py       renderer: spec JSON -> 4 file
 engine/             engine render thật (Excalidraw + Playwright Chromium)
 .cache/             bundle Excalidraw dựng sẵn; dựng lại bằng scripts/excalidraw-bundle.mjs
-assets/             icons.json 130 icon + font Nunito, Patrick Hand, IBM Plex Mono
+assets/             icons.json 188 icon + font Nunito, Patrick Hand, IBM Plex Mono
 references/         luật loại hình, cú pháp spec, ngôn ngữ hình, checklist soi hình
 examples/           25 template spec JSON
 evals/              bộ đề đánh giá

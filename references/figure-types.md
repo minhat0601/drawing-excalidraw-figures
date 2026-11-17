@@ -371,7 +371,7 @@ Hand-drawn figures are for the SHAPE of the curve.
 - At most 4 to 5 icon kinds per figure.
 - An icon always has a text label below it.
 - Main system components (store, queue, service) use the tool's `db` `queue` `pipe` `box`, not icons: they are bigger, clearer, and bind to arrows better.
-- **AWS deployment figures** are the exception: when the lesson is about which AWS service does what, use the `aws-` icons (39 services: `aws-ec2` `aws-lambda` `aws-s3` `aws-rds` `aws-dynamodb` `aws-sqs` `aws-sns` `aws-msk` `aws-alb` `aws-cloudfront` `aws-api-gateway` `aws-vpc` and more).
+- **Cloud deployment figures** are the exception: when the lesson is about which cloud service does what, use the `aws-`, `azure-` or `gcp-` icons (`ve.py --icons` lists them all; `db-` and `tech-` hold engine logos such as `db-postgres`, `db-mysql`, `tech-redis`, `tech-kubernetes`). The AWS set: (39 services: `aws-ec2` `aws-lambda` `aws-s3` `aws-rds` `aws-dynamodb` `aws-sqs` `aws-sns` `aws-msk` `aws-alb` `aws-cloudfront` `aws-api-gateway` `aws-vpc` and more).
   Label each with the service name and its role in this design ("S3 · ảnh gốc"), because recolored AWS icons look alike.
   `aws-auto-scaling-group` is a dashed group outline with a corner badge, not a node: for a VPC or subnet boundary draw a dashed `frame` and put `aws-vpc` small on its corner.
   Write the label as `"ALB\nnhận request vào"`: the tool centres each line under the icon.

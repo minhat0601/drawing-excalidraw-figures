@@ -12,7 +12,7 @@
 | sanket7474/system-design-lab | 6 files | Clear ER boxes | No license | Learn the drawing style only |
 | DeKinci/sysdeslib | 84 shapes | "One silhouette for the whole family, told apart by a mark inside": every store is a cylinder, the store kind is a small mark on the body | No license | Learn the idea, rebuild from primitives (`db` with `kind`) |
 | Dinesh-Sunny/excalidraw-system-design-kit | 4,458 items | Color by group, prebuilt patterns | MIT | Load with `--lib` when needed, not bundled because it weighs 9.8MB |
-| excalidraw/excalidraw-libraries | 20 libraries reviewed | Icons, UML and flowchart symbols, data structures | MIT | 130 icons bundled, see below |
+| excalidraw/excalidraw-libraries | 20 libraries reviewed | Icons, UML and flowchart symbols, data structures | MIT | 188 icons bundled, see below |
 | coleam00/excalidraw-diagram-skill | 1 skill | The "remove the text" test, the "what is learned" test, real evidence, not boxing every text, the render-then-fix loop | No license | Learn the idea |
 | github/awesome-copilot `excalidraw-diagram-generator` | 1 skill | Table for choosing diagram type by intent, element count limits | MIT | Learn the idea |
 | algomaster.io, formation.dev, handbook-hld, plus.excalidraw.com | 4 articles | Left to right, one arrowhead, dashed is asynchronous, labels include technology, about six shapes, the stranger test | Public articles | Learn the idea |
@@ -33,8 +33,9 @@ Three pages in the original list could not be opened during research: designguru
 
 ## Icons bundled in `assets/icons.json`
 
-130 icons taken from the excalidraw/excalidraw-libraries repo, MIT license (copy at `assets/ICONS-LICENSE.txt`).
+188 icons taken from the excalidraw/excalidraw-libraries repo, MIT license (copy at `assets/ICONS-LICENSE.txt`).
 The `aws-` icons draw AWS Architecture Icons, which are AWS trademarks; AWS permits them in architecture diagrams, so always keep the service name as the label.
+The `azure-` and `gcp-` icons draw Microsoft Azure and Google Cloud product icons, and `db-` / `tech-` draw database and tool logos (PostgreSQL, MySQL, Redis, Kafka and so on). All are trademarks of their owners and are used here only to name the product in an architecture diagram, so keep the product name as the label.
 
 | Library author | Library | Name prefix | Icon count |
 |---|---|---|---|
@@ -44,6 +45,12 @@ The `aws-` icons draw AWS Architecture Icons, which are AWS trademarks; AWS perm
 | finfin | flow-chart-symbols | `flow-` | 15 |
 | anna-pastushko | architecture-diagram-components | `arch-` | 11 |
 | childishgirl | aws-architecture-icons (39 of 249, chosen list in `build_icons.py`) | `aws-` | 39 |
+| youritjang | azure-cloud-services (12 of 19) | `azure-` | 12 |
+| rockssk | microsoft-azure-cloud-icons (7 of 19) | `azure-` | 7 |
+| mguidoti | google-icons (29 of 139) | `gcp-` | 29 |
+| mwc360 | microsoft-fabric-architecture-icons (Postgres, MySQL, Snowflake) | `db-` | 3 |
+| chuqbach | data-platform (Cassandra, Elasticsearch, Kafka) | `db-` | 3 |
+| maeddes | technology-logos (old format, picked by index: Kubernetes, Terraform, Neo4j, Redis) | `tech-` | 4 |
 
 Rebuild with `python3 scripts/build_icons.py <path-to-excalidraw-libraries/libraries>`.
 The script drops text, drops the original colors (the tool recolors by token) and drops the libraries' invisible click regions.

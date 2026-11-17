@@ -389,7 +389,7 @@ Do not move old elements: a fixed position is what lets the reader see what is n
 {"t":"icon","id":"fw","name":"firewall","x":170,"y":30,"h":60,"text":"WAF","color":"err"}
 ```
 
-- `python3 scripts/ve.py --icons` lists the 130 icons available in `assets/icons.json`.
+- `python3 scripts/ve.py --icons` lists the 188 icons available in `assets/icons.json`.
 - Set `h` or `w`, the other follows the aspect ratio. `text` is the label below the icon, each line centred under it (`\n` for a second line).
 - The size is measured on the drawn strokes. Before the AWS 1 run the tool added a line's `width` to its `x` even when its points ran leftward, so 63 of the 130 icons came out up to half the requested size with the label off-centre or far below.
 - `--lib path/to/file.excalidrawlib` loads any extra library, the icon name is the item name in that library.
