@@ -13,6 +13,7 @@
   --fill-soft:#F2F6FB; --l2:#64748B; --l3:#008F79; --l4:#1E5AE8; --l6:#8F74BE;
   --err:#D6294B; --warn:#E8930C; --node:#14621C; --hot:#BE1D72;
   --grid:#D5DEEA; --shadow:rgba(17,26,43,.08); --overlay:rgba(17,26,43,.55);
+  --fill-l4:#C0D1F9; --fill-err:#F4C3CD; --fill-warn:#F9E1BB; --fill-node:#C5EDBF;
   --sans:'Nunito',system-ui,sans-serif;
   --hand:'Patrick Hand','Nunito',system-ui,sans-serif;
   --mono:'IBM Plex Mono',ui-monospace,monospace;
@@ -22,6 +23,7 @@
   --fill-soft:#1B2532; --l2:#8B9AB0; --l3:#37BBA5; --l4:#7AA7FF; --l6:#C4A7F0;
   --err:#FF6B85; --warn:#F5B453; --node:#7BD88F; --hot:#F185BB;
   --grid:#1D2836; --shadow:rgba(0,0,0,.45); --overlay:rgba(0,0,0,.72);
+  --fill-l4:#324E8A; --fill-err:#843C4C; --fill-warn:#7D5C27; --fill-node:#1E411D;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -56,8 +58,8 @@ nav .links a:hover{color:var(--l4);background:var(--fill-soft)}
 
 /* hero */
 .hero{padding:76px 0 26px}
-.hero .wrap{display:grid;grid-template-columns:1.04fr .96fr;gap:52px;align-items:center}
-h1{font:400 clamp(40px,4.8vw,60px)/1.14 var(--hand);margin:0 0 18px;letter-spacing:.5px}
+.hero .wrap{display:grid;grid-template-columns:.88fr 1.12fr;gap:44px;align-items:center}
+h1{font:400 clamp(38px,4.4vw,56px)/1.14 var(--hand);margin:0 0 18px;letter-spacing:.5px}
 .hero .mo{font-size:18px;color:color-mix(in srgb,var(--muted) 78%,var(--ink));max-width:54ch;margin:0 0 26px}
 .hero .mo b{color:var(--ink)}
 .cta{display:flex;gap:12px;flex-wrap:wrap;align-items:stretch;margin-bottom:12px}
@@ -82,7 +84,7 @@ h1{font:400 clamp(40px,4.8vw,60px)/1.14 var(--hand);margin:0 0 18px;letter-spaci
 .figcard::before{left:26px;transform:rotate(-4deg)}
 .figcard::after{right:26px;transform:rotate(3deg)}
 .figcard .khung{display:flex;align-items:center;justify-content:center}
-.figcard svg{width:100%;height:auto;max-height:400px}
+.figcard svg{height:min(440px,52vh);width:auto;max-width:100%;margin:0 auto}
 .figcard figcaption{display:flex;justify-content:space-between;gap:10px;align-items:baseline;
   font:17px var(--hand);color:var(--muted);padding-top:8px;border-top:1px dashed var(--line);margin-top:8px}
 .figcard figcaption .nho{font:12.5px var(--sans)}
@@ -137,11 +139,13 @@ h1{font:400 clamp(40px,4.8vw,60px)/1.14 var(--hand);margin:0 0 18px;letter-spaci
 .nhom h3{font:20px var(--hand);font-weight:400;margin:0 0 10px;padding-bottom:6px;border-bottom:2px solid var(--line)}
 .nhom ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:7px}
 .nhom li{font-size:14px;border:1.5px dashed var(--line);border-radius:99px;padding:3.5px 12px;color:var(--muted)}
-.mau{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:38px}
+.mau{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:38px}
 .mau figure{margin:0;background:var(--card);border:1px solid var(--line);border-radius:11px;padding:12px;
   transition:transform .18s,box-shadow .18s}
 .mau figure:hover{transform:translateY(-3px) rotate(-.4deg);box-shadow:var(--shadow)}
-.mau img{width:100%;height:auto;border-radius:6px;display:block}
+.mau img{width:100%;height:250px;object-fit:contain;display:block;border-radius:8px;cursor:zoom-in}
+.mau figure{display:flex;flex-direction:column}
+.mau figcaption{flex:1;display:flex;align-items:flex-end}
 .mau figcaption{font:16px var(--hand);color:var(--muted);padding:8px 2px 0}
 
 /* so sánh */
@@ -192,6 +196,7 @@ footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
 
 @media(max-width:1000px){
   .hero .wrap{grid-template-columns:1fr;gap:40px}
+  .figcard svg{height:min(360px,48vh)}
   .muc4{grid-template-columns:repeat(2,1fr)}
   .cacbuoc{grid-template-columns:repeat(2,1fr)}
   .mau{grid-template-columns:repeat(2,1fr)}
@@ -241,8 +246,8 @@ footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
   </div>
   <div class="wrap">
     <div class="figswitch" id="figswitch"><span style="font:15px var(--hand);color:var(--muted);align-self:center">đổi hình:</span>
-      <button class="on" data-svg="images/hero/mechanism-struct-padding.svg" data-ten="struct padding">dải ô byte</button>
-      <button data-svg="images/hero/sequence-cache-aside.svg" data-ten="cache-aside">sequence</button>
+      <button class="on" data-svg="images/hero/sequence-cache-aside.svg" data-ten="cache-aside">sequence</button>
+      <button data-svg="images/hero/mechanism-struct-padding.svg" data-ten="struct padding">dải ô byte</button>
       <button data-svg="images/hero/mechanism-pool-exhaustion.svg" data-ten="cạn connection pool">trục thời gian</button>
     </div>
   </div>
@@ -300,7 +305,7 @@ footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
         <h3>Soi hai theme, sửa</h3>
         <p>Tool bắt được chữ tràn, mũi tên xuyên hộp, màu lệch token. Còn hình có đọc được hay không thì mắt phải kiểm.</p>
         <div class="haicap">
-          <img src="images/examples/05-threshold-light.png" alt="Hình ví dụ theme sáng" loading="lazy">
+          <img data-base="images/examples/05-threshold" src="images/examples/05-threshold-light.png" alt="Hình ví dụ theme sáng" loading="lazy">
           <img src="images/examples/05-threshold-dark.png" alt="Hình ví dụ theme tối" loading="lazy">
         </div>
       </div>
@@ -330,12 +335,12 @@ footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
       </div>
     </div>
     <div class="mau">
-      <figure><img src="images/examples/11-sequence-light.png" alt="Sequence có khung alt" loading="lazy"><figcaption>sequence với khung alt/else</figcaption></figure>
-      <figure><img src="images/examples/22-swimlane-light.png" alt="Swimlane nghiệp vụ" loading="lazy"><figcaption>swimlane nghiệp vụ ba vai</figcaption></figure>
-      <figure><img src="images/examples/24-er-crowfoot-light.png" alt="ER crow's foot" loading="lazy"><figcaption>ER với chân quạ và PK/FK</figcaption></figure>
-      <figure><img src="images/examples/08-metaphor-token-bucket-light.png" alt="Ẩn dụ xô token" loading="lazy"><figcaption>ẩn dụ cái xô token</figcaption></figure>
-      <figure><img src="images/examples/16-layer-lanes-light.png" alt="Layer lanes" loading="lazy"><figcaption>layer lanes: tầng nào làm việc gì</figcaption></figure>
-      <figure><img src="images/examples/05-threshold-light.png" alt="Thanh so ngưỡng" loading="lazy"><figcaption>thanh vượt ngưỡng nét đứt</figcaption></figure>
+      <figure><img data-base="images/examples/11-sequence" src="images/examples/11-sequence-light.png" alt="Sequence có khung alt" loading="lazy"><figcaption>sequence với khung alt/else</figcaption></figure>
+      <figure><img data-base="images/examples/22-swimlane" src="images/examples/22-swimlane-light.png" alt="Swimlane nghiệp vụ" loading="lazy"><figcaption>swimlane nghiệp vụ ba vai</figcaption></figure>
+      <figure><img data-base="images/examples/24-er-crowfoot" src="images/examples/24-er-crowfoot-light.png" alt="ER crow's foot" loading="lazy"><figcaption>ER với chân quạ và PK/FK</figcaption></figure>
+      <figure><img data-base="images/examples/08-metaphor-token-bucket" src="images/examples/08-metaphor-token-bucket-light.png" alt="Ẩn dụ xô token" loading="lazy"><figcaption>ẩn dụ cái xô token</figcaption></figure>
+      <figure><img data-base="images/examples/16-layer-lanes" src="images/examples/16-layer-lanes-light.png" alt="Layer lanes" loading="lazy"><figcaption>layer lanes: tầng nào làm việc gì</figcaption></figure>
+      <figure><img data-base="images/examples/05-threshold" src="images/examples/05-threshold-light.png" alt="Thanh so ngưỡng" loading="lazy"><figcaption>thanh vượt ngưỡng nét đứt</figcaption></figure>
     </div>
   </div>
 </section>
@@ -433,7 +438,7 @@ document.getElementById('figswitch').addEventListener('click', e => {
   document.querySelectorAll('#figswitch button').forEach(x => x.classList.toggle('on', x === b));
   veSvg(b.dataset.svg, b.dataset.ten);
 });
-veSvg('images/hero/mechanism-struct-padding.svg', 'struct padding');
+veSvg('images/hero/sequence-cache-aside.svg', 'cache-aside');
 
 /* ── copy ──────────────────────────────────────────────────────── */
 const copyBtn = document.getElementById('copy');
@@ -495,12 +500,18 @@ document.querySelectorAll('.rv').forEach(el => io.observe(el));
 
 /* ── lightbox ──────────────────────────────────────────────────── */
 const lb = document.getElementById('lb'), lbimg = document.getElementById('lbimg'), lbcap = document.getElementById('lbcap');
+function moLb(f, cap){
+  lbimg.src = f.querySelector('img').src;
+  lbcap.textContent = cap;
+  lb.classList.add('open'); document.body.style.overflow = 'hidden';
+}
 gal.addEventListener('click', e => {
   const f = e.target.closest('.fig'); if (!f) return;
-  lbimg.src = f.querySelector('img').src.replace(/-(light|dark)\.png/, dark ? '-dark.png' : '-light.png');
   const b = f.querySelector('b').textContent, s = f.closest('.de').querySelector('h3').textContent;
-  lbcap.textContent = b + ' - ' + s;
-  lb.classList.add('open'); document.body.style.overflow = 'hidden';
+  moLb(f, b + ' - ' + s);
+});
+document.querySelectorAll('.mau figure').forEach(f => {
+  f.addEventListener('click', () => moLb(f, f.querySelector('figcaption').textContent));
 });
 function dongLb(){ lb.classList.remove('open'); document.body.style.overflow = ''; }
 lb.addEventListener('click', dongLb);
