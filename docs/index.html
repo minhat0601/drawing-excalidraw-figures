@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>drawing-excalidraw-figures - vẽ hình kỹ thuật bằng tay, tự động</title>
+<meta name="description" content="Skill cho Claude Code: biến một đoạn văn kỹ thuật thành hình Excalidraw thật từ một spec JSON ngắn. Kèm bộ so sánh 32 hình do 4 model vẽ cùng một bộ đề.">
+<link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect x="4" y="8" width="14" height="11" rx="2" fill="none" stroke="%231E5AE8" stroke-width="2.2"/><rect x="19" y="14" width="9" height="8" rx="2" fill="none" stroke="%23D6294B" stroke-width="2.2"/><path d="M11 19 L15 25 L27 21" fill="none" stroke="%23111A2B" stroke-width="1.8" stroke-linecap="round"/></svg>'>
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{
+  --paper:#EDF0F4; --card:#FFFFFF; --ink:#111A2B; --muted:#5C6B82; --line:#C9D4E3;
+  --fill-soft:#F2F6FB; --l2:#64748B; --l3:#008F79; --l4:#1E5AE8; --l6:#8F74BE;
+  --err:#D6294B; --warn:#E8930C; --node:#14621C; --hot:#BE1D72;
+  --grid:#D5DEEA; --shadow:rgba(17,26,43,.08); --overlay:rgba(17,26,43,.55);
+  --sans:'Nunito',system-ui,sans-serif;
+  --hand:'Patrick Hand','Nunito',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+:root[data-theme=dark]{
+  --paper:#0D1219; --card:#141C26; --ink:#E8EEF7; --muted:#93A3BA; --line:#2A3746;
+  --fill-soft:#1B2532; --l2:#8B9AB0; --l3:#37BBA5; --l4:#7AA7FF; --l6:#C4A7F0;
+  --err:#FF6B85; --warn:#F5B453; --node:#7BD88F; --hot:#F185BB;
+  --grid:#1D2836; --shadow:rgba(0,0,0,.45); --overlay:rgba(0,0,0,.72);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;color:var(--ink);font:16.5px/1.65 var(--sans);
+  background-color:var(--paper);
+  background-image:
+    linear-gradient(color-mix(in srgb,var(--grid) 55%,transparent) 1px,transparent 1px),
+    linear-gradient(90deg,color-mix(in srgb,var(--grid) 55%,transparent) 1px,transparent 1px);
+  background-size:28px 28px;
+  transition:background-color .35s,color .35s;
+}
+::selection{background:var(--l4);color:#fff}
+a{color:var(--l4)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+h2{font:400 clamp(28px,3.4vw,38px)/1.2 var(--hand);margin:0 0 8px;letter-spacing:.4px}
+section{padding:72px 0}
+.gach-chan{position:relative;display:inline-block}
+.gach-chan svg{position:absolute;left:-2%;bottom:-8px;width:104%;height:12px;overflow:visible}
+
+/* nav */
+nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(8px);
+  background:color-mix(in srgb,var(--paper) 82%,transparent);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;gap:16px;height:60px}
+.logo{display:flex;align-items:center;gap:10px;font:21px var(--hand);color:var(--ink);text-decoration:none;white-space:nowrap}
+nav .links{display:flex;gap:2px;margin-left:auto;flex-wrap:wrap}
+nav .links a{color:var(--muted);text-decoration:none;font-size:14.5px;padding:6px 11px;border-radius:99px}
+nav .links a:hover{color:var(--l4);background:var(--fill-soft)}
+#theme{border:1px solid var(--line);background:var(--card);color:var(--ink);
+  font:700 13px var(--sans);padding:7px 14px;border-radius:99px;cursor:pointer;transition:.2s}
+#theme:hover{border-color:var(--l4);color:var(--l4)}
+
+/* hero */
+.hero{padding:76px 0 26px}
+.hero .wrap{display:grid;grid-template-columns:1.04fr .96fr;gap:52px;align-items:center}
+h1{font:400 clamp(40px,4.8vw,60px)/1.14 var(--hand);margin:0 0 18px;letter-spacing:.5px}
+.hero .mo{font-size:18px;color:color-mix(in srgb,var(--muted) 78%,var(--ink));max-width:54ch;margin:0 0 26px}
+.hero .mo b{color:var(--ink)}
+.cta{display:flex;gap:12px;flex-wrap:wrap;align-items:stretch;margin-bottom:12px}
+.term{display:flex;align-items:center;gap:12px;background:var(--ink);color:#DCE6F5;
+  font:13.5px/1.5 var(--mono);padding:13px 16px;border-radius:10px;box-shadow:var(--shadow);min-width:0}
+:root[data-theme=dark] .term{background:#0A0F17;border:1px solid var(--line)}
+.term code{overflow-x:auto;white-space:nowrap;scrollbar-width:thin}
+.term .k{color:#F5B453}
+#copy{border:1.5px solid #7AA7FF;background:transparent;color:#C8D9FF;font:600 12.5px var(--sans);
+  padding:5px 11px;border-radius:7px;cursor:pointer;white-space:nowrap;transition:.2s}
+#copy:hover{border-color:#7AA7FF;color:#7AA7FF}
+.hero .xemthem{font-size:14.5px;color:var(--muted)}
+.hero .xemthem a{text-decoration:none;border-bottom:1.5px dashed var(--l4)}
+.hero .xemthem a:hover{border-bottom-style:solid}
+
+/* thẻ hình ở hero: giấy dán băng keo lên bảng kẻ ô */
+.figcard{position:relative;background:var(--card);border:1px solid var(--line);border-radius:12px;
+  padding:14px 14px 10px;transform:rotate(.8deg);box-shadow:0 10px 26px var(--shadow)}
+.figcard::before,.figcard::after{
+  content:"";position:absolute;top:-11px;width:74px;height:22px;background:var(--fill-warn,#F9E1BB);
+  background:color-mix(in srgb,var(--warn) 38%,var(--card));opacity:.85;border-radius:2px}
+.figcard::before{left:26px;transform:rotate(-4deg)}
+.figcard::after{right:26px;transform:rotate(3deg)}
+.figcard .khung{display:flex;align-items:center;justify-content:center}
+.figcard svg{width:100%;height:auto;max-height:400px}
+.figcard figcaption{display:flex;justify-content:space-between;gap:10px;align-items:baseline;
+  font:17px var(--hand);color:var(--muted);padding-top:8px;border-top:1px dashed var(--line);margin-top:8px}
+.figcard figcaption .nho{font:12.5px var(--sans)}
+.figswitch{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
+.figswitch button{font:15px var(--hand);color:var(--muted);background:var(--card);border:1.5px solid var(--line);
+  border-radius:9px;padding:5px 13px;cursor:pointer;transition:.18s}
+.figswitch button:hover{transform:translateY(-1px)}
+.figswitch button.on{color:var(--l4);border-color:var(--l4);background:var(--fill-soft)}
+
+/* animation vẽ nét cho svg hero */
+.vedangve path,.vedangve line,.vedangve rect,.vedangve ellipse,.vedangve circle,.vedangve polyline,.vedangve polygon{
+  stroke-dasharray:1;stroke-dashoffset:1;animation:net 0.45s ease-out forwards}
+.vedangve text{opacity:0;animation:chu .3s ease-out forwards}
+@keyframes net{to{stroke-dashoffset:0}}
+@keyframes chu{to{opacity:1}}
+@media (prefers-reduced-motion:reduce){
+  .vedangve path,.vedangve line,.vedangve rect,.vedangve ellipse,.vedangve circle,.vedangve polyline,.vedangve polygon{animation:none;stroke-dashoffset:0;stroke-dasharray:none}
+  .vedangve text{animation:none;opacity:1}
+}
+
+/* dải luật chịu lực */
+.luat{background:var(--card);border-block:1px solid var(--line)}
+.luat .wrap{padding:56px 24px}
+.luat .cau{font:400 clamp(24px,3vw,34px)/1.35 var(--hand);max-width:30ch;margin:0 auto 34px;text-align:center}
+.luat .cau .doi{color:var(--err)}
+.muc4{display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
+.muc{display:flex;flex-direction:column;gap:8px}
+.muc svg{width:74px;height:44px}
+.muc b{font:18px var(--hand);font-weight:400}
+.muc span{font-size:14px;color:var(--muted);line-height:1.5}
+
+/* các bước */
+.cacbuoc{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:buoc}
+.buoc{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 18px;position:relative;
+  transition:transform .18s,box-shadow .18s}
+.buoc:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.buoc::before{counter-increment:buoc;content:counter(buoc);
+  font:26px var(--hand);color:var(--l4);display:block;margin-bottom:6px}
+.buoc h3{font:20px var(--hand);font-weight:400;margin:0 0 6px}
+.buoc p{font-size:14px;color:var(--muted);margin:0 0 12px;line-height:1.55}
+.buoc .trich{font:16px var(--hand);color:var(--ink);background:var(--fill-soft);border-left:3px solid var(--l4);
+  border-radius:0 8px 8px 0;padding:9px 12px;margin:0}
+.buoc pre{font:12px/1.6 var(--mono);background:var(--ink);color:#DCE6F5;border-radius:8px;
+  padding:11px 12px;margin:0;overflow-x:auto}
+.buoc pre .c{color:#8B9AB0}.buoc pre .s{color:#64D3C2}.buoc pre .k{color:#F5B453}
+.buoc .haicap{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.buoc .haicap img{width:100%;border:1px solid var(--line);border-radius:6px;display:block}
+
+/* loại hình */
+.nhom{display:flex;flex-wrap:wrap;gap:34px;margin-top:26px}
+.nhom>div{flex:1 1 220px;min-width:210px}
+.nhom h3{font:20px var(--hand);font-weight:400;margin:0 0 10px;padding-bottom:6px;border-bottom:2px solid var(--line)}
+.nhom ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:7px}
+.nhom li{font-size:14px;border:1.5px dashed var(--line);border-radius:99px;padding:3.5px 12px;color:var(--muted)}
+.mau{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:38px}
+.mau figure{margin:0;background:var(--card);border:1px solid var(--line);border-radius:11px;padding:12px;
+  transition:transform .18s,box-shadow .18s}
+.mau figure:hover{transform:translateY(-3px) rotate(-.4deg);box-shadow:var(--shadow)}
+.mau img{width:100%;height:auto;border-radius:6px;display:block}
+.mau figcaption{font:16px var(--hand);color:var(--muted);padding:8px 2px 0}
+
+/* so sánh */
+.sosanh{background:var(--card);border-block:1px solid var(--line)}
+.sosanh .lead{font-size:17px;color:var(--muted);max-width:70ch;margin:4px 0 26px}
+.sosanh table{border-collapse:collapse;font-variant-numeric:tabular-nums;margin:0 0 14px}
+.sosanh th,.sosanh td{padding:7px 18px 7px 0;border-bottom:1px solid var(--line);text-align:left;font-size:14.5px}
+.sosanh th{color:var(--muted);font-weight:600}
+.sosanh .ghichu{font-size:13.5px;color:var(--muted);margin:0 0 40px}
+.de{margin:52px 0 14px}
+.de h3{font:26px var(--hand);font-weight:400;margin:0 0 6px}
+.de details{max-width:88ch}
+.de summary{cursor:pointer;font-size:14.5px;color:var(--l4)}
+.de .q{font-size:14.5px;color:var(--muted);margin:8px 0 0;line-height:1.6}
+.cot4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.fig{margin:0;background:var(--paper);border:1px solid var(--line);border-radius:11px;padding:11px;
+  cursor:zoom-in;transition:transform .18s,box-shadow .18s;display:flex;flex-direction:column}
+.fig:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.fig figcaption{display:flex;justify-content:space-between;align-items:baseline;gap:8px;padding:0 2px 8px}
+.fig figcaption b{font:17px var(--hand);font-weight:400}
+.fig figcaption span{font:11.5px var(--mono);color:var(--muted);white-space:nowrap}
+.fig img{width:100%;height:238px;object-fit:contain;border-radius:6px;display:block;border:1px solid var(--line);background:var(--card)}
+.fig p{font-size:12.5px;color:var(--muted);margin:7px 2px 0;line-height:1.45;flex:1}
+
+/* hiện dần khi cuộn tới - chỉ dùng ở gallery */
+.rv{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+
+/* cài đặt */
+.caidat pre{font:13.5px/1.7 var(--mono);background:var(--ink);color:#DCE6F5;border-radius:11px;
+  padding:18px 20px;overflow-x:auto;box-shadow:var(--shadow);margin:22px 0 18px}
+:root[data-theme=dark] .caidat pre{background:#0A0F17;border:1px solid var(--line)}
+.caidat pre .c{color:#8B9AB0}.caidat pre .k{color:#F5B453}.caidat pre .g{color:#64D3C2}
+.caidat .note{font-size:14.5px;color:var(--muted);max-width:76ch}
+
+footer{border-top:1px solid var(--line);padding:34px 0 46px;font-size:13.5px;color:var(--muted)}
+footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
+
+/* lightbox */
+#lb{position:fixed;inset:0;z-index:100;background:var(--overlay);display:none;
+  align-items:center;justify-content:center;padding:30px;cursor:zoom-out}
+#lb.open{display:flex}
+#lb img{max-width:min(1060px,94vw);max-height:88vh;width:auto;border-radius:10px;
+  background:var(--card);border:1px solid var(--line)}
+#lb figcaption{position:fixed;bottom:18px;left:0;right:0;text-align:center;color:#fff;
+  font:17px var(--hand);text-shadow:0 1px 6px rgba(0,0,0,.5)}
+
+@media(max-width:1000px){
+  .hero .wrap{grid-template-columns:1fr;gap:40px}
+  .muc4{grid-template-columns:repeat(2,1fr)}
+  .cacbuoc{grid-template-columns:repeat(2,1fr)}
+  .cot4{grid-template-columns:repeat(2,1fr)}
+  .mau{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:620px){
+  .muc4,.cacbuoc,.cot4,.mau{grid-template-columns:1fr}
+  nav .links a:nth-child(2){display:none}
+  section{padding:54px 0}
+}
+:focus-visible{outline:2.5px solid var(--l4);outline-offset:2px;border-radius:4px}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#">
+      <svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="8" width="14" height="11" rx="2" fill="none" stroke="var(--l4)" stroke-width="2.2"/><rect x="19" y="14" width="9" height="8" rx="2" fill="none" stroke="var(--err)" stroke-width="2.2"/><path d="M11 19 L15 25 L27 21" fill="none" stroke="var(--ink)" stroke-width="1.8" stroke-linecap="round"/></svg>
+      drawing-excalidraw-figures
+    </a>
+    <div class="links">
+      <a href="#cach-hoat-dong">Cách hoạt động</a>
+      <a href="#loai-hinh">Loại hình</a>
+      <a href="#so-sanh">So sánh 4 model</a>
+      <a href="#cai-dat">Cài đặt</a>
+      <button id="theme" aria-label="Đổi theme sáng tối">Theme tối</button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Ý tưởng kỹ thuật đáng được
+        <span class="gach-chan">vẽ tay<svg viewBox="0 0 120 12" preserveAspectRatio="none" aria-hidden="true"><path d="M3 8 Q 30 2 60 7 T 117 5" fill="none" stroke="var(--err)" stroke-width="3.2" stroke-linecap="round"/></svg></span>.
+      </h1>
+      <p class="mo">Một skill cho Claude Code: đưa một đoạn văn kỹ thuật, nhận lại hình <b>Excalidraw thật</b> - spec JSON ngắn, một lệnh, bốn file. Mở lại được trên excalidraw.com để sửa, đúng màu ở cả theme sáng lẫn tối, render offline.</p>
+      <div class="cta">
+        <div class="term"><code><span class="k">git clone</span> https://github.com/nv-minh/drawing-excalidraw-figures.git<br>&nbsp;&nbsp;~/.claude/skills/drawing-excalidraw-figures</code><button id="copy">Chép</button></div>
+      </div>
+      <p class="xemthem">Chưa tin? <a href="#so-sanh">Xem 32 hình do 4 model vẽ cùng một bộ đề</a>.</p>
+    </div>
+    <figure class="figcard" id="figcard">
+      <div class="khung" id="heroframe" aria-live="polite"></div>
+      <figcaption><span id="heroten">struct padding</span><span class="nho">vẽ bằng skill này</span></figcaption>
+    </figure>
+  </div>
+  <div class="wrap">
+    <div class="figswitch" id="figswitch"><span style="font:15px var(--hand);color:var(--muted);align-self:center">đổi hình:</span>
+      <button class="on" data-svg="images/hero/mechanism-struct-padding.svg" data-ten="struct padding">dải ô byte</button>
+      <button data-svg="images/hero/sequence-cache-aside.svg" data-ten="cache-aside">sequence</button>
+      <button data-svg="images/hero/mechanism-pool-exhaustion.svg" data-ten="cạn connection pool">trục thời gian</button>
+    </div>
+  </div>
+</header>
+
+<section class="luat">
+  <div class="wrap">
+    <p class="cau">Vẽ <b>hình dạng</b> của ý tưởng, <span class="doi">không vẽ danh sách thành phần</span>.</p>
+    <div class="muc4">
+      <div class="muc">
+        <svg viewBox="0 0 74 44" aria-hidden="true"><line x1="6" y1="36" x2="68" y2="36" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/><path d="M64 32 L70 36 L64 40" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/><rect x="10" y="14" width="26" height="10" rx="2" fill="none" stroke="var(--warn)" stroke-width="2"/><rect x="44" y="6" width="18" height="18" rx="2" fill="none" stroke="var(--warn)" stroke-width="2"/></svg>
+        <b>thời gian thành độ dài</b><span>thanh dài bao nhiêu, chuyện kéo dài bấy nhiêu</span>
+      </div>
+      <div class="muc">
+        <svg viewBox="0 0 74 44" aria-hidden="true"><rect x="6" y="12" width="16" height="22" fill="none" stroke="var(--ink)" stroke-width="2"/><rect x="22" y="12" width="26" height="22" fill="none" stroke="var(--ink)" stroke-width="2"/><rect x="48" y="12" width="20" height="22" fill="none" stroke="var(--ink)" stroke-width="2"/><text x="11" y="28" font-size="9" fill="var(--l4)" font-family="monospace">a</text><text x="27" y="28" font-size="9" fill="var(--l4)" font-family="monospace">int</text><text x="51" y="28" font-size="9" fill="var(--err)" font-family="monospace">đệm</text></svg>
+        <b>dữ liệu thành ô</b><span>ô rộng đúng số byte, giá trị thật nằm trong ô</span>
+      </div>
+      <div class="muc">
+        <svg viewBox="0 0 74 44" aria-hidden="true"><rect x="8" y="26" width="10" height="12" fill="none" stroke="var(--ink)" stroke-width="2"/><rect x="20" y="18" width="10" height="20" fill="none" stroke="var(--ink)" stroke-width="2"/><rect x="32" y="8" width="10" height="30" fill="none" stroke="var(--err)" stroke-width="2"/><line x1="4" y1="14" x2="70" y2="14" stroke="var(--warn)" stroke-width="2" stroke-dasharray="5 4"/></svg>
+        <b>giới hạn thành một đường kẻ</b><span>ngưỡng nét đứt: vượt hay chưa, nhìn là biết</span>
+      </div>
+      <div class="muc">
+        <svg viewBox="0 0 74 44" aria-hidden="true"><path d="M8 30 C 20 30 22 12 34 12 S 48 30 58 30" fill="none" stroke="var(--l3)" stroke-width="2"/><path d="M58 30 L 66 30" stroke="var(--l3)" stroke-width="2"/><path d="M10 38 L 22 38 M16 34 L 26 34 M22 38 L 34 38" stroke="var(--err)" stroke-width="2" stroke-linecap="round"/><path d="M40 36 l8 8 m0 -8 l-8 8" stroke="var(--err)" stroke-width="2.4" stroke-linecap="round"/></svg>
+        <b>sự cố thành một nét đỏ</b><span>chỗ gãy có dấu X đỏ, không cần chú thích cũng hiểu</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cach-hoat-dong">
+  <div class="wrap">
+    <h2>Bốn bước, không hơn</h2>
+    <div class="cacbuoc" style="margin-top:30px">
+      <div class="buoc">
+        <h3>Viết một câu</h3>
+        <p>Trước khi vẽ, agent phải viết được câu này. Không viết được thì không vẽ - một hình thừa tệ hơn không có hình.</p>
+        <blockquote class="trich">"Nhìn hình này, người đọc THẤY điều mà đoạn văn không cho thấy."</blockquote>
+      </div>
+      <div class="buoc">
+        <h3>Ghi spec JSON</h3>
+        <p>Toạ độ, chữ, màu theo tên token. Không mã hex, không vẽ tay từng nét.</p>
+        <pre><span class="c">// trục thời gian + 10 thanh giữ connection</span>
+{"t":"axis","ticks":["0s","1s","2s","3s"]}
+{"t":"cells","labels":[<span class="s">""</span>,<span class="s">""</span>,<span class="s">"…"</span>],
+ "fill":<span class="s">"warn"</span>}</pre>
+      </div>
+      <div class="buoc">
+        <h3>Chạy một lệnh</h3>
+        <p>Renderer dùng chính thư viện Excalidraw, qua Chromium thật, rồi xuất bốn file.</p>
+        <pre><span class="k">$</span> python3 scripts/ve.py fig.json
+<span class="k">✓</span> fig.excalidraw  fig.svg
+<span class="k">✓</span> fig-light.png   fig-dark.png</pre>
+      </div>
+      <div class="buoc">
+        <h3>Soi hai theme, sửa</h3>
+        <p>Tool bắt được chữ tràn, mũi tên xuyên hộp, màu lệch token. Còn hình có đọc được hay không thì mắt phải kiểm.</p>
+        <div class="haicap">
+          <img src="images/examples/05-threshold-light.png" alt="Hình ví dụ theme sáng" loading="lazy">
+          <img src="images/examples/05-threshold-dark.png" alt="Hình ví dụ theme tối" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="loai-hinh" style="padding-top:20px">
+  <div class="wrap">
+    <h2>Hai mươi lăm loại hình, template sẵn</h2>
+    <div class="nhom">
+      <div>
+        <h3>Luồng và nghiệp vụ</h3>
+        <ul><li>request flow</li><li>sequence alt/loop</li><li>swimlane theo vai</li><li>state lồng nhau</li><li>system hai luồng</li><li>failure branch</li><li>decision tree</li></ul>
+      </div>
+      <div>
+        <h3>Dữ liệu</h3>
+        <ul><li>ER crow's foot</li><li>bảng có hàng thật</li><li>entity + cột</li><li>dải ô byte</li><li>hash ring</li><li>anatomy lồng khung</li></ul>
+      </div>
+      <div>
+        <h3>Thời gian và ngưỡng</h3>
+        <ul><li>timeline</li><li>threshold</li><li>curve</li><li>before / after</li><li>progressive series</li><li>code evidence</li></ul>
+      </div>
+      <div>
+        <h3>Trực giác</h3>
+        <ul><li>ẩn dụ vật lý</li><li>two views</li><li>layer stack</li><li>layer lanes</li><li>130 icon thư viện</li></ul>
+      </div>
+    </div>
+    <div class="mau">
+      <figure><img src="images/examples/11-sequence-light.png" alt="Sequence có khung alt" loading="lazy"><figcaption>sequence với khung alt/else</figcaption></figure>
+      <figure><img src="images/examples/22-swimlane-light.png" alt="Swimlane nghiệp vụ" loading="lazy"><figcaption>swimlane nghiệp vụ ba vai</figcaption></figure>
+      <figure><img src="images/examples/24-er-crowfoot-light.png" alt="ER crow's foot" loading="lazy"><figcaption>ER với chân quạ và PK/FK</figcaption></figure>
+      <figure><img src="images/examples/08-metaphor-token-bucket-light.png" alt="Ẩn dụ xô token" loading="lazy"><figcaption>ẩn dụ cái xô token</figcaption></figure>
+      <figure><img src="images/examples/16-layer-lanes-light.png" alt="Layer lanes" loading="lazy"><figcaption>layer lanes: tầng nào làm việc gì</figcaption></figure>
+      <figure><img src="images/examples/05-threshold-light.png" alt="Thanh so ngưỡng" loading="lazy"><figcaption>thanh vượt ngưỡng nét đứt</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="sosanh" id="so-sanh">
+  <div class="wrap">
+    <h2>Cùng một skill, bốn model, tám đề</h2>
+    <p class="lead">Mỗi model vẽ cả tám đề đúng một lần, dùng một bản skill. Đây là cách nhanh nhất để thấy skill cho ra gì: bấm vào hình để xem cỡ gốc, bật theme tối để kiểm tra mọi hình đều sống được trong tối.</p>
+    <table>
+      <thead><tr><th>Model</th><th>Thời gian TB</th><th>Token TB</th><th>Vòng render TB</th></tr></thead>
+      <tbody>
+        <tr><td>Sonnet 5.5</td><td>76 giây</td><td>105 nghìn</td><td>2.5</td></tr>
+        <tr><td>Opus 5.5</td><td>132 giây</td><td>112 nghìn</td><td>3.5</td></tr>
+        <tr><td>Fable 5.2</td><td>114 giây</td><td>109 nghìn</td><td>2.6</td></tr>
+        <tr><td>GLM 5.3</td><td style="color:var(--muted)">không đo</td><td style="color:var(--muted)">không đo</td><td>3.9</td></tr>
+      </tbody>
+    </table>
+    <p class="ghichu">Ba model đầu chạy trong một phiên tự động. GLM 5.3 vẽ sau qua một phiên có gián đoạn nên thời gian và token không so sánh được, chỉ giữ số vòng render (tính cả lần lỗi cú pháp).</p>
+    <div id="gallery"></div>
+  </div>
+</section>
+
+<section class="caidat" id="cai-dat">
+  <div class="wrap">
+    <h2>Cài đặt</h2>
+    <pre><span class="c"># engine, bundle Excalidraw và font đã nằm sẵn trong repo - render không cần mạng</span>
+<span class="k">$</span> pip install -r requirements.txt
+<span class="k">$</span> python3 -m playwright install chromium
+
+<span class="c"># chạy thử ngay một template có sẵn</span>
+<span class="k">$</span> python3 scripts/ve.py examples/03-byte-cells.json --out /tmp/fig
+<span class="g">✓ 03-byte-cells: 46 phần tử · 688×282 · chữ nhỏ nhất 14.5px</span>
+
+<span class="c"># đặt vào chỗ Claude Code tìm skill</span>
+<span class="k">$</span> git clone https://github.com/nv-minh/drawing-excalidraw-figures.git ~/.claude/skills/drawing-excalidraw-figures</pre>
+    <p class="note">Sau đó chỉ cần nói <em>"vẽ hình cho đoạn này"</em> trong bất kỳ dự án nào - skill tự nhận việc. Quy trình đầy đủ sáu bước và bộ luật hình nằm trong <a href="../SKILL.md">SKILL.md</a>.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>drawing-excalidraw-figures - sinh ra cho kho kiến thức migrationKl, đóng gói standalone tại đây.</span>
+    <span>Excalidraw (MIT) · font Nunito, Patrick Hand, IBM Plex Mono · <a href="https://github.com/nv-minh/drawing-excalidraw-figures">GitHub</a></span>
+  </div>
+</footer>
+
+<figure id="lb" role="dialog" aria-modal="true" aria-label="Xem hình lớn">
+  <img id="lbimg" alt="">
+  <figcaption id="lbcap"></figcaption>
+</figure>
+
+<script>
+/* ── theme ─────────────────────────────────────────────────────── */
+const root = document.documentElement;
+const themeBtn = document.getElementById('theme');
+const HEU = matchMedia('(prefers-color-scheme:dark)');
+let dark = localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : HEU.matches;
+function apDungTheme(){
+  root.dataset.theme = dark ? 'dark' : 'light';
+  themeBtn.textContent = dark ? 'Theme sáng' : 'Theme tối';
+  document.querySelectorAll('img[data-base]').forEach(i => {
+    i.src = i.dataset.base + (dark ? '-dark.png' : '-light.png');
+  });
+}
+themeBtn.onclick = () => { dark = !dark; localStorage.setItem('theme', dark ? 'dark' : 'light'); apDungTheme(); };
+apDungTheme();
+
+/* ── hero: hình tự vẽ ──────────────────────────────────────────── */
+const frame = document.getElementById('heroframe');
+const ten = document.getElementById('heroten');
+const giam = matchMedia('(prefers-reduced-motion:reduce)').matches;
+async function veSvg(url, tenHinh){
+  ten.textContent = tenHinh;
+  frame.innerHTML = '';
+  const svg = await (await fetch(url)).text();
+  const box = document.createElement('div');
+  box.innerHTML = svg.trim();
+  const el = box.firstElementChild;
+  el.removeAttribute('width'); el.removeAttribute('height');
+  el.classList.add('vedangve');
+  frame.appendChild(el);
+  if (giam) return;
+  /* mỗi nét một độ dài quy chiếu về 1, vẽ dần so le nhau */
+  const nets = el.querySelectorAll('path,line,rect,ellipse,circle,polyline,polygon');
+  nets.forEach((p, i) => {
+    p.setAttribute('pathLength', '1');
+    p.style.animationDelay = (i * 16) + 'ms';
+  });
+  const chus = el.querySelectorAll('text');
+  const tong = nets.length * 16 + 450;
+  chus.forEach(t => t.style.animationDelay = tong + Math.random() * 250 + 'ms');
+}
+document.getElementById('figswitch').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  document.querySelectorAll('#figswitch button').forEach(x => x.classList.toggle('on', x === b));
+  veSvg(b.dataset.svg, b.dataset.ten);
+});
+veSvg('images/hero/mechanism-struct-padding.svg', 'struct padding');
+
+/* ── copy ──────────────────────────────────────────────────────── */
+const copyBtn = document.getElementById('copy');
+copyBtn.onclick = async () => {
+  await navigator.clipboard.writeText('git clone https://github.com/nv-minh/drawing-excalidraw-figures.git ~/.claude/skills/drawing-excalidraw-figures');
+  copyBtn.textContent = 'Đã chép'; setTimeout(() => copyBtn.textContent = 'Chép', 1600);
+};
+
+/* ── gallery: 8 đề x 4 model ───────────────────────────────────── */
+const MODELS = [
+  ['sonnet', 'Sonnet 5.5'], ['opus', 'Opus 5.5'], ['fable', 'Fable 5.2'], ['glm', 'GLM 5.3']
+];
+const CASES = [
+  { id:'sequence-cache-aside', ten:'Sequence có nhánh',
+    de:'Vẽ hình cho đoạn trong bài cache: service đọc Redis trước bằng GET product:42. Hit thì trả luôn, ~1ms. Miss thì SELECT trong Postgres (~20ms), rồi SET product:42 với TTL 300s, rồi mới trả. Khi cập nhật, service UPDATE Postgres trước rồi DEL product:42 chứ không SET lại, vì hai lần ghi đồng thời có thể để lại giá trị cũ.',
+    ket:[['2 vòng · 93k token','Gọn, không thêm client'],['3 vòng · 100k token','Đủ cả tin trả về, dài nhất'],['1 vòng · 104k token','Gọn nhất, bỏ tin trả về thừa'],['4 vòng','Ba actor, lý do DEL nằm trong note']] },
+  { id:'swimlane-kyc', ten:'Swimlane nghiệp vụ',
+    de:'Vẽ luồng mở tài khoản ví điện tử theo vai. Khách nhập SĐT và chụp CCCD. Hệ thống OCR và đối chiếu khuôn mặt: từ 85% tự duyệt; 60 tới dưới 85% chuyển Nhân viên thẩm định; dưới 60% từ chối. Được duyệt thì tạo ví và gửi SMS; bị từ chối thì SMS nêu lý do, khách được nộp lại tối đa 3 lần.',
+    ket:[['4 vòng · 116k token','Gọn, có hình thoi còn lượt?'],['3 vòng · 111k token','Đúng nhưng cao, có đường chéo'],['3 vòng · 104k token','Chia hai cột trong một làn'],['6 vòng','Cột từ chối riêng, hai đường duyệt hội tụ']] },
+  { id:'state-subscription', ten:'State lồng nhau',
+    de:'Vẽ vòng đời subscription trả phí theo tháng: Trialing 14 ngày; hết trial có thẻ thì Active, không thẻ thì Canceled. Active mà charge lỗi thì PastDue với ba lần thử lại ngày 1, 3, 7; thành công quay về Active, hết ba lần sang Unpaid; Unpaid quá 30 ngày thì Canceled. Huỷ lúc Active thì vẫn dùng tới hết kỳ (cancel_at_period_end) rồi Canceled.',
+    ket:[['2 vòng · 104k token','Đúng, tô đỏ Canceled'],['3 vòng · 109k token','Đúng, đường huỷ đi vòng dài'],['2 vòng · 111k token','Rõ nhất: cờ huỷ là hộp nét đứt riêng'],['5 vòng','Ba lần thử đếm được trong khung PastDue']] },
+  { id:'er-blog', ten:'ER crow’s foot',
+    de:'Vẽ mô hình dữ liệu blog để thấy vì sao cần bảng nối: users (id, email unique), posts (id, author_id, title, published_at), comments (id, post_id, user_id, body), tags (id, name unique), post_tags (post_id, tag_id, khoá chính kép). User viết nhiều post, post có nhiều comment, post và tag nhiều-nhiều qua post_tags.',
+    ket:[['1 vòng · 94k token','Sạch, một vòng render'],['3 vòng · 109k token','Thêm bảng hàng mẫu'],['2 vòng · 102k token','Thêm cạnh N-N nét đứt, chú giải'],['2 vòng','Bảng nối l4, cạnh N:N nét đứt']] },
+  { id:'system-newsfeed', ten:'System design hai luồng',
+    de:'Vẽ kiến trúc news feed thấy cả đường ghi lẫn đọc. Ghi: client POST /posts tới Post Service, lưu Posts DB, đẩy event PostCreated lên Kafka, Fan-out worker chèn post_id vào feed cache (Redis, mỗi user một list tối đa 800) của từng follower; tác giả trên 1 triệu follower thì không fan-out. Đọc: GET /feed tới Feed Service, lấy list từ Redis, tác giả lớn thì kéo thêm từ Posts DB rồi trộn.',
+    ket:[['4 vòng · 114k token','Đủ, một nhãn bị mũi tên đè'],['6 vòng · 126k token','Giàu nhất, vài nhãn chạm viền'],['2 vòng · 111k token','Sạch nhất, có chú giải async'],['5 vòng','Posts DB đứng giữa hai khung']] },
+  { id:'mechanism-struct-padding', ten:'Cơ chế: dải ô theo byte',
+    de:'Vẽ struct padding trong C trên máy 64-bit: struct A { char a; int b; char c; } chiếm 12 byte vì 3 byte đệm sau a để b ở offset 4 và 3 byte đệm cuối cho kích thước chia hết cho 4. Đổi thành struct B { int b; char a; char c; } thì chỉ 8 byte với 2 byte đệm cuối.',
+    ket:[['2 vòng · 107k token','Đúng, không ghi lý do đệm'],['2 vòng · 111k token','Vạch căn 4 byte và lý do'],['3 vòng · 104k token','Lý do ghi bằng chú thích'],['2 vòng','Thước byte khớp mép ô']] },
+  { id:'mechanism-cache-stampede', ten:'Cơ chế: ngưỡng và thời gian',
+    de:'Vẽ cache stampede: key home:feed TTL 60s, mất 2s tính lại từ DB. Tại giây 60 key hết hạn; trong 2 giây tới có 500 request đều miss và cùng chạy query nặng, DB từ 20 lên 520 kết nối trong khi max_connections là 200 nên phần lớn nhận lỗi "too many connections". Với mutex (SET lock NX EX 5) thì chỉ request đầu tính lại, 499 còn lại chờ hoặc dùng giá trị cũ.',
+    ket:[['3 vòng · 104k token','Ba cột so ngưỡng, mất thời gian'],['5 vòng · 122k token','Hai biểu đồ theo thời gian'],['5 vòng · 121k token','Giàu nhất nhưng hơi rối'],['2 vòng','Hai đường một trục, lệnh mutex thật']] },
+  { id:'mechanism-pool-exhaustion', ten:'Cơ chế: trục thời gian',
+    de:'Vẽ cạn connection pool: pool 10 connection, mỗi query chậm giữ 3s. 14 request đồng thời thì 10 lấy được connection, 4 xếp hàng; connectionTimeoutMillis là 2000 nên cả 4 nhận lỗi "timeout exceeded when trying to connect" sau 2s, trước khi connection nào được trả lại ở giây thứ 3.',
+    ket:[['2 vòng · 103k token','Thiếu tên connectionTimeoutMillis'],['3 vòng · 109k token','Sạch, đủ'],['3 vòng · 111k token','Đủ 14 thanh đếm được bằng mắt'],['5 vòng','14 thanh đếm được, vạch 2s/3s đối chiếu']] },
+];
+const gal = document.getElementById('gallery');
+gal.innerHTML = CASES.map(c => `
+  <div class="de">
+    <h3>${c.ten}</h3>
+    <details><summary>Xem đề bài</summary><p class="q">${c.de}</p></details>
+    <div class="cot4" style="margin-top:14px">
+      ${MODELS.map((m, i) => `
+      <figure class="fig rv" data-base="images/cmp/${c.id}/${m[0]}">
+        <figcaption><b>${m[1]}</b><span>${c.ket[i][0]}</span></figcaption>
+        <img data-base="images/cmp/${c.id}/${m[0]}" src="images/cmp/${c.id}/${m[0]}-${dark ? 'dark' : 'light'}.png" alt="${m[1]}: ${c.ten}" loading="lazy">
+        <p>${c.ket[i][1]}</p>
+      </figure>`).join('')}
+    </div>
+  </div>`).join('');
+
+/* hiện dần khi cuột tới, mỗi hàng so le chút */
+const io = new IntersectionObserver(es => es.forEach((e, i) => {
+  if (e.isIntersecting) { e.target.style.transitionDelay = (i % 4) * 70 + 'ms'; e.target.classList.add('in'); io.unobserve(e.target); }
+}), { rootMargin: '0px 0px -8% 0px' });
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+/* ── lightbox ──────────────────────────────────────────────────── */
+const lb = document.getElementById('lb'), lbimg = document.getElementById('lbimg'), lbcap = document.getElementById('lbcap');
+gal.addEventListener('click', e => {
+  const f = e.target.closest('.fig'); if (!f) return;
+  lbimg.src = f.querySelector('img').src.replace(/-(light|dark)\.png/, dark ? '-dark.png' : '-light.png');
+  const b = f.querySelector('b').textContent, s = f.closest('.de').querySelector('h3').textContent;
+  lbcap.textContent = b + ' - ' + s;
+  lb.classList.add('open'); document.body.style.overflow = 'hidden';
+});
+function dongLb(){ lb.classList.remove('open'); document.body.style.overflow = ''; }
+lb.addEventListener('click', dongLb);
+addEventListener('keydown', e => { if (e.key === 'Escape') dongLb(); });
+</script>
+</body>
+</html>

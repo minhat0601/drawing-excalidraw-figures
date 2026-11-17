@@ -1,0 +1,7 @@
+{"_": "Real evidence: a real payload or command sits in a code block, with notes pointing at the exact line. Do not draw a box named “Request”.",
+ "elements": [
+ {"t":"code","id":"req","x":0,"y":0,"title":"request","text":"POST /payments HTTP/1.1\nIdempotency-Key: 7f3a-91c2\n\n{\"amount\": 120000}"},
+ {"t":"code","id":"res","x":0,"y":170,"title":"response lần 2, cùng key","text":"HTTP/1.1 200 OK\nIdempotent-Replayed: true"},
+ {"t":"note","x":380,"y":20,"text":"client tự sinh, giữ nguyên\nkhi retry","to":"req","toSide":"right","color":"l4"},
+ {"t":"note","x":380,"y":190,"text":"server trả lại kết quả cũ,\nkhông trừ tiền lần hai","to":"res","toSide":"right","color":"node"}
+]}

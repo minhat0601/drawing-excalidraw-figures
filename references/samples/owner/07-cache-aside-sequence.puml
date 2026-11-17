@@ -1,0 +1,27 @@
+@startuml
+title Cache-aside with Redis - Sequence (medium)
+participant Client
+participant "Product API" as API
+database "Redis" as Cache
+database "PostgreSQL" as DB
+
+== Read ==
+Client -> API : GET /products/42
+API -> Cache : GET product:42
+alt cache hit
+  Cache --> API : product JSON
+else cache miss
+  Cache --> API : nil
+  API -> DB : SELECT * FROM products WHERE id=42
+  DB --> API : row
+  API -> Cache : SET product:42 EX 300
+end
+API --> Client : 200 product
+
+== Write ==
+Client -> API : PUT /products/42
+API -> DB : UPDATE products SET ...
+API -> Cache : DEL product:42
+note right of Cache : Invalidate, do not update.\nNext read refills cache.
+API --> Client : 204 No Content
+@enduml

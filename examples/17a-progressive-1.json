@@ -1,0 +1,8 @@
+{"_": "Progressive figure, step 1: the base frame. Step 2 (17b) extends this file.",
+ "elements": [
+ {"t":"box","id":"c","x":0,"y":80,"w":100,"h":56,"text":"Client","size":18},
+ {"t":"box","id":"api","x":220,"y":80,"w":120,"h":56,"text":"API","size":18},
+ {"t":"db","id":"db","x":470,"y":60,"w":100,"h":96,"text":"Postgres"},
+ {"t":"arrow","id":"a1","from":"c","to":"api","text":"GET"},
+ {"t":"arrow","id":"a2","from":"api","to":"db","text":"SELECT"}
+]}

@@ -1,0 +1,12 @@
+{"_": "ER with crow's foot ends: tail/head one, many, one-many, zero-one, zero-many carry the cardinality, PK/FK written in the column list, only the columns the point needs. Verb labels float beside the line (labelDy) so the feet stay visible.",
+ "elements": [
+ {"t":"entity","id":"cus","x":0,"y":0,"w":180,"name":"customers","fields":["id  PK","email  UNIQUE","created_at"]},
+ {"t":"entity","id":"ord","x":300,"y":0,"w":180,"name":"orders","fields":["id  PK","customer_id  FK","status","total"],"color":"l4"},
+ {"t":"entity","id":"itm","x":300,"y":270,"w":190,"name":"order_items","fields":["order_id  PK, FK","product_id  PK, FK","qty","unit_price"]},
+ {"t":"entity","id":"prd","x":0,"y":270,"w":180,"name":"products","fields":["id  PK","sku  UNIQUE","price"]},
+ {"t":"entity","id":"pay","x":600,"y":0,"w":185,"name":"payments","fields":["id  PK","order_id  FK, UQ","amount"]},
+ {"t":"arrow","from":"cus","to":"ord","tail":"one","head":"many","text":"đặt","size":15,"labelDy":-16},
+ {"t":"arrow","from":"ord","to":"itm","tail":"one","head":"one-many","text":"gồm","size":15,"labelDx":28},
+ {"t":"arrow","from":"prd","to":"itm","tail":"one","head":"many","text":"nằm trong","size":15,"labelDy":-22},
+ {"t":"arrow","from":"ord","to":"pay","tail":"one","head":"zero-one","text":"trả bằng","size":15,"labelAt":0.33,"labelDy":-20}
+]}

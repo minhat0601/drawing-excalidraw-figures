@@ -1,0 +1,14 @@
+{"_": "One structure, two views: space on the left, tree on the right. The same entity gets the same colour and the same name.",
+ "elements": [
+ {"t":"frame","id":"N","x":0,"y":0,"w":330,"h":230,"title":"N","color":"err","dashed":true,"titleColor":"err"},
+ {"t":"frame","id":"I","x":14,"y":40,"w":140,"h":176,"title":"I","color":"l4","dashed":true,"titleColor":"l4"},
+ {"t":"frame","id":"J","x":174,"y":40,"w":140,"h":176,"title":"J","color":"node","dashed":true,"titleColor":"node"},
+ {"t":"box","id":"A","x":40,"y":76,"w":70,"h":44,"text":"A","sharp":true},
+ {"t":"box","id":"B","x":66,"y":150,"w":70,"h":44,"text":"B","sharp":true},
+ {"t":"box","id":"C","x":200,"y":90,"w":90,"h":90,"text":"C","sharp":true},
+ {"t":"tree","id":"t","x":400,"y":10,"nw":64,"nh":40,"dx":20,"dy":50,"sharp":true,
+  "root":{"text":"N","color":"err","children":[
+    {"text":"I","color":"l4","children":[{"text":"A"},{"text":"B"}]},
+    {"text":"J","color":"node","children":[{"text":"C"}]}]}},
+ {"t":"note","x":380,"y":250,"text":"khung bao trong không gian = node trong cây","color":"muted"}
+]}

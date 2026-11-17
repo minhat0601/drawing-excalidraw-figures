@@ -1,0 +1,15 @@
+{"_": "Over time: bar length = duration. Two lanes (client, server) on the same axis.",
+ "elements": [
+ {"t":"text","x":0,"y":18,"text":"client","size":18,"color":"muted"},
+ {"t":"text","x":0,"y":98,"text":"server","size":18,"color":"muted"},
+ {"t":"box","id":"w1","x":120,"y":90,"w":150,"h":36,"text":"giữ request","size":16,"color":"warn","fill":"warn"},
+ {"t":"box","id":"w2","x":400,"y":90,"w":220,"h":36,"text":"giữ request","size":16,"color":"warn","fill":"warn"},
+ {"t":"arrow","points":[[100,40],[120,92]],"color":"ink"},
+ {"t":"arrow","points":[[270,92],[290,40]],"color":"node"},
+ {"t":"arrow","points":[[380,40],[400,92]],"color":"ink"},
+ {"t":"arrow","points":[[620,92],[640,40]],"color":"node"},
+ {"t":"badge","x":276,"y":4,"n":1,"color":"node"},
+ {"t":"badge","x":626,"y":4,"n":2,"color":"node"},
+ {"t":"span","x1":290,"x2":380,"y":150,"text":"mất tin nếu có ở đây","color":"err"},
+ {"t":"axis","x":80,"y":200,"length":620,"gap":140,"ticks":["0s","10s","20s","30s","40s"],"label":"t"}
+]}

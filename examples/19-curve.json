@@ -1,0 +1,8 @@
+{"_": "Distribution or trend: one curve on two axes, dashed lines split the regions. Axes must have units.",
+ "elements": [
+ {"t":"plot","id":"p","x":60,"y":230,"w":480,"h":180,"ylabel":"độ trễ (ms)","xlabel":"phân vị","max":100,"xmax":100,
+  "lines":[{"points":[[0,6],[50,8],[90,14],[95,22],[99,60],[100,96]],"color":"l4"}],
+  "xticks":[{"at":0.5,"label":"p50"},{"at":0.9,"label":"p90"},{"at":0.99,"label":"p99"}],
+  "thresholds":[{"value":50,"label":"SLO 50ms","color":"err"}]},
+ {"t":"note","x":250,"y":40,"text":"trung bình trông ổn,\nđuôi mới là thứ người dùng gặp","color":"muted"}
+]}

@@ -1,0 +1,40 @@
+@startuml
+title Order Saga (orchestration) with compensation - Sequence (complex)
+participant "Order Service" as Order
+participant "Saga Orchestrator" as Saga
+participant "Inventory Service" as Inv
+participant "Payment Service" as Pay
+participant "Shipping Service" as Ship
+queue "Kafka" as K
+
+Order -> Saga : StartSaga(orderId)
+note over Saga : Each step is idempotent (sagaId + step)\nand retried up to 3 times on timeout
+Saga -> Inv : ReserveStock
+Inv --> Saga : StockReserved
+Saga -> Pay : ChargePayment
+alt payment ok
+  Pay --> Saga : PaymentCharged
+  Saga -> Ship : CreateShipment
+  alt shipment ok
+    Ship --> Saga : ShipmentCreated
+    Saga -> Order : ApproveOrder
+    Saga -> K : publish OrderCompleted
+  else shipment failed
+    Ship --> Saga : ShipmentFailed
+    group Compensation (reverse order)
+      Saga -> Pay : RefundPayment
+      Pay --> Saga : PaymentRefunded
+      Saga -> Inv : ReleaseStock
+      Inv --> Saga : StockReleased
+    end
+    Saga -> Order : RejectOrder
+  end
+else payment failed
+  Pay --> Saga : PaymentFailed
+  group Compensation
+    Saga -> Inv : ReleaseStock
+    Inv --> Saga : StockReleased
+  end
+  Saga -> Order : RejectOrder
+end
+@enduml

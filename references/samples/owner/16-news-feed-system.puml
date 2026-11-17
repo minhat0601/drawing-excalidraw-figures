@@ -1,0 +1,30 @@
+@startuml
+title News feed (fan-out on write + pull for celebrities) - System design (medium)
+rectangle "Write path" {
+  node "Post Service" as Post
+  queue "Kafka: post_created" as K
+  node "Fan-out workers" as Fan
+}
+rectangle "Read path" {
+  node "Feed Service" as Feed
+  database "Post cache" as PostCache
+}
+node "API Gateway" as GW
+actor User
+database "Posts DB" as PostDB
+database "Media store (S3) + CDN" as Media
+database "Social graph\n(followers)" as Graph
+database "Feed cache (Redis)\nfeed:{userId} = [postIds]" as FeedCache
+User --> GW : 1. create post / A. GET /feed
+GW --> Post : 1
+Post --> PostDB : 2. save
+Post --> Media : media upload
+Post --> K : 3. publish event
+K --> Fan : 4. consume
+Fan --> Graph : 5. get followers\n(skip authors > 1M followers)
+Fan --> FeedCache : 6. LPUSH postId to each follower
+GW --> Feed : A
+Feed --> FeedCache : B. read precomputed ids
+Feed --> PostDB : C. pull celebrity posts at read time
+Feed --> PostCache : D. hydrate posts
+@enduml

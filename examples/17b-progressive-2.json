@@ -1,0 +1,7 @@
+{"_": "Progressive figure, step 2: extends step 1. The old part drops to muted automatically; only the NEW thing carries the l4 colour. Do not move old things.",
+ "extends": "17a-progressive-1.json",
+ "elements": [
+ {"t":"db","id":"rd","x":230,"y":-110,"w":100,"h":86,"text":"Redis","color":"l4","fill":"l4"},
+ {"t":"arrow","from":"api","to":"rd","text":"1. GET key","color":"l4"},
+ {"t":"note","x":380,"y":-70,"text":"trượt cache mới\nxuống Postgres","to":"a2","color":"l4"}
+]}

@@ -1,0 +1,19 @@
+@startuml
+title Login - Sequence (basic)
+actor User
+participant "Web App" as Web
+participant "Auth API" as Auth
+database "Users DB" as DB
+
+User -> Web : Enter email + password
+Web -> Auth : POST /login
+Auth -> DB : Find user by email
+DB --> Auth : user record
+alt password matches
+  Auth --> Web : 200 OK + JWT
+  Web --> User : Go to dashboard
+else wrong password
+  Auth --> Web : 401 Unauthorized
+  Web --> User : Show error
+end
+@enduml

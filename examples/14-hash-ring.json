@@ -1,0 +1,9 @@
+{"_": "Geometry: consistent hash ring. The bold-filled arc is exactly the share of keys that must move when node C dies.",
+ "elements": [
+ {"t":"ring","id":"r","cx":190,"cy":170,"r":120,
+  "ticks":[{"angle":0,"label":"0"},{"angle":90,"label":"25"},{"angle":270,"label":"75"}],
+  "arcs":[{"from":140,"to":250,"color":"warn","label":"dời sang A"}],
+  "nodes":[{"id":"a","angle":310,"label":"node A","color":"node"},{"id":"b","angle":140,"label":"node B","color":"l2"},{"id":"c","angle":250,"label":"node C","color":"err","dashed":true,"fillStyle":"hachure"}]},
+ {"t":"cross","x":20,"y":196,"size":18},
+ {"t":"steps","x":400,"y":60,"title":"Khi node C chết","items":["key trong cung vàng mất chủ","đi tiếp theo chiều kim đồng hồ\ntới node kế: A",{"text":"key của B không đổi chỗ","color":"muted"}]}
+]}

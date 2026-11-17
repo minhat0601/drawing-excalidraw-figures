@@ -1,0 +1,28 @@
+@startuml
+[*] --> Initiated
+Initiated --> Authorizing : submit
+state Authorizing {
+  [*] --> Requested
+  Requested --> ThreeDSChallenge : 3ds_required
+  ThreeDSChallenge --> Requested : 3ds_passed
+  Requested --> [*] : authorized
+}
+Authorizing --> Authorized : authorized
+Authorizing --> Declined : declined
+Authorizing --> Expired : timeout_15m
+Authorized --> Captured : capture
+Authorized --> Voided : void
+state Captured {
+  [*] --> Settled
+  Settled --> PartiallyRefunded : partial_refund
+  PartiallyRefunded --> FullyRefunded : refund_rest
+  Settled --> FullyRefunded : full_refund
+}
+Captured --> Disputed : chargeback
+Disputed --> Captured : dispute_won
+Disputed --> Lost : dispute_lost
+Declined --> [*]
+Expired --> [*]
+Voided --> [*]
+Lost --> [*]
+@enduml

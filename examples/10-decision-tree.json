@@ -1,0 +1,9 @@
+{"_": "Which one to pick: diamonds are questions, yes/no labels sit on the edges, leaves are answers. A diamond needs to be twice as wide as its text.",
+ "elements": [
+ {"t":"tree","id":"d","x":0,"y":0,"nw":170,"nh":110,"dx":30,"dy":56,"size":16,
+  "root":{"shape":"diamond","text":"server cần\nchủ động đẩy?","w":250,"children":[
+    {"edge":"không","text":"HTTP polling","fill":"soft","h":56},
+    {"edge":"có","shape":"diamond","text":"client cũng\ngửi liên tục?","w":250,"children":[
+       {"edge":"không","text":"SSE","color":"node","fill":"node","h":56},
+       {"edge":"có","text":"WebSocket","color":"l4","fill":"l4","h":56}]}]}}
+]}

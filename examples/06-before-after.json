@@ -1,0 +1,19 @@
+{"_": "Before and after: the SAME frame drawn twice (group + dx), only one thing changes. The after side drops the old part to muted and fills the new part l4.",
+ "elements": [
+ {"t":"text","x":0,"y":0,"text":"Trước: 2GB đi qua mọi chặng","size":18,"color":"err"},
+ {"t":"box","id":"c","x":0,"y":60,"w":80,"h":50,"text":"Client","size":17},
+ {"t":"box","id":"s","x":130,"y":60,"w":80,"h":50,"text":"Server","size":17},
+ {"t":"db","id":"b","x":260,"y":44,"w":80,"h":82,"text":"S3","size":17},
+ {"t":"arrow","from":"c","to":"s","color":"err","weight":4},
+ {"t":"arrow","from":"s","to":"b","color":"err","weight":4},
+ {"t":"line","points":[[385,0],[385,200]],"color":"line","dashed":true,"weight":1},
+ {"t":"text","x":420,"y":0,"text":"Sau: xin URL, rồi đẩy thẳng","size":18,"color":"node"},
+ {"t":"group","dx":420,"prefix":"2","dim":true,"elements":[
+   {"t":"box","id":"c","x":0,"y":60,"w":80,"h":50,"text":"Client","size":17},
+   {"t":"box","id":"s","x":150,"y":60,"w":80,"h":50,"text":"Server","size":17},
+   {"t":"db","id":"b","x":260,"y":44,"w":80,"h":82,"text":"S3","size":17},
+   {"t":"arrow","from":"c","to":"s","text":"URL"}
+ ]},
+ {"t":"arrow","points":[[460,116],[590,176],[716,132]],"color":"l4","weight":4},
+ {"t":"text","x":540,"y":176,"text":"2GB, một lần","size":16,"color":"l4"}
+]}

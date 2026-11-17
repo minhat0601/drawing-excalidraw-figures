@@ -1,0 +1,52 @@
+@startuml
+title E-commerce data model - ER (medium)
+hide circle
+skinparam linetype ortho
+entity Customer {
+  * id : bigint <<PK>>
+  --
+  email : varchar <<UNIQUE>>
+  name : varchar
+  created_at : timestamp
+}
+entity Address {
+  * id : bigint <<PK>>
+  --
+  customer_id : bigint <<FK>>
+  line1 : varchar
+  city : varchar
+}
+entity "Order" as Ord {
+  * id : bigint <<PK>>
+  --
+  customer_id : bigint <<FK>>
+  status : varchar
+  total : numeric
+}
+entity OrderItem {
+  * order_id : bigint <<PK,FK>>
+  * product_id : bigint <<PK,FK>>
+  --
+  quantity : int
+  unit_price : numeric
+}
+entity Product {
+  * id : bigint <<PK>>
+  --
+  sku : varchar <<UNIQUE>>
+  name : varchar
+  price : numeric
+}
+entity Payment {
+  * id : bigint <<PK>>
+  --
+  order_id : bigint <<FK>>
+  provider : varchar
+  status : varchar
+}
+Customer ||--o{ Address : has
+Customer ||--o{ Ord : places
+Ord ||--|{ OrderItem : contains
+Product ||--o{ OrderItem : "appears in"
+Ord ||--o{ Payment : "paid by"
+@enduml

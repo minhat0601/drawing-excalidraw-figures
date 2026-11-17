@@ -1,0 +1,10 @@
+{"_": "Icons from the library (assets/icons.json): use when a familiar shape says it faster than text. At most 4-5 icon types per figure.",
+ "elements": [
+ {"t":"icon","id":"u","name":"user","x":10,"y":20,"h":70,"text":"người dùng"},
+ {"t":"icon","id":"fw","name":"firewall","x":170,"y":30,"h":60,"text":"WAF","color":"err"},
+ {"t":"stack","id":"api","x":330,"y":40,"w":120,"h":50,"text":"API ×3","size":17},
+ {"t":"db","id":"db","x":560,"y":14,"w":90,"h":92,"kind":"sql","text":"Postgres"},
+ {"t":"icon","id":"k","name":"key","x":350,"y":150,"h":40,"color":"warn","text":"JWT secret"},
+ {"t":"arrow","from":"u","to":"fw"},{"t":"arrow","from":"fw","to":"api"},{"t":"arrow","from":"api","to":"db","text":"SQL"},
+ {"t":"arrow","from":"k","to":"api","dashed":true,"color":"warn"}
+]}

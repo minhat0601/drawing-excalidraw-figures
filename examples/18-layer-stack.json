@@ -1,0 +1,9 @@
+{"_": "Layer stack: one cell per layer, width shows the shared part. Two stacks placed side by side for comparison.",
+ "elements": [
+ {"t":"text","x":0,"y":0,"text":"máy ảo","size":18,"color":"muted"},
+ {"t":"cells","id":"vm","x":0,"y":30,"cw":300,"ch":44,"dir":"col","size":16,"labels":["app A · app B","guest OS · guest OS","hypervisor","host OS","phần cứng"],"marks":{"1":{"color":"err","fill":"err","fillStyle":"hachure"}}},
+ {"t":"text","x":360,"y":0,"text":"container","size":18,"color":"muted"},
+ {"t":"cells","id":"ct","x":360,"y":30,"cw":300,"ch":44,"dir":"col","size":16,"labels":["app A · app B","namespace + cgroup","host OS (chung kernel)","phần cứng"],"marks":{"1":{"color":"node","fill":"node"}}},
+ {"t":"note","x":0,"y":270,"text":"mỗi VM mang nguyên một kernel riêng","color":"err"},
+ {"t":"note","x":360,"y":226,"text":"không có guest OS: chỉ là process bị rào","color":"node"}
+]}

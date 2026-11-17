@@ -1,0 +1,29 @@
+@startuml
+title OAuth 2.0 Authorization Code + PKCE - Sequence (advanced)
+autonumber
+actor User
+participant "SPA / Mobile App" as App
+participant "Authorization Server" as AS
+participant "Resource API" as API
+
+User -> App : Click "Sign in"
+App -> App : Generate code_verifier\ncode_challenge = SHA256(verifier)
+App -> AS : GET /authorize?response_type=code\n&code_challenge&state
+AS -> User : Show login + consent
+User -> AS : Credentials + consent
+AS --> App : 302 redirect_uri?code&state
+App -> App : Verify state
+App -> AS : POST /token (code, code_verifier)
+AS -> AS : SHA256(code_verifier) == code_challenge?
+alt valid
+  AS --> App : access_token + refresh_token
+  App -> API : GET /me (Bearer access_token)
+  API -> API : Validate JWT signature, exp, aud
+  API --> App : 200 profile
+else invalid
+  AS --> App : 400 invalid_grant
+end
+... access_token expires ...
+App -> AS : POST /token (grant_type=refresh_token)
+AS --> App : new access_token (rotate refresh_token)
+@enduml

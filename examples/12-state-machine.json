@@ -1,0 +1,13 @@
+{"_": "State machine: states are rounded boxes, transition conditions sit on the arrows, a self-loop is a loop at the corner. Both directions between two states: two arrows with the same bend.",
+ "elements": [
+ {"t":"box","id":"c","x":0,"y":60,"w":130,"h":60,"text":"CLOSED","size":18,"color":"node","fill":"node"},
+ {"t":"box","id":"o","x":470,"y":60,"w":130,"h":60,"text":"OPEN","size":18,"color":"err","fill":"err"},
+ {"t":"box","id":"h","x":235,"y":260,"w":130,"h":60,"text":"HALF-OPEN","size":18,"color":"warn","fill":"warn"},
+ {"t":"arrow","from":"c","to":"o","text":"lỗi vượt 50%"},
+ {"t":"arrow","from":"o","to":"h","text":"hết 30s","bend":-40},
+ {"t":"arrow","from":"h","to":"o","text":"vẫn lỗi","bend":-40,"color":"err"},
+ {"t":"arrow","from":"h","to":"c","text":"thử 1 request: ok","color":"node"},
+ {"t":"arrow","from":"c","to":"c"},
+ {"t":"text","x":150,"y":10,"text":"request đi qua","size":16,"color":"muted"},
+ {"t":"note","x":400,"y":0,"text":"từ chối ngay, không gọi downstream","color":"err"}
+]}

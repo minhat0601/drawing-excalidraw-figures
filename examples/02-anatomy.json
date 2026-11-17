@@ -1,0 +1,14 @@
+{"_": "Anatomy: what is inside a thing. Frames nested in frames, title at the top, data as a strip of cells holding real values.",
+ "elements": [
+ {"t":"frame","id":"db","x":0,"y":0,"w":700,"h":300,"title":"database 0 của Redis","color":"l2"},
+ {"t":"cells","id":"bk","x":60,"y":70,"cw":64,"ch":40,"dir":"col","labels":["","","","","…"],"index":["0","1","2","3","1023"],"title":"mảng bucket","marks":{"1":{"color":"hot"}}},
+ {"t":"box","id":"e1","x":190,"y":110,"w":110,"h":40,"text":"user:1","size":18,"color":"l4","fill":"l4","fillStyle":"hachure"},
+ {"t":"box","id":"e2","x":360,"y":110,"w":110,"h":40,"text":"cart:77","size":18,"color":"l4","fill":"l4","fillStyle":"hachure"},
+ {"t":"box","id":"e3","x":190,"y":190,"w":110,"h":40,"text":"sess:9","size":18,"color":"l4","fill":"l4","fillStyle":"hachure"},
+ {"t":"arrow","from":"bk.1","to":"e1","color":"hot"},
+ {"t":"arrow","from":"e1","to":"e2"},
+ {"t":"arrow","from":"bk.3","to":"e3"},
+ {"t":"note","x":330,"y":60,"text":"đụng độ: hai key chung một ô thì nối chuỗi","to":"e2","color":"err"},
+ {"t":"span","x1":190,"x2":300,"y":250,"text":"~40 byte mỗi entry","color":"l4"},
+ {"t":"note","x":500,"y":196,"text":"chưa có byte dữ liệu\nnào của bạn ở đây","color":"muted"}
+]}

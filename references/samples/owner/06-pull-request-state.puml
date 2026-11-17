@@ -1,0 +1,11 @@
+@startuml
+[*] --> Draft
+Draft --> Open : ready_for_review
+Open --> ChangesRequested : review_reject
+ChangesRequested --> Open : push_fix
+Open --> Approved : review_approve
+Approved --> Merged : merge
+Open --> Closed : close
+Merged --> [*]
+Closed --> [*]
+@enduml

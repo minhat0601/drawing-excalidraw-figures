@@ -1,0 +1,31 @@
+@startuml
+title Chat system (1-1 and group) - System design (advanced)
+actor "User A" as A
+actor "User B" as B
+node "L4 Load Balancer\n(sticky WebSocket)" as LB
+rectangle "Chat gateway cluster" {
+  node "WS server 1" as WS1
+  node "WS server 2" as WS2
+}
+database "Session registry (Redis)\nuserId -> wsServer" as Reg
+node "Message Service\n(assign seq id, persist)" as Msg
+database "Messages (Cassandra)\nPK=conversation, CK=seq" as MsgDB
+queue "Kafka: messages" as K
+node "Delivery workers" as Del
+node "Presence Service\n(heartbeat 30s)" as Pres
+node "Push notification" as Push
+cloud "APNs / FCM" as APNS
+A --> LB : 1. send(msg) over WebSocket
+LB --> WS1
+WS1 --> Msg : 2
+Msg --> MsgDB : 3. append
+Msg --> K : 4. publish
+K --> Del : 5
+Del --> Reg : 6. where is User B?
+Del --> WS2 : 7a. online -> route to B's server
+WS2 --> B : 8. deliver + ack
+Del --> Push : 7b. offline -> push
+Push --> APNS
+WS1 --> Pres : heartbeat
+WS2 --> Pres
+@enduml

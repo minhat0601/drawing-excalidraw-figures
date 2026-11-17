@@ -1,0 +1,15 @@
+{"_": "Plan versus breaking points: the happy path is a row of black boxes; each place that can fail hangs off a red dashed diamond.",
+ "elements": [
+ {"t":"row","x":0,"y":110,"gap":50,"elements":[
+   {"t":"box","id":"p1","w":110,"h":56,"text":"Trừ tiền","size":17},
+   {"t":"box","id":"p2","w":110,"h":56,"text":"Giữ hàng","size":17},
+   {"t":"box","id":"p3","w":110,"h":56,"text":"In nhãn","size":17},
+   {"t":"box","id":"p4","w":110,"h":56,"text":"Gửi email","size":17}]},
+ {"t":"arrow","from":"p1","to":"p2"},{"t":"arrow","from":"p2","to":"p3"},{"t":"arrow","from":"p3","to":"p4"},
+ {"t":"diamond","id":"f1","x":130,"y":-110,"w":170,"h":86,"text":"hoàn tiền?","size":15,"color":"err","dashed":true},
+ {"t":"arrow","from":"p2","to":"f1","color":"err","dashed":true,"text":"hết hàng"},
+ {"t":"diamond","id":"f2","x":270,"y":290,"w":210,"h":110,"text":"chờ hay huỷ?","size":15,"color":"err","dashed":true},
+ {"t":"arrow","from":"p3","to":"f2","color":"err","dashed":true,"text":"máy in chết"},
+ {"t":"diamond","id":"f3","x":450,"y":-110,"w":170,"h":86,"text":"thử lại?","size":15,"color":"err","dashed":true},
+ {"t":"arrow","from":"p4","to":"f3","color":"err","dashed":true,"text":"SMTP lỗi"}
+]}

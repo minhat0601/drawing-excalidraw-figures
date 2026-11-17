@@ -1,0 +1,18 @@
+{"_": "System design with two flows on one picture: zones name the paths (write / read), the write flow is numbered 1-3 and the read flow lettered A-D, each flow keeps one colour, labels carry the design decision (base62, TTL, miss).",
+ "elements": [
+ {"t":"window","id":"cl","x":0,"y":150,"w":110,"h":80,"title":"client"},
+ {"t":"frame","id":"fw","x":178,"y":0,"w":422,"h":150,"title":"Đường ghi","dashed":true,"color":"l2"},
+ {"t":"box","id":"sh","x":220,"y":56,"w":150,"h":64,"text":"Shorten API","size":17},
+ {"t":"box","id":"idg","x":430,"y":56,"w":150,"h":64,"text":"ID generator\n(base62, 7 ký tự)","size":15},
+ {"t":"frame","id":"fr","x":178,"y":230,"w":394,"h":160,"title":"Đường đọc","dashed":true,"color":"l2"},
+ {"t":"box","id":"rd","x":220,"y":290,"w":150,"h":64,"text":"Redirect API","size":17},
+ {"t":"db","id":"rc","x":460,"y":268,"w":90,"h":84,"kind":"kv","text":"Redis, TTL 1h"},
+ {"t":"db","id":"pg","x":690,"y":140,"w":96,"h":100,"kind":"sql","text":"urls"},
+ {"t":"arrow","from":"cl","to":"sh","text":"1. POST /shorten","color":"l4","size":15,"fromSide":"top","toSide":"left","route":"vh","labelAt":0.52},
+ {"t":"arrow","from":"sh","to":"idg","text":"2. id","color":"l4","size":15},
+ {"t":"arrow","from":"sh","to":"pg","text":"3. INSERT","color":"l4","size":15,"fromSide":"bottom","fromAt":0.7,"toSide":"left","route":"vh","labelAt":0.6},
+ {"t":"arrow","from":"cl","to":"rd","text":"A. GET /aZ3k9Qx","color":"hot","size":15,"fromSide":"bottom","fromAt":0.45,"toSide":"left","toAt":0.35,"route":"vh","labelAt":0.59},
+ {"t":"arrow","from":"rd","to":"rc","text":"B. GET","color":"hot","size":15},
+ {"t":"arrow","from":"rc","to":"pg","text":"C. miss","color":"hot","size":15,"dashed":true,"fromSide":"right","toSide":"left","toAt":0.85,"route":"hvh","shift":25,"labelAt":0.55,"labelDx":-34},
+ {"t":"arrow","from":"rd","to":"cl","text":"D. 302","color":"hot","size":15,"dashed":true,"fromSide":"left","fromAt":0.8,"toSide":"bottom","toAt":0.25,"route":"hv","labelAt":0.3,"labelDy":14}
+]}

@@ -1,0 +1,32 @@
+@startuml
+title Leave request approval - Business flow (medium)
+|Employee|
+|Manager|
+|HR|
+|System|
+|Employee|
+start
+:Submit leave request;
+|System|
+:Check remaining leave balance;
+if (Enough balance?) then (yes)
+  |Manager|
+  :Review request;
+  if (Approve and more than 5 days?) then (yes)
+    |HR|
+    :HR final review;
+  endif
+  |System|
+  :Save decision;
+  if (Approved?) then (yes)
+    :Deduct balance;
+    :Update team calendar;
+  endif
+else (no)
+  :Reject automatically;
+endif
+:Send result email;
+|Employee|
+:Receive result;
+stop
+@enduml

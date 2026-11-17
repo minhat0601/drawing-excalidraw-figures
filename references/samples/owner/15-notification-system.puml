@@ -1,0 +1,40 @@
+@startuml
+title Notification system - System design (medium)
+rectangle "Producers" {
+  node "Order Service" as P1
+  node "Marketing Service" as P2
+  node "Cron jobs" as P3
+}
+node "Notification API\n(validate, rate limit, dedupe)" as API
+database "User prefs +\ndevice tokens" as Prefs
+database "Templates" as Tpl
+queue "Push queue" as QP
+queue "SMS queue" as QS
+queue "Email queue" as QE
+node "Push workers" as WP
+node "SMS workers" as WS
+node "Email workers" as WE
+queue "Retry / DLQ" as DLQ
+database "Notification log\n(status, attempts)" as Log
+cloud "APNs / FCM" as APNS
+cloud "Twilio" as TW
+cloud "SES / SendGrid" as SES
+P1 --> API : 1. send(userId, type, data)
+P2 --> API
+P3 --> API
+API --> Prefs : 2. opted in? channels?
+API --> Tpl : 3. render template
+API --> QP : 4. enqueue per channel
+API --> QS
+API --> QE
+QP --> WP
+QS --> WS
+QE --> WE
+WP --> APNS : 5. deliver
+WS --> TW
+WE --> SES
+WP --> DLQ : 6. failed -> retry with backoff
+WP --> Log : 7. record status
+WS --> Log
+WE --> Log
+@enduml

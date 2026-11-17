@@ -1,0 +1,26 @@
+@startuml
+title Checkout - Sequence
+actor Customer
+participant "Web App" as Web
+participant "Order Service" as Order
+participant "Payment Service" as Pay
+database "Orders DB" as DB
+queue "Event Bus" as Bus
+
+Customer -> Web : Click "Place order"
+Web -> Order : POST /orders
+Order -> DB : Insert order (PENDING)
+Order -> Pay : Charge(orderId, amount)
+alt payment approved
+  Pay --> Order : approved
+  Order -> DB : Update status = PAID
+  Order -> Bus : publish OrderPaid
+  Order --> Web : 201 Created
+  Web --> Customer : Show confirmation
+else payment declined
+  Pay --> Order : declined
+  Order -> DB : Update status = FAILED
+  Order --> Web : 402 Payment Required
+  Web --> Customer : Show retry
+end
+@enduml

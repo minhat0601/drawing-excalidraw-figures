@@ -1,0 +1,32 @@
+@startuml
+title CQRS + Event Sourcing - Data flow (advanced)
+actor Client
+rectangle "Write side" {
+  node "Command API" as Cmd
+  node "Aggregate\n(validate business rules)" as Agg
+  database "Event store\n(append-only, per-stream version)" as ES
+}
+queue "Kafka: domain events" as K
+rectangle "Read side" {
+  node "Projector: order summary" as P1
+  node "Projector: search index" as P2
+  node "Projector: analytics" as P3
+  database "Read DB (Postgres)\norder_summary view" as R1
+  database "Elasticsearch" as R2
+  database "ClickHouse" as R3
+  node "Query API" as Q
+}
+Client --> Cmd : 1. PlaceOrder command
+Cmd --> Agg : 2. load events -> rebuild state
+Agg --> ES : 3. append OrderPlaced\n(optimistic lock on version)
+ES --> K : 4. outbox / CDC publish
+K --> P1 : 5. consume (idempotent)
+K --> P2
+K --> P3
+P1 --> R1 : 6. upsert view
+P2 --> R2
+P3 --> R3
+Client --> Q : A. GET /orders/123
+Q --> R1 : B. read (eventually consistent)
+Q --> R2 : search
+@enduml

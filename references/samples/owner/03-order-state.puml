@@ -1,0 +1,14 @@
+@startuml
+[*] --> Created
+Created --> PendingPayment : submit
+PendingPayment --> Paid : payment_ok
+PendingPayment --> Failed : payment_declined
+PendingPayment --> Cancelled : timeout / user_cancel
+Paid --> Shipped : ship
+Shipped --> Delivered : delivered
+Paid --> Refunded : refund
+Delivered --> Refunded : refund
+Failed --> [*]
+Cancelled --> [*]
+Refunded --> [*]
+@enduml

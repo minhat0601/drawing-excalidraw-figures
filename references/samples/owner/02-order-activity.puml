@@ -1,0 +1,25 @@
+@startuml
+title Order fulfilment - Business flow
+|Customer|
+start
+:Place order;
+|System|
+:Validate order;
+if (Stock available?) then (yes)
+  :Reserve stock;
+  :Request payment;
+  if (Paid?) then (yes)
+    |Warehouse|
+    :Pick and pack;
+    :Ship;
+    |System|
+    :Send tracking email;
+  else (no)
+    :Release stock;
+    :Notify customer;
+  endif
+else (no)
+  :Notify out of stock;
+endif
+stop
+@enduml

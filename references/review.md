@@ -1,0 +1,67 @@
+# Review the figure after every render
+
+Open `<name>-light.png` and `<name>-dark.png`, then run three passes in order.
+Pass 1 matters most and is skipped most, because pass 2 and 3 errors are easier to see.
+
+## Pass 1: does the figure say the right thing
+
+- **Coverage**: go down the fact list from step 2 of the workflow. Every actor is drawn, every main step has a mark, every alternative and error branch has its own frame, edge or node, and each branch label says the same condition as the source ("timeout", not "other error"). Add what is missing or state why it is left out.
+- Cover the caption. Does the figure say the "the reader SEES ..." sentence written in step 1?
+- **Drop the text**: imagine all text erased. Does the remaining structure suggest the idea, or is it just a row of identical boxes?
+- **What is learned**: is there at least one real value (measurement, command name, key name, error code), or only generic labels?
+- **One most prominent point**: where does the eye land first? Is that the main idea?
+- **Stranger**: what can an engineer who has not read the lesson retell after 10 seconds with this figure? If you would have to say "ignore this part", delete that part.
+- Does every arrow answer "what flows here, in which direction"?
+- Is every label true? Check numbers and names against the lesson, do not trust memory.
+
+If this pass fails, change the figure type (go back to the table in SKILL.md), do not tweak coordinates.
+
+## Pass 2: visible errors
+
+The tool is silent about most of these; `references/lessons-from-runs.md` rules 14 to 20 list the ones that survived in test runs.
+
+- Text clipped, overflowing a border, or overlapping other text.
+- Arrow passing through a box, overlapping a label, or crossing another arrow.
+- Arrow pointing at empty space or at the wrong shape.
+- Floating label with no clear owner.
+- X mark or check mark covering the name of the thing it marks.
+- Things that should be evenly spaced are uneven; boxes with the same role are misaligned.
+- Half the figure is cramped, the other half empty.
+- Text too small: the summary line prints the smallest on-screen size. Below 12px the tool nudges and the figure must be tightened (stack vertically, drop a column, split). At 800 units wide, size-15 text shows at 12.5px and size 16 at 13.3px.
+- An arrow so short that only its head shows: move the two shapes apart.
+- Two nearly equal font sizes (17 and 18) look like a mistake: merge them.
+- Unfinished elements: empty box, `?` label, draft note.
+- Spelling errors in labels.
+
+## Pass 3: dark theme and tool
+
+- In `-dark.png`, all text is still readable and every stroke still visible.
+- A `solid` fill in the dark theme does not swallow the text inside it.
+- The tool prints no `✗` line. Every `•` line is fixed or has a clear reason to stay.
+
+## When to stop
+
+Stop when all three hold:
+
+1. The figure says the step 1 sentence without a caption.
+2. No pass 2 errors remain.
+3. You can hand the figure to someone else without adding "except this bit".
+
+It usually takes 2 to 4 rounds.
+Do not stop after the first round just because there are no hard errors: the first-round layout can almost always be improved.
+
+## Common errors and fixes
+
+| Symptom | Cause | Fix |
+|---|---|---|
+| Figure is a row of boxes joined by arrows, but the lesson is about a mechanism | Figure type chosen by habit | Go back to the figure type table |
+| Figure is all text stacked in columns | It is a list, not a figure | Leave it in the text |
+| Tiny text | Figure too wide | Stack vertically, split the figure, drop unrelated components |
+| Every box is filled | Fill used as decoration | Remove all color, then fill exactly one thing |
+| Two consecutive figures look identical | The new thing is not marked | Use `extends`: new thing `l4`, old things drop to `muted` automatically |
+| Diamond or ellipse distorted or bloated | Text does not fit, so Excalidraw auto-expands the shape | Set `w`/`h` to twice the text |
+| Arrow label overlaps both boxes | Arrow shorter than its label | Move the boxes apart, shorten the label, or turn it into a `note` |
+| Axis ticks misaligned with cell edges | Ticks spread evenly along the axis length | Set `gap` to exactly one unit's width |
+| Dozens of identical cells to type | Writing JSON by hand | Write a small script that generates the spec |
+| Arrow winds around and cuts across the figure | Two related things placed far apart | Move them closer, do not bend the arrow |
+| Figure needs three paragraphs to understand | Several ideas crammed into one figure | One figure, one idea: split it |

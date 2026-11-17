@@ -1,0 +1,7 @@
+{"_": "Limit exceeded: load bars against a dashed threshold line. Only the bar over the threshold is filled red.",
+ "elements": [
+ {"t":"plot","id":"p","x":60,"y":230,"w":420,"h":180,"ylabel":"request/giây","max":120,
+  "bars":[{"label":"shard 1","value":38,"color":"l2","fill":"l2"},{"label":"shard 2","value":45,"color":"l2","fill":"l2"},{"label":"shard 3","value":112,"color":"err","text":"user:celeb"},{"label":"shard 4","value":30,"color":"l2","fill":"l2"}],
+  "thresholds":[{"value":80,"label":"sức chứa một node"}]},
+ {"t":"note","x":500,"y":40,"text":"một hot key\nkéo sập cả shard","color":"err"}
+]}

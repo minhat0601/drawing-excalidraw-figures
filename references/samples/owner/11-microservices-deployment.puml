@@ -1,0 +1,33 @@
+@startuml
+title Microservices on Kubernetes - Deployment (advanced)
+actor User
+node "CDN" as CDN
+rectangle "AWS (VPC)" {
+  node "Load Balancer" as LB
+  node "Kubernetes cluster" {
+    node "API Gateway" as GW
+    node "Auth Service" as AuthS
+    node "Order Service" as OrderS
+    node "Inventory Service" as InvS
+    node "Notification Service" as NotiS
+  }
+  database "Auth DB" as AuthDB
+  database "Order DB" as OrderDB
+  database "Inventory DB" as InvDB
+  queue "Kafka" as Kafka
+  database "Redis" as Redis
+}
+User --> CDN : HTTPS
+CDN --> LB
+LB --> GW
+GW --> AuthS : verify token
+GW --> OrderS : REST
+GW --> InvS : REST
+AuthS --> AuthDB
+AuthS --> Redis : sessions
+OrderS --> OrderDB
+InvS --> InvDB
+OrderS --> Kafka : OrderCreated
+Kafka --> InvS : consume
+Kafka --> NotiS : consume
+@enduml

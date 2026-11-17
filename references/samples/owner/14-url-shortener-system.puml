@@ -1,0 +1,21 @@
+@startuml
+title URL Shortener - System design (basic)
+actor Client
+node "Load Balancer" as LB
+rectangle "API layer (stateless)" {
+  node "Shorten API" as W
+  node "Redirect API" as R
+}
+node "ID Generator\n(range allocator, base62)" as IDG
+database "Redis cache\nshort -> long" as Cache
+database "Postgres / DynamoDB\nurls(short PK, long, owner, expires)" as DB
+Client --> LB : 1. POST /shorten {long_url}
+LB --> W : 2
+W --> IDG : 3. next id -> base62 "aZ3k9"
+W --> DB : 4. INSERT url
+Client --> LB : A. GET /aZ3k9
+LB --> R : B
+R --> Cache : C. GET aZ3k9
+R --> DB : D. on miss: SELECT + fill cache
+R --> Client : E. 301/302 Location: long_url
+@enduml

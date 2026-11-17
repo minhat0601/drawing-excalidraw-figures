@@ -1,0 +1,41 @@
+@startuml
+title Real-time + batch analytics pipeline (Lambda-style) - Data flow (complex)
+rectangle "Sources" {
+  node "Web / Mobile SDK\n(clickstream)" as SDK
+  node "Backend services\n(business events)" as SVC
+  database "OLTP DB" as OLTP
+}
+node "Ingestion API\n(batch, compress, validate)" as Ing
+node "Schema Registry\n(Avro / Protobuf)" as SR
+node "Debezium CDC" as CDC
+queue "Kafka (raw topics)" as K
+queue "DLQ (invalid events)" as DLQ
+rectangle "Speed layer" {
+  node "Flink jobs\n(dedupe, enrich, window 1m)" as Flink
+  database "ClickHouse\n(real-time aggregates)" as CH
+}
+rectangle "Batch layer" {
+  database "Data lake S3\n(Parquet, partition by date)" as Lake
+  node "Spark / dbt\n(nightly, backfill)" as Spark
+  database "Warehouse\n(Snowflake / BigQuery)" as WH
+}
+node "Orchestrator (Airflow)" as AF
+node "BI dashboards\n(Metabase / Superset)" as BI
+node "Alerting" as Alert
+SDK --> Ing : 1. events
+SVC --> K : 1b. produce
+OLTP --> CDC : 1c. binlog
+CDC --> K
+Ing --> SR : 2. validate schema
+Ing --> K : 3. produce
+Ing --> DLQ : invalid
+K --> Flink : 4a. stream
+Flink --> CH : 5a. sub-second metrics
+Flink --> Alert : anomalies
+K --> Lake : 4b. Kafka Connect sink (hourly)
+AF --> Spark : schedule
+Spark --> Lake : 5b. read raw
+Spark --> WH : 6b. modeled tables
+CH --> BI : 7. live view
+WH --> BI : 7. historical view
+@enduml

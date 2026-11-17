@@ -1,0 +1,10 @@
+{"_": "Message order between parties: sequence. Solid line = call, dashed line = reply; the failure is marked right on the message.",
+ "elements": [
+ {"t":"sequence","x":0,"y":0,"gap":220,"actors":[{"id":"c","label":"Client"},{"id":"lb","label":"ALB","color":"l4"},{"id":"s","label":"NestJS"}],
+  "messages":[
+   {"from":"c","to":"lb","text":"GET /orders","n":1},
+   {"from":"lb","to":"s","text":"dùng lại socket cũ","n":2},
+   {"note":"keepAliveTimeout của Node (5s) < idle timeout của ALB (60s)","color":"err","fill":"err"},
+   {"from":"s","to":"lb","text":"FIN, socket đã đóng","dashed":true,"color":"err"},
+   {"from":"lb","to":"c","text":"502 Bad Gateway","dashed":true,"color":"err","fail":true}]}
+]}
