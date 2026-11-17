@@ -1,7 +1,8 @@
 # Lessons from test runs: habits to keep, habits to drop
 
 Source: 24 runs on 2026-11-17, eight tasks (sequence, swimlane, state, ER, system design, byte cells, threshold, timeline), each drawn once by Sonnet 5.5, Opus 5.5 and Fable 5.2 with this skill.
-All 24 rendered clean and matched the facts of the task, so the tool's `✓` does not separate a good figure from a mediocre one.
+A second batch on the same day added GLM 5.3 on the same eight tasks; its observations are in the "GLM 5.3" section below.
+All runs rendered clean and matched the facts of the task, so the tool's `✓` does not separate a good figure from a mediocre one.
 What separated them is below.
 One run per cell: these are observed habits, not statistics.
 
@@ -102,11 +103,29 @@ Use Sonnet for figures that follow a template closely, and add one instruction: 
 - Knowingly keeps a named flaw (rule 24).
 - Lets a long message label sit on a lifeline (rule 17).
 
+## GLM 5.3
+
+**Strengths.**
+- Keeps the dimension the source is about (rules 1 and 2): time axis for stampede and pool exhaustion, a byte ruler that lines up with cell edges for struct padding, 14 countable bars for the pool.
+- Real settings verbatim: `connectionTimeoutMillis = 2000` on the timeline, `SET lock:home:feed NX EX 5` as a code block, `max_connections = 200` as the threshold label.
+- Restructures instead of nudging: when the first swimlane draft had overlapping boxes and a crossed arrow, it rebuilt the lane layout (rule 22) rather than spending rounds moving coordinates.
+- Reviews rendered images and fixes what it names; every flaw it recorded, it fixed before hand-off (rule 24).
+
+**Habits to drop.**
+- Writes notes longer than the container: hit the sequence `note` single-line limit twice and the swimlane first draft had two boxes sharing a lane without `dx`. Compose the reason inside the box text or split the lane into two columns before rendering.
+- Sizes diamonds for one line of text: three of the first drafts had a diamond grow after render. Plan diamond `w` at twice the text width before the first render (spec.md says it; this model still had to learn it the expensive way).
+- Lets two arrows converge on one edge point (both the auto-approve and the manual-approve paths entering the top of the same success box). Pick `toAt` positions per incoming arrow before rendering.
+- First system-design draft ran 871 units wide; folding a floating note into the component it describes (the worker box carried "> 1M follower: không fan-out" itself) brought it to 779 without losing a fact.
+
 ## Numbers
 
-| | Sonnet 5.5 | Opus 5.5 | Fable 5.2 |
-|---|---|---|---|
-| Mean time per figure | 76s | 132s | 114s |
-| Mean tokens | 105k | 112k | 109k |
-| Mean render rounds | 2.5 | 3.5 | 2.6 |
-| Mean smallest text | 13.1px | 13.1px | 12.7px |
+| | Sonnet 5.5 | Opus 5.5 | Fable 5.2 | GLM 5.3 |
+|---|---|---|---|---|
+| Mean time per figure | 76s | 132s | 114s | not comparable* |
+| Mean tokens | 105k | 112k | 109k | not comparable* |
+| Mean render rounds | 2.5 | 3.5 | 2.6 | 3.9 |
+| Mean smallest text | 13.1px | 13.1px | 12.7px | 13.6px |
+| Mean width (units) | - | - | - | 699 |
+
+\* GLM ran in a separate session with interruptions and reviewed renders through a
+vision tool, so time and tokens are not comparable with the automated batch.
