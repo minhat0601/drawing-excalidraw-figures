@@ -1,6 +1,7 @@
 {
   "name": "drawing-excalidraw-figures",
   "private": true,
+  "license": "MIT",
   "description": "Chỉ cần khi dựng lại bundle Excalidraw (.cache/exca.bundle.js đã có sẵn trong repo).",
   "scripts": {
     "bundle": "node scripts/excalidraw-bundle.mjs"

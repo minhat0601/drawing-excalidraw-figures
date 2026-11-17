@@ -4,7 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>drawing-excalidraw-figures - vẽ hình kỹ thuật bằng tay, tự động</title>
-<meta name="description" content="Skill cho Claude Code: biến một đoạn văn kỹ thuật thành hình Excalidraw thật từ một spec JSON ngắn. Kèm bộ so sánh 32 hình do 4 model vẽ cùng một bộ đề.">
+<meta name="description" content="Skill cho Claude Code: biến một đoạn văn kỹ thuật thành hình Excalidraw thật từ một spec JSON ngắn. Kèm bộ so sánh 32 hình do 4 model AI vẽ cùng một bộ đề.">
+<meta property="og:title" content="drawing-excalidraw-figures - hình Excalidraw cho tài liệu kỹ thuật">
+<meta property="og:description" content="Đưa một đoạn văn kỹ thuật, agent viết spec JSON, một lệnh ra hình vẽ tay thật - sửa tiếp trên excalidraw.com, đúng màu hai chế độ, render offline.">
+<meta property="og:url" content="https://drawing-excalidraw-figures.vercel.app/">
+<meta property="og:image" content="https://drawing-excalidraw-figures.vercel.app/images/examples/11-sequence-light.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect x="4" y="8" width="14" height="11" rx="2" fill="none" stroke="%231E5AE8" stroke-width="2.2"/><rect x="19" y="14" width="9" height="8" rx="2" fill="none" stroke="%23D6294B" stroke-width="2.2"/><path d="M11 19 L15 25 L27 21" fill="none" stroke="%23111A2B" stroke-width="1.8" stroke-linecap="round"/></svg>'>
 <link rel="stylesheet" href="fonts/fonts.css">
 <style>
@@ -251,11 +257,11 @@ footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
       <h1>Ý tưởng kỹ thuật đáng được
         <span class="gach-chan">vẽ tay<svg viewBox="0 0 120 12" preserveAspectRatio="none" aria-hidden="true"><path d="M3 8 Q 30 2 60 7 T 117 5" fill="none" stroke="var(--err)" stroke-width="3.2" stroke-linecap="round"/></svg></span>.
       </h1>
-      <p class="mo">Một skill cho Claude Code: đưa một đoạn văn kỹ thuật, nhận lại hình <b>Excalidraw thật</b> - spec JSON ngắn, một lệnh, bốn file. Mở lại được trên excalidraw.com để sửa, đúng màu ở cả chế độ sáng lẫn tối, render offline.</p>
+      <p class="mo">Skill vẽ hình cho Claude Code: bạn đưa một đoạn văn kỹ thuật, agent viết một spec JSON ngắn, một lệnh là ra <b>hình Excalidraw thật</b> - kéo vào excalidraw.com sửa tiếp được, đúng màu ở cả chế độ sáng và tối, render offline.</p>
       <div class="cta">
         <div class="term"><code><span class="k">git clone</span> https://github.com/nv-minh/drawing-excalidraw-figures.git<br>&nbsp;&nbsp;~/.claude/skills/drawing-excalidraw-figures</code><button id="copy">Chép</button></div>
       </div>
-      <p class="xemthem">Chưa tin? <a href="#so-sanh">Xem 32 hình do 4 model vẽ cùng một bộ đề</a>.</p>
+      <p class="xemthem">Chưa tin? <a href="#so-sanh">Xem 32 hình do 4 model AI vẽ cùng một bộ đề</a>.</p>
     </div>
     <figure class="figcard" id="figcard">
       <div class="khung" id="heroframe" aria-live="polite"></div>
@@ -342,6 +348,7 @@ footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
 <section id="loai-hinh" style="padding-top:20px">
   <div class="wrap">
     <h2>Hai mươi lăm loại hình, template sẵn</h2>
+    <p class="lead" style="font-size:16.5px;color:var(--muted);max-width:70ch;margin:4px 0 0">Mỗi loại một template JSON chạy được - chép ra, sửa chữ, là có hình.</p>
     <div class="nhom">
       <div>
         <h3>Luồng và nghiệp vụ</h3>
@@ -374,7 +381,7 @@ footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
 <section class="sosanh" id="so-sanh">
   <div class="wrap">
     <h2>Cùng một skill, bốn model, tám đề</h2>
-    <p class="lead">Mỗi model vẽ cả tám đề đúng một lần, dùng một bản skill. Bấm vào hình để xem cỡ gốc, bật chế độ tối để kiểm tra mọi hình đều sống được trong tối.</p>
+    <p class="lead">Cách khách quan nhất để đánh giá một skill vẽ hình: bốn model AI vẽ cùng tám đề, mỗi ô đúng một lần, không chỉnh tay. Bấm vào hình để xem cỡ gốc, bật chế độ tối để kiểm tra mọi hình đều sống được trong tối.</p>
     <table>
       <thead><tr><th>Model</th><th>Thời gian TB</th><th>Token TB</th><th>Vòng render TB</th></tr></thead>
       <tbody>
@@ -408,8 +415,8 @@ footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
 
 <footer>
   <div class="wrap">
-    <span>drawing-excalidraw-figures - sinh ra cho kho kiến thức migrationKl, đóng gói standalone tại đây.</span>
-    <span>Excalidraw (MIT) · font Nunito, Patrick Hand, IBM Plex Mono · <a href="https://github.com/nv-minh/drawing-excalidraw-figures">GitHub</a></span>
+    <span>Vẽ hình cho tài liệu kỹ thuật, blog và câu trả lời phỏng vấn.</span>
+    <span>Mã nguồn mở · Excalidraw (MIT) · font Nunito, Patrick Hand, IBM Plex Mono · <a href="https://github.com/nv-minh/drawing-excalidraw-figures">GitHub</a></span>
   </div>
 </footer>
 

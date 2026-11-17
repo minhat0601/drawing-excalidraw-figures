@@ -1,7 +1,9 @@
 # drawing-excalidraw-figures
 
-Biến một ý tưởng kỹ thuật thành hình Excalidraw nét vẽ tay - thật, chỉnh được, chạy được cả chế độ sáng lẫn tối.
-Skill cho Claude Code (hoặc agent nào đọc được SKILL.md): bạn đưa một đoạn văn kỹ thuật, agent viết spec JSON ngắn, chạy `ve.py`, ra bốn file.
+<p align="center"><img src="docs/images/examples/11-sequence-light.png" alt="Hình sequence vẽ bằng skill" width="620"></p>
+
+Biến một đoạn văn kỹ thuật thành hình Excalidraw nét vẽ tay - không phải hàng hộp nối mũi tên, mà hình làm cho thời gian thành độ dài, dữ liệu thành ô có giá trị thật, giới hạn thành một đường kẻ.
+Skill cho Claude Code, hoặc agent nào đọc được SKILL.md: bạn đưa đoạn văn, agent viết spec JSON ngắn, chạy một lệnh, ra bốn file.
 
 ```
 fig.excalidraw   cảnh gốc - kéo vào excalidraw.com để sửa tiếp
@@ -9,6 +11,15 @@ fig.svg          SVG tĩnh, màu theo token var(--token), chạy chế độ sá
 fig-light.png    bản xem trước ở cột đọc 666px, chế độ sáng
 fig-dark.png     bản xem trước, chế độ tối
 ```
+
+**Vì sao đáng dùng:**
+
+- **Sửa tiếp được** - `.excalidraw` mở trên excalidraw.com, kéo thả chỉnh như bản vẽ tay thật
+- **Hai chế độ màu chuẩn** - SVG tô bằng token, không bao giờ lệch ở dark mode
+- **Offline hoàn toàn** - engine, bundle Chromium và font nằm trong repo; không API, không cần mạng
+- **Tool gác cổng** - chặn chữ tràn, mũi tên xuyên hộp, màu sai token ngay lúc render; phần còn lại mắt bạn quyết định
+
+Xem skill vẽ ra gì khi bốn model AI thi nhau vẽ: [32 hình, tám đề](https://drawing-excalidraw-figures.vercel.app/#so-sanh).
 
 ## Luật chịu lực
 
