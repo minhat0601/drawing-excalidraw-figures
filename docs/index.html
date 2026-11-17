@@ -151,6 +151,13 @@ h1{font:400 clamp(38px,4.4vw,56px)/1.14 var(--hand);margin:0 0 18px;letter-spaci
 .buoc .haicap figcaption{font:14px var(--hand);color:var(--muted);text-align:center;margin-top:4px}
 @media (prefers-reduced-motion:reduce){.buoc{transform:none}.buoc::after{opacity:0}}
 
+/* cơ chế bên trong */
+.cot3{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:34px}
+.cot3 b{font:18px var(--hand);font-weight:400;display:block;margin-bottom:6px}
+.cot3 span{font-size:14px;color:var(--muted);line-height:1.6}
+.so_do{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px 24px 14px;margin-top:30px;box-shadow:var(--shadow)}
+.so_do svg{width:100%;height:auto;display:block;font-family:var(--hand)}
+
 /* loại hình */
 .nhom{display:flex;flex-wrap:wrap;gap:34px;margin-top:26px}
 .nhom>div{flex:1 1 220px;min-width:210px}
@@ -243,6 +250,7 @@ footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
     </a>
     <div class="links">
       <a href="#cach-hoat-dong">Cách hoạt động</a>
+      <a href="#co-che">Cơ chế</a>
       <a href="#loai-hinh">Loại hình</a>
       <a href="#so-sanh">So sánh 4 model</a>
       <a href="#cai-dat">Cài đặt</a>
@@ -341,6 +349,54 @@ footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
           <figure><img src="images/examples/05-threshold-dark.png" alt="Hình ví dụ chế độ tối" loading="lazy"><figcaption>chế độ tối</figcaption></figure>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="co-che">
+  <div class="wrap">
+    <h2>Cơ chế bên trong</h2>
+    <p class="lead" style="font-size:16.5px;color:var(--muted);max-width:72ch;margin:4px 0 0">Điểm khác với các thư viện vẽ hình khác: renderer dùng thư viện Excalidraw thật trong Chromium, đo chữ bằng đúng font sẽ hiển thị, và tô màu bằng token - nên hình bao giờ cũng khít và sống được ở cả hai chế độ.</p>
+    <div class="so_do">
+      <svg viewBox="0 0 880 210" role="img" aria-label="Pipeline: spec JSON qua ve.py, Chromium với thư viện Excalidraw thật, ra SVG token và bốn file; cổng tự kiểm đưa vòng phản hồi về spec">
+        <g fill="none" stroke-width="2">
+          <rect x="14" y="34" width="128" height="72" rx="10"/>
+          <rect x="182" y="34" width="118" height="72" rx="10"/>
+          <rect x="340" y="18" width="204" height="104" rx="12"/>
+          <rect x="584" y="34" width="128" height="72" rx="10"/>
+          <rect x="752" y="34" width="112" height="72" rx="10"/>
+        </g>
+        <g text-anchor="middle" fill="var(--ink)">
+          <text x="78" y="66" font-size="20">fig.json</text>
+          <text x="78" y="88" font-size="14" fill="var(--muted)">spec ngắn</text>
+          <text x="241" y="66" font-size="20">ve.py</text>
+          <text x="241" y="88" font-size="14" fill="var(--muted)">dựng scene</text>
+          <text x="442" y="52" font-size="20">Chromium</text>
+          <text x="442" y="76" font-size="14" fill="var(--muted)">@excalidraw/excalidraw</text>
+          <text x="442" y="96" font-size="14" fill="var(--muted)">đo chữ bằng font thật</text>
+          <text x="648" y="60" font-size="20">SVG</text>
+          <text x="648" y="84" font-size="15" fill="var(--l4)">var(--token)</text>
+          <text x="808" y="66" font-size="20">4 file</text>
+          <text x="808" y="88" font-size="14" fill="var(--muted)">+ PNG 2 theme</text>
+        </g>
+        <g fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round">
+          <path d="M142 70 L 176 70"/><path d="M170 64 L 178 70 L 170 76"/>
+          <path d="M300 70 L 334 70"/><path d="M328 64 L 336 70 L 328 76"/>
+          <path d="M544 70 L 578 70"/><path d="M572 64 L 580 70 L 572 76"/>
+          <path d="M712 70 L 746 70"/><path d="M740 64 L 748 70 L 740 76"/>
+        </g>
+        <g fill="none" stroke="var(--err)" stroke-width="2" stroke-dasharray="6 5" stroke-linecap="round">
+          <path d="M808 106 L 808 152 L 78 152 L 78 118"/>
+        </g>
+        <path d="M72 126 L 78 114 L 84 126" fill="none" stroke="var(--err)" stroke-width="2" stroke-linecap="round"/>
+        <text x="442" y="176" text-anchor="middle" font-size="15" fill="var(--err)">cổng tự kiểm: chữ tràn · mũi tên xuyên hộp · màu sai token → về sửa spec rồi chạy lại</text>
+        <text x="14" y="200" font-size="13" fill="var(--muted)">mỗi vòng render 15-40 giây · vòng sửa thường dừng sau 2-4 lần</text>
+      </svg>
+    </div>
+    <div class="cot3">
+      <div><b>Scene thật, không vẽ nhái</b><span>ve.py nạp bundle @excalidraw/excalidraw vào Chromium và đo chữ bằng đúng font sẽ hiển thị - hộp không bao giờ rộng hơn chữ sau khi xuất SVG.</span></div>
+      <div><b>Màu là token, không phải hex</b><span>Spec chỉ nhận tên token (err, l4, warn...), SVG xuất ra tô bằng var(--token) nên chế độ tối không cần vẽ lại lần thứ hai.</span></div>
+      <div><b>Hai hàng cổng trước khi nộp</b><span>✗ lỗi cứng dừng ngay; • nhắc nhẹ để bạn tự quyết. Cái đo được bằng máy thì máy gác - hình có đọc được hay không là việc của mắt.</span></div>
     </div>
   </div>
 </section>
