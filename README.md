@@ -1,13 +1,13 @@
 # drawing-excalidraw-figures
 
-Biến một ý tưởng kỹ thuật thành hình Excalidraw nét vẽ tay - thật, chỉnh được, theo theme sáng/tối.
+Biến một ý tưởng kỹ thuật thành hình Excalidraw nét vẽ tay - thật, chỉnh được, chạy được cả chế độ sáng lẫn tối.
 Skill cho Claude Code (hoặc agent nào đọc được SKILL.md): bạn đưa một đoạn văn kỹ thuật, agent viết spec JSON ngắn, chạy `ve.py`, ra bốn file.
 
 ```
 fig.excalidraw   cảnh gốc - kéo vào excalidraw.com để sửa tiếp
-fig.svg          SVG tĩnh, màu theo token var(--token), chạy theme sáng lẫn tối
-fig-light.png    bản xem trước ở cột đọc 666px, theme sáng
-fig-dark.png     bản xem trước, theme tối
+fig.svg          SVG tĩnh, màu theo token var(--token), chạy chế độ sáng lẫn tối
+fig-light.png    bản xem trước ở cột đọc 666px, chế độ sáng
+fig-dark.png     bản xem trước, chế độ tối
 ```
 
 ## Luật chịu lực
