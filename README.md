@@ -89,7 +89,7 @@ Còn hình có nói đúng chuyện hay không thì chỉ mắt người kiểm 
 ## Bốn model vẽ cùng một bộ đề
 
 Skill đã được bốn model (Sonnet 5.5, Opus 5.5, Fable 5.2, GLM 5.3) vẽ cùng tám đề - sequence có nhánh, swimlane nghiệp vụ, state lồng nhau, ER crow's foot, system design hai luồng, dải ô byte, ngưỡng và thời gian, trục thời gian.
-Xem đủ 32 hình ở [trang so sánh](docs/index.html#so-sanh) trong thư mục `docs/`, kèm số vòng render và kích thước từng hình.
+Xem đủ 32 hình ở [trang so sánh](https://nv-minh.github.io/drawing-excalidraw-figures/#so-sanh), kèm số vòng render và kích thước từng hình.
 
 ## Cấu trúc repo
 
