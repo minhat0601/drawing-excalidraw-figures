@@ -55,7 +55,8 @@ nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(8px);
   background:color-mix(in srgb,var(--paper) 82%,transparent);border-bottom:1px solid var(--line)}
 nav .wrap{display:flex;align-items:center;gap:16px;height:60px}
 .logo{display:flex;align-items:center;gap:10px;font:21px var(--hand);color:var(--ink);text-decoration:none;white-space:nowrap}
-nav .links{display:flex;gap:2px;margin-left:auto;flex-wrap:wrap}
+nav .links{display:flex;gap:2px;margin-left:auto}
+nav .hdbtn{display:flex;gap:8px;align-items:center;flex:none;margin-left:auto}
 nav .links a{color:var(--muted);text-decoration:none;font-size:14.5px;padding:6px 11px;border-radius:99px}
 nav .links a:hover{color:var(--l4);background:var(--fill-soft)}
 #theme{border:1px solid var(--line);background:var(--card);color:var(--ink);
@@ -63,10 +64,10 @@ nav .links a:hover{color:var(--l4);background:var(--fill-soft)}
   display:inline-flex;align-items:center;gap:8px;line-height:1}
 #theme svg{display:block;flex:none;transform:translateY(.5px)}
 #theme:hover{border-color:var(--l4);color:var(--l4)}
-nav .links a.gh{display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--l4);color:var(--l4);
-  background:var(--fill-soft);font:700 13px var(--sans);padding:7px 15px;border-radius:99px;line-height:1;margin-left:8px;text-decoration:none}
-nav .links a.gh:hover{background:var(--l4);color:var(--card)}
-nav .links a.gh svg{display:block;flex:none}
+nav .links a.gh,.hdbtn a.gh{display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--l4);color:var(--l4);
+  background:var(--fill-soft);font:700 13px var(--sans);padding:7px 15px;border-radius:99px;line-height:1;text-decoration:none;white-space:nowrap}
+.hdbtn a.gh:hover{background:var(--l4);color:var(--card)}
+.hdbtn a.gh svg{display:block;flex:none}
 
 /* hero */
 .hero{padding:76px 0 26px}
@@ -240,6 +241,7 @@ footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
   font:17px var(--hand);text-shadow:0 1px 6px rgba(0,0,0,.5)}
 
 @media(max-width:1000px){
+  nav .links{display:none}
   .hero .wrap{grid-template-columns:minmax(0,1fr);gap:40px}
   .figcard svg{height:min(360px,48vh)}
   .muc4{grid-template-columns:repeat(2,1fr)}
@@ -249,9 +251,9 @@ footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
 @media(max-width:620px){
   .muc4,.cot4,.mau{grid-template-columns:1fr}
   .cacbuoc{gap:10vh}
-  nav .links a{display:none}
-  nav .links a.gh{display:inline-flex}
-  .logo{font-size:18px}
+  nav .hdbtn a.gh span,#theme span{display:none}
+  nav .hdbtn a.gh,#theme{padding:7px 10px}
+  .logo{font-size:17px}
   .buoc{top:calc(72px + var(--i) * 12px);min-height:0;padding:22px 18px;border-radius:14px}
   .buoc h3{font-size:25px}
   .buoc .trich{font-size:19px;padding:14px 16px}
@@ -277,8 +279,10 @@ footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
       <a href="#icon">Icon</a>
       <a href="#so-sanh">So sánh 4 model</a>
       <a href="#cai-dat">Cài đặt</a>
+    </div>
+    <div class="hdbtn">
       <a class="gh" href="https://github.com/nv-minh/drawing-excalidraw-figures" target="_blank" rel="noopener" aria-label="Mã nguồn trên GitHub">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>GitHub
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><span>GitHub</span>
       </a>
       <button id="theme" aria-label="Đổi chế độ sáng tối"><svg id="icon-den" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M20.5 14.5 A 8.5 8.5 0 1 1 9.5 3.5 A 7 7 0 0 0 20.5 14.5 Z"/></svg><svg id="icon-sang" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true" style="display:none"><circle cx="12" cy="12" r="4.5"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg><span id="theme-lbl">Chế độ tối</span></button>
     </div>
