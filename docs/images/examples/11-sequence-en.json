@@ -1,0 +1,10 @@
+{"_": "English variant of 11-sequence: message order between parties. Solid line = call, dashed line = reply; the failure is marked right on the message.",
+ "elements": [
+ {"t":"sequence","x":0,"y":0,"gap":220,"actors":[{"id":"c","label":"Client"},{"id":"lb","label":"ALB","color":"l4"},{"id":"s","label":"NestJS"}],
+  "messages":[
+   {"from":"c","to":"lb","text":"GET /orders","n":1},
+   {"from":"lb","to":"s","text":"reuses old socket","n":2},
+   {"note":"Node keepAliveTimeout (5s) < ALB idle timeout (60s)","color":"err","fill":"err"},
+   {"from":"s","to":"lb","text":"FIN, socket closed","dashed":true,"color":"err"},
+   {"from":"lb","to":"c","text":"502 Bad Gateway","dashed":true,"color":"err","fail":true}]}
+]}

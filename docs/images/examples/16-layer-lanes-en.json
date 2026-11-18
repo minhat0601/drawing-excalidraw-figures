@@ -1,0 +1,11 @@
+{"_": "English variant of 16-layer-lanes: who does what at which layer, one operation passing through the lanes.",
+ "elements": [
+ {"t":"lanes","x":0,"y":0,"w":700,"labelW":120,"lanes":[{"id":"app","label":"app","h":80},{"id":"ker","label":"kernel","h":100,"fill":"soft"},{"id":"disk","label":"disk","h":80}]},
+ {"t":"box","id":"w","x":150,"y":20,"w":110,"h":40,"text":"write()","size":16},
+ {"t":"box","id":"pc","x":330,"y":104,"w":130,"h":40,"text":"page cache","size":16,"color":"warn","fill":"warn"},
+ {"t":"box","id":"fs","x":470,"y":20,"w":110,"h":40,"text":"fsync()","size":16,"color":"l4"},
+ {"t":"cells","id":"blk","x":470,"y":206,"cw":44,"ch":36,"labels":["","","",""],"marks":{"1":{"color":"l4","fill":"l4"}}},
+ {"t":"arrow","from":"w","to":"pc","text":"returns at once"},
+ {"t":"arrow","from":"fs","to":"blk.1","color":"l4","text":"forces down"},
+ {"t":"note","x":150,"y":206,"text":"power loss here: page-cache\ndata is gone","to":"pc","color":"err"}
+]}

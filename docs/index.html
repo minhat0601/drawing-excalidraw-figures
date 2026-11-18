@@ -59,11 +59,11 @@ nav .links{display:flex;gap:2px;margin-left:auto}
 nav .hdbtn{display:flex;gap:8px;align-items:center;flex:none;margin-left:auto}
 nav .links a{color:var(--muted);text-decoration:none;font-size:14.5px;padding:6px 11px;border-radius:99px;white-space:nowrap}
 nav .links a:hover{color:var(--l4);background:var(--fill-soft)}
-#theme{border:1px solid var(--line);background:var(--card);color:var(--ink);
+#theme,#nn{border:1px solid var(--line);background:var(--card);color:var(--ink);
   font:700 13px var(--sans);padding:7px 15px;border-radius:99px;cursor:pointer;transition:.2s;
   display:inline-flex;align-items:center;gap:8px;line-height:1}
 #theme svg{display:block;flex:none;transform:translateY(.5px)}
-#theme:hover{border-color:var(--l4);color:var(--l4)}
+#theme:hover,#nn:hover{border-color:var(--l4);color:var(--l4)}
 nav .links a.gh,.hdbtn a.gh{display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--l4);color:var(--l4);
   background:var(--fill-soft);font:700 13px var(--sans);padding:7px 15px;border-radius:99px;line-height:1;text-decoration:none;white-space:nowrap}
 .hdbtn a.gh:hover{background:var(--l4);color:var(--card)}
@@ -240,7 +240,7 @@ footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
 #lb figcaption{position:fixed;bottom:18px;left:0;right:0;text-align:center;color:#fff;
   font:17px var(--hand);text-shadow:0 1px 6px rgba(0,0,0,.5)}
 
-@media(max-width:1150px){
+@media(max-width:1220px){
   nav .links{display:none}
 }
 @media(max-width:1000px){
@@ -255,12 +255,16 @@ footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
   .cacbuoc{gap:10vh}
   nav .hdbtn a.gh span,#theme span{display:none}
   nav .hdbtn a.gh,#theme{padding:7px 10px}
-  .logo{font-size:17px}
+  #nn{font-size:12px;padding:7px 8px}
+  .logo{font-size:16px}
   .buoc{top:calc(72px + var(--i) * 12px);min-height:0;padding:22px 18px;border-radius:14px}
   .buoc h3{font-size:25px}
   .buoc .trich{font-size:19px;padding:14px 16px}
   .buoc pre{font-size:12px;padding:14px}
   section{padding:54px 0}
+}
+@media(max-width:400px){
+  .logo{flex:1;min-width:0;overflow:hidden}
 }
 :focus-visible{outline:2.5px solid var(--l4);outline-offset:2px;border-radius:4px}
 </style>
@@ -283,6 +287,7 @@ footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
       <a href="#cai-dat">Cài đặt</a>
     </div>
     <div class="hdbtn">
+      <button id="nn" aria-label="Change language">EN</button>
       <a class="gh" href="https://github.com/nv-minh/drawing-excalidraw-figures" target="_blank" rel="noopener" aria-label="Mã nguồn trên GitHub">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><span>GitHub</span>
       </a>
@@ -545,6 +550,9 @@ footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
 </figure>
 
 <script>
+/* ── ngôn ngữ / language ───────────────────────────────────────── */
+let nn = localStorage.getItem('nn') || 'vi';
+
 /* ── theme ─────────────────────────────────────────────────────── */
 const root = document.documentElement;
 const themeBtn = document.getElementById('theme');
@@ -552,11 +560,13 @@ const HEU = matchMedia('(prefers-color-scheme:dark)');
 let dark = localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : HEU.matches;
 function apDungTheme(){
   root.dataset.theme = dark ? 'dark' : 'light';
-  document.getElementById('theme-lbl').textContent = dark ? 'Chế độ sáng' : 'Chế độ tối';
+  document.getElementById('theme-lbl').textContent = dark ? (nn === 'en' ? 'Light mode' : 'Chế độ sáng') : (nn === 'en' ? 'Dark mode' : 'Chế độ tối');
   document.getElementById('icon-den').style.display = dark ? 'none' : '';
   document.getElementById('icon-sang').style.display = dark ? '' : 'none';
   document.querySelectorAll('img[data-base]').forEach(i => {
-    i.src = i.dataset.base + (dark ? '-dark.png' : '-light.png');
+    /* hình trong examples/ có bản tiếng Anh: chèn -en trước hậu tố theme */
+    const en = nn === 'en' && i.dataset.base.startsWith('images/examples/') ? '-en' : '';
+    i.src = i.dataset.base + en + (dark ? '-dark.png' : '-light.png');
   });
 }
 themeBtn.onclick = () => { dark = !dark; localStorage.setItem('theme', dark ? 'dark' : 'light'); apDungTheme(); };
@@ -598,7 +608,7 @@ veSvg('images/hero/sequence-cache-aside.svg', 'cache-aside');
 const copyBtn = document.getElementById('copy');
 copyBtn.onclick = async () => {
   await navigator.clipboard.writeText('git clone https://github.com/nv-minh/drawing-excalidraw-figures.git ~/.claude/skills/drawing-excalidraw-figures');
-  copyBtn.textContent = 'Đã chép'; setTimeout(() => copyBtn.textContent = 'Chép', 1600);
+  copyBtn.textContent = nn === 'en' ? 'Copied' : 'Đã chép'; setTimeout(() => copyBtn.textContent = nn === 'en' ? 'Copy' : 'Chép', 1600);
 };
 
 /* ── gallery: 8 đề x 4 model ───────────────────────────────────── */
@@ -708,6 +718,283 @@ document.querySelectorAll('.iconlib .tab').forEach(t => t.addEventListener('clic
 function dongLb(){ lb.classList.remove('open'); document.body.style.overflow = ''; }
 lb.addEventListener('click', dongLb);
 addEventListener('keydown', e => { if (e.key === 'Escape') dongLb(); });
+</script>
+
+<script>
+/* ── i18n: VI mặc định, EN bấm nút #nn ─────────────────────────── */
+const DICH = {
+  /* nav */
+  'Cách hoạt động': 'How it works', 'Cơ chế': 'Internals', 'Loại hình': 'Figure types',
+  'Ý tưởng': 'Ideas', 'Icon': 'Icons', 'So sánh 4 model': '4-model comparison', 'Cài đặt': 'Install',
+  /* hero */
+  'Ý tưởng kỹ thuật đáng được': 'Technical ideas deserve to be',
+  'vẽ tay': 'hand-drawn',
+  'Skill vẽ hình cho Claude Code: bạn đưa một đoạn văn kỹ thuật - hoặc một ý tưởng còn thô mới chỉ có chữ - agent viết một spec JSON ngắn, một lệnh là ra':
+    'A drawing skill for Claude Code: hand over a technical passage - or a rough idea that exists only as words - the agent writes a short JSON spec, one command and out comes ',
+  'hình Excalidraw thật': 'a real Excalidraw figure',
+  '- kéo vào excalidraw.com sửa tiếp được, đúng màu ở cả chế độ sáng và tối, render offline.':
+    ' - drop it into excalidraw.com to keep editing, correct in both light and dark mode, rendered offline.',
+  'Chép': 'Copy',
+  'Chưa tin?': 'Not convinced yet?',
+  'Xem 32 hình do 4 model AI vẽ cùng một bộ đề': 'See 32 figures drawn by 4 AI models on the same brief',
+  'vẽ bằng skill này': 'drawn by this skill',
+  'đổi hình:': 'switch figure:', 'dải ô byte': 'byte cells', 'trục thời gian': 'timeline',
+  /* luật */
+  'Vẽ': 'Draw the', 'hình dạng': 'shape', 'của ý tưởng,': 'of the idea,', 'không vẽ danh sách thành phần': 'not the list of its parts',
+  'thời gian thành độ dài': 'time becomes length',
+  'thanh dài bao nhiêu, chuyện kéo dài bấy nhiêu': 'however long the bar, that long the story',
+  'dữ liệu thành ô': 'data becomes cells',
+  'ô rộng đúng số byte, giá trị thật nằm trong ô': 'each cell exactly as wide as its bytes, real values inside',
+  'đệm': 'pad',
+  'giới hạn thành một đường kẻ': 'a limit becomes a line',
+  'ngưỡng nét đứt: vượt hay chưa, nhìn là biết': 'a dashed threshold: over or not, you see it at once',
+  'sự cố thành một nét đỏ': 'an incident becomes a red stroke',
+  'chỗ gãy có dấu X đỏ, không cần chú thích cũng hiểu': 'a red X marks the break, no caption needed',
+  /* bốn bước */
+  'Bốn bước, không hơn': 'Four steps, no more',
+  'Viết một câu': 'Write one sentence',
+  'Trước khi vẽ, agent phải viết được câu này. Không viết được thì không vẽ - một hình thừa tệ hơn không có hình.':
+    'Before drawing, the agent must be able to write this sentence. If it cannot, it does not draw - a bad figure is worse than none.',
+  '"Nhìn hình này, người đọc THẤY điều mà đoạn văn không cho thấy."': '"Looking at this figure, the reader SEES what the passage did not show."',
+  'Ghi spec JSON': 'Write the JSON spec',
+  'Toạ độ, chữ, màu theo tên token. Không mã hex, không vẽ tay từng nét.': 'Coordinates, text, colors by token name. No hex codes, no hand-drawn strokes.',
+  '// trục thời gian + 10 thanh giữ connection': '// a time axis + 10 bars holding connections',
+  'Chạy một lệnh': 'Run one command',
+  'Renderer dùng chính thư viện Excalidraw, qua Chromium thật, rồi xuất bốn file.':
+    'The renderer uses the real Excalidraw library in a real Chromium, then exports four files.',
+  'Soi hai theme, sửa': 'Check both themes, fix',
+  'Tool bắt được chữ tràn, mũi tên xuyên hộp, màu lệch token. Còn hình có đọc được hay không thì mắt phải kiểm.':
+    'The tool catches overflowing text, arrows through boxes, off-token colors. Whether the figure reads well, only your eye can check.',
+  'chế độ sáng': 'light theme', 'chế độ tối': 'dark theme',
+  /* cơ chế */
+  'Cơ chế bên trong': 'Inside the engine',
+  'Điểm khác với các thư viện vẽ hình khác: renderer dùng thư viện Excalidraw thật trong Chromium, đo chữ bằng đúng font sẽ hiển thị, và tô màu bằng token - nên hình bao giờ cũng khít và sống được ở cả hai chế độ.':
+    'What differs from other diagram libraries: the renderer runs the real Excalidraw library in Chromium, measures text in the exact font that will display, and colors by tokens - so figures always fit and survive both themes.',
+  'spec ngắn': 'short spec', 'dựng scene': 'builds scene', 'đo chữ bằng font thật': 'measures text in the real font',
+  '+ PNG 2 theme': '+ PNG both themes',
+  'cổng tự kiểm: chữ tràn · mũi tên xuyên hộp · màu sai token → về sửa spec rồi chạy lại':
+    'self-check gate: text overflow · arrows through boxes · off-token colors → fix the spec and re-run',
+  'mỗi vòng render 15-40 giây · vòng sửa thường dừng sau 2-4 lần': 'each render round 15-40s · fix loops usually stop after 2-4 rounds',
+  'Scene thật, không vẽ nhái': 'A real scene, not an imitation',
+  've.py nạp bundle @excalidraw/excalidraw vào Chromium và đo chữ bằng đúng font sẽ hiển thị - hộp không bao giờ rộng hơn chữ sau khi xuất SVG.':
+    've.py loads the @excalidraw/excalidraw bundle into Chromium and measures text in the exact font that will display - a box is never wider than its text after the SVG export.',
+  'Màu là token, không phải hex': 'Color is a token, not a hex',
+  'Spec chỉ nhận tên token (err, l4, warn...), SVG xuất ra tô bằng var(--token) nên chế độ tối không cần vẽ lại lần thứ hai.':
+    'The spec accepts token names only (err, l4, warn...), and the exported SVG colors with var(--token), so dark mode needs no second drawing pass.',
+  'Hai hàng cổng trước khi nộp': 'Two gate rows before delivery',
+  '✗ lỗi cứng dừng ngay; • nhắc nhẹ để bạn tự quyết. Cái đo được bằng máy thì máy gác - hình có đọc được hay không là việc của mắt.':
+    '✗ hard errors stop the run; • soft reminders are your call. What a machine can measure, the machine gates - whether the figure reads is your eye’s job.',
+  /* loại hình */
+  'Hai mươi chín loại hình, template sẵn': 'Twenty-nine figure types, ready templates',
+  'Mỗi loại một template JSON chạy được - chép ra, sửa chữ, là có hình.': 'Each type ships a runnable JSON template - copy it, change the words, done.',
+  'Luồng và nghiệp vụ': 'Flows and business', 'Dữ liệu': 'Data', 'Thời gian và ngưỡng': 'Time and thresholds',
+  'Trực giác': 'Intuition', 'Ý tưởng': 'Ideas',
+  'swimlane theo vai': 'swimlane by role', 'state lồng nhau': 'nested states', 'system hai luồng': 'two-flow system',
+  'bảng có hàng thật': 'tables with real rows', 'entity + cột': 'entity + columns', 'dải ô byte': 'byte-cell strip',
+  'anatomy lồng khung': 'anatomy in frames', 'ẩn dụ vật lý': 'physical metaphor', '188 icon thư viện': 'a 188-icon library',
+  'vòng nhân quả': 'causal loop', 'ma trận 2x2': '2x2 matrix', 'phễu': 'funnel',
+  'MVCC Postgres: ảnh chụp lấy lúc nào': 'Postgres MVCC: when the snapshot is taken',
+  'sequence với khung alt/else': 'sequence with an alt/else frame',
+  'swimlane nghiệp vụ ba vai': 'business swimlane, three roles',
+  'ER với chân quạ và PK/FK': 'ER with crow’s feet and PK/FK',
+  'ẩn dụ cái xô token': 'the token-bucket metaphor',
+  'layer lanes: tầng nào làm việc gì': 'layer lanes: who does what at each layer',
+  'thanh vượt ngưỡng nét đứt': 'bars against a dashed threshold',
+  /* ý tưởng */
+  'Không chỉ cho kỹ thuật': 'Not only for engineering',
+  'Một ý còn thô, mới chỉ là vài dòng chữ, cũng có hình dạng riêng. Skill tìm câu "ý này thực chất nói rằng...", giữ đúng chữ của người viết, rồi vẽ đúng chỗ căng thẳng của ý đó. Mỗi đoạn trích được Opus và Sonnet vẽ một lần, không chỉnh tay - bấm tên model để đổi hình.':
+    'Even a rough idea that is still just a few lines of text has its own shape. The skill finds the sentence "this idea really says that...", keeps the writer’s own words, and draws the idea’s exact tension. Each quote below was drawn once by Opus and once by Sonnet, with no hand-fixing - click a model name to switch.',
+  'Pitch kinh doanh:': 'Business pitch:',
+  '"team muốn giảm giá theo. mình thì nghĩ khác … khách quen hài lòng thì họ kéo bạn bè tới … cái vòng đó chậm nhưng nó tự chạy."':
+    '"the team wants to keep discounting. I see it differently … keep regulars happy and they pull their friends in … that loop is slow but it runs by itself."',
+  'Giảng dạy:': 'Teaching:',
+  '"điểm tôi muốn học sinh thấy: không con bướm nào đổi màu cả, chỉ là con nào hợp môi trường thì sống sót … nên tỷ lệ trong quần thể thay đổi."':
+    '"what I want students to see: no butterfly changes color, it is just that the ones matching the environment survive … so the ratio in the population shifts."',
+  'Ghi chú lúc 2 giờ sáng:': 'A 2 a.m. note:',
+  '"tiền tiết kiệm đủ sống khoảng 8 tháng nếu startup sập … cái mình sợ là 5 năm nữa vẫn ngồi đây và hối hận vì không thử."':
+    '"savings cover about 8 months of living if the startup dies … what I fear is still sitting here in 5 years, regretting not trying."',
+  'Quy trình nội bộ:': 'An internal process:',
+  '"khoản dưới 2 triệu thì trưởng nhóm duyệt xong chuyển thẳng kế toán chi. từ 2 triệu trở lên … thiếu hoá đơn đỏ thì trả lại nhân viên bổ sung"':
+    '"under 2 million the team lead approves and forwards straight to payroll. from 2 million up … missing the red invoice, send it back to the employee to fix"',
+  'một bên ngõ cụt, một bên vòng tự chạy': 'one side a dead end, the other a self-running loop',
+  'chuỗi ngõ cụt trên, vòng khách quen dưới': 'dead-end chain on top, regulars loop below',
+  'đếm được từng con qua các thế hệ': 'every butterfly countable across generations',
+  'hai thân cây, cùng những con bướm, chỉ tỷ lệ đổi': 'two trees, the same butterflies, only the ratio moves',
+  '8 tháng có lối ra, 5 năm thì không': '8 months has an exit, 5 years does not',
+  'thanh 8 tháng ngắn, thanh 5 năm dài': 'the 8-month bar short, the 5-year bar long',
+  'ba vai, một ngưỡng, một đường trả lại': 'three roles, one threshold, one return path',
+  'ba vai, nhánh 2 triệu, đường nộp lại': 'three roles, the 2-million branch, the re-submit path',
+  /* icon */
+  '188 icon dựng sẵn cho sơ đồ hạ tầng': '188 ready icons for infrastructure diagrams',
+  'AWS, Azure, GCP, cơ sở dữ liệu và công cụ phổ biến. Gọi theo tên, skill tự tô màu theo chủ đề sáng hoặc tối.':
+    'AWS, Azure, GCP, common databases and tools. Call them by name; the skill recolors them for light or dark theme.',
+  'Database và công cụ': 'Databases and tools',
+  '39 dịch vụ AWS: tính toán, lưu trữ, CSDL, mạng, bảo mật. Luôn ghi tên sản phẩm làm nhãn dưới icon.':
+    '39 AWS services: compute, storage, databases, networking, security. The product name is always the icon’s label.',
+  '19 dịch vụ Azure: VM, App Service, SQL, Cosmos DB, Key Vault, Event Hubs. Luôn ghi tên sản phẩm làm nhãn dưới icon.':
+    '19 Azure services: VM, App Service, SQL, Cosmos DB, Key Vault, Event Hubs. The product name is always the label.',
+  '29 dịch vụ Google Cloud: Compute, GKE, BigQuery, Pub/Sub, Spanner. Luôn ghi tên sản phẩm làm nhãn dưới icon.':
+    '29 Google Cloud services: Compute, GKE, BigQuery, Pub/Sub, Spanner. The product name is always the label.',
+  'Logo PostgreSQL, MySQL, Cassandra, Elasticsearch, Redis, Neo4j, Kafka, Kubernetes, Terraform. Luôn ghi tên sản phẩm làm nhãn dưới icon.':
+    'Logos of PostgreSQL, MySQL, Cassandra, Elasticsearch, Redis, Neo4j, Kafka, Kubernetes, Terraform. The product name is always the label.',
+  '- xem đủ danh sách bằng': '- see the full list with ',
+  /* so sánh */
+  'Cùng một skill, bốn model, tám đề': 'One skill, four models, eight cases',
+  'Cách khách quan nhất để đánh giá một skill vẽ hình: bốn model AI vẽ cùng tám đề, mỗi ô đúng một lần, không chỉnh tay. Bấm vào hình để xem cỡ gốc, bật chế độ tối để kiểm tra mọi hình đều sống được trong tối.':
+    'The most objective way to judge a drawing skill: four AI models draw the same eight cases, each cell drawn once, no hand-fixing. Click a figure to see full size, and switch to dark mode to check that every figure survives it.',
+  'Thời gian TB': 'Avg time', 'Token TB': 'Avg tokens', 'Vòng render TB': 'Avg render rounds',
+  '76 giây': '76 s', '132 giây': '132 s', '114 giây': '114 s',
+  '105 nghìn': '105k', '112 nghìn': '112k', '109 nghìn': '109k', 'không đo': 'not measured',
+  'Ba model đầu chạy trong một phiên tự động. GLM 5.3 vẽ sau qua một phiên có gián đoạn nên thời gian và token không so sánh được, chỉ giữ số vòng render (tính cả lần lỗi cú pháp).':
+    'The first three models ran in one automated session. GLM 5.3 drew later through an interrupted session, so time and tokens are not comparable; only its render rounds are kept (syntax-error rounds included).',
+  /* cài đặt */
+  '# engine, bundle Excalidraw và font đã nằm sẵn trong repo - render không cần mạng':
+    '# engine, Excalidraw bundle and fonts already live in the repo - rendering needs no network',
+  '# chạy thử ngay một template có sẵn': '# try a bundled template right away',
+  '✓ 03-byte-cells: 46 phần tử · 688×282 · chữ nhỏ nhất 14.5px': '✓ 03-byte-cells: 46 elements · 688×282 · smallest text 14.5px',
+  '# đặt vào chỗ Claude Code tìm skill': '# put it where Claude Code looks for skills',
+  'Sau đó chỉ cần nói': 'After that just say ',
+  '"vẽ hình cho đoạn này"': '"draw a figure for this passage"',
+  'trong bất kỳ dự án nào - skill tự nhận việc. Quy trình đầy đủ sáu bước và bộ luật hình nằm trong':
+    ' in any project - the skill picks up the job. The full six-step workflow and the drawing rules live in ',
+  /* footer + thuộc tính */
+  'Vẽ hình cho tài liệu kỹ thuật, blog và câu trả lời phỏng vấn.': 'Figures for technical docs, blogs and interview answers.',
+  'Mã nguồn mở · Excalidraw (MIT) · font Nunito, Patrick Hand, IBM Plex Mono ·':
+    'Open source · Excalidraw (MIT) · fonts Nunito, Patrick Hand, IBM Plex Mono · ',
+  'Đổi chế độ sáng tối': 'Toggle light/dark theme', 'Mã nguồn trên GitHub': 'Source on GitHub',
+  'Chọn model': 'Pick a model', 'Xem hình lớn': 'View figure large',
+  'Hình ví dụ chế độ sáng': 'Example figure, light theme', 'Hình ví dụ chế độ tối': 'Example figure, dark theme',
+  'Sequence có khung alt': 'Sequence with an alt frame', 'Swimlane nghiệp vụ': 'Business swimlane',
+  'Ẩn dụ xô token': 'Token bucket metaphor', 'Thanh so ngưỡng': 'Threshold bars',
+  'Pitch kinh doanh vẽ thành hình': 'Business pitch drawn as a figure',
+  'Giảng dạy vẽ thành hình': 'Teaching example drawn as a figure',
+  'Ghi chú lúc 2 giờ sáng vẽ thành hình': 'A 2 a.m. note drawn as a figure',
+  'Quy trình nội bộ vẽ thành hình': 'An internal process drawn as a figure',
+  'Bộ icon AWS': 'AWS icon set', 'Bộ icon Azure': 'Azure icon set', 'Bộ icon GCP': 'GCP icon set',
+  'Bộ icon Database và công cụ': 'Database and tools icon set',
+  'cạn connection pool': 'pool exhaustion',
+};
+
+const CASES_EN = [
+  { ten:'Branched sequence',
+    de:'Draw the figure for this passage from a caching article: the service reads Redis first with GET product:42. On a hit it returns immediately, ~1ms. On a miss it SELECTs from Postgres (~20ms), then SETs product:42 with a TTL of 300s, and only then returns. On updates the service UPDATEs Postgres first and then DELs product:42 instead of SETting it again, because two concurrent writes could leave a stale value behind.',
+    ket:[['2 rounds · 93k tokens','Compact, no client added'],['3 rounds · 100k tokens','Includes the reply, longest'],['1 round · 104k tokens','Most compact, drops the redundant reply'],['4 rounds','Three actors, the DEL reason sits in a note']] },
+  { ten:'Business swimlane',
+    de:'Draw the e-wallet account-opening flow by role. The customer enters a phone number and photographs their ID card. The system runs OCR and a face match: from 85% it auto-approves; 60 to under 85% goes to a human reviewer; below 60% is rejected. If approved, create the wallet and send an SMS; if rejected, the SMS states the reason and the customer may retry up to 3 times.',
+    ket:[['4 rounds · 116k tokens','Compact; one stray diamond?'],['3 rounds · 111k tokens','Correct but tall, has a diagonal'],['3 rounds · 104k tokens','Splits two columns inside one lane'],['6 rounds','Separate reject column, two review paths converge']] },
+  { ten:'Nested states',
+    de:'Draw the lifecycle of a monthly paid subscription: Trialing for 14 days; when the trial ends, with a card it becomes Active, without one Canceled. If a charge fails in Active it goes PastDue with retries on days 1, 3 and 7; success returns to Active, three failures go to Unpaid; Unpaid past 30 days becomes Canceled. Cancelling while Active keeps access until period end (cancel_at_period_end) then Canceled.',
+    ket:[['2 rounds · 104k tokens','Correct, Canceled in red'],['3 rounds · 109k tokens','Correct, cancel path takes the long way'],['2 rounds · 111k tokens','Clearest: the cancel flag is its own dashed box'],['5 rounds','The three retries are countable inside PastDue']] },
+  { ten:'ER crow’s foot',
+    de:'Draw a blog data model that shows why the join table is needed: users (id, email unique), posts (id, author_id, title, published_at), comments (id, post_id, user_id, body), tags (id, name unique), post_tags (post_id, tag_id, composite primary key). A user writes many posts, a post has many comments, posts and tags are many-to-many through post_tags.',
+    ket:[['1 round · 94k tokens','Clean, one render round'],['3 rounds · 109k tokens','Adds sample rows'],['2 rounds · 102k tokens','Adds dashed N-N edges and a legend'],['2 rounds','Join table in l4, N:N edges dashed']] },
+  { ten:'Two-flow system design',
+    de:'Draw a news feed architecture showing both the write and the read path. Write: client POSTs /posts to Post Service, stores in Posts DB, publishes a PostCreated event to Kafka, a fan-out worker inserts post_id into each follower’s feed cache (Redis, one list per user, max 800); authors above 1 million followers are not fanned out. Read: GET /feed hits Feed Service, pulls the list from Redis, and for big authors also pulls from Posts DB and merges.',
+    ket:[['4 rounds · 114k tokens','Complete, one label crossed by an arrow'],['6 rounds · 126k tokens','Richest, a few labels touch borders'],['2 rounds · 111k tokens','Cleanest, has an async legend'],['5 rounds','Posts DB sits between the two frames']] },
+  { ten:'Mechanism: byte cells',
+    de:'Draw C struct padding on a 64-bit machine: struct A { char a; int b; char c; } takes 12 bytes because of 3 padding bytes after a so that b lands at offset 4, plus 3 trailing padding bytes so the size divides by 4. Reordered as struct B { int b; char a; char c; } it takes only 8 bytes with 2 trailing padding bytes.',
+    ket:[['2 rounds · 107k tokens','Correct, no reason given for padding'],['2 rounds · 111k tokens','4-byte ruler marks and the reason'],['3 rounds · 104k tokens','Reason stated in an annotation'],['2 rounds','The byte ruler matches cell edges']] },
+  { ten:'Mechanism: threshold and time',
+    de:'Draw a cache stampede: key home:feed with TTL 60s, recomputation takes 2s from the DB. At second 60 the key expires; during the next 2 seconds 500 requests all miss and all run the heavy query, DB connections climb from 20 to 520 while max_connections is 200, so most get a "too many connections" error. With a mutex (SET lock NX EX 5) only the first request recomputes, the other 499 wait or use the stale value.',
+    ket:[['3 rounds · 104k tokens','Three threshold columns, loses time'],['5 rounds · 122k tokens','Two charts over time'],['5 rounds · 121k tokens','Richest but a bit busy'],['2 rounds','Two curves one axis, the real mutex command']] },
+  { ten:'Mechanism: timeline',
+    de:'Draw connection-pool exhaustion: a pool of 10 connections, each slow query holds one for 3s. With 14 concurrent requests, 10 get connections and 4 queue; connectionTimeoutMillis is 2000, so all 4 get a "timeout exceeded when trying to connect" error after 2s - before any connection is returned at second 3.',
+    ket:[['2 rounds · 103k tokens','Missing the connectionTimeoutMillis name'],['3 rounds · 109k tokens','Clean, complete'],['3 rounds · 111k tokens','All 14 bars countable by eye'],['5 rounds','14 countable bars, the 2s/3s marks line up']] },
+];
+
+/* bản gốc của từng text-node / attribute đã dịch, để đổi lại VI không lệch */
+const gocText = new Map(), gocAttr = new Map();
+const BO_QUA = new Set(['SCRIPT', 'STYLE']);
+
+function dichText() {
+  const xs = [];
+  const tw = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  while (tw.nextNode()) xs.push(tw.currentNode);
+  for (const x of xs) {
+    if (BO_QUA.has(x.parentElement?.nodeName)) continue;
+    if (x.parentElement?.closest?.('#heroframe')) continue;   /* SVG hero giữ nguyên ngôn ngữ gốc */
+    const k = x.nodeValue.trim();
+    if (!k) continue;
+    if (nn === 'en') {
+      if (DICH[k] !== undefined) {
+        if (!gocText.has(x)) gocText.set(x, x.nodeValue);
+        x.nodeValue = x.nodeValue.replace(k, DICH[k]);
+      }
+    } else if (gocText.has(x)) {
+      x.nodeValue = gocText.get(x);
+      gocText.delete(x);
+    }
+  }
+}
+
+function dichAttr() {
+  document.querySelectorAll('[alt],[aria-label],[data-ten],[data-c]').forEach(el => {
+    for (const a of ['alt', 'aria-label', 'data-ten', 'data-c']) {
+      const v = el.getAttribute(a);
+      if (!v) continue;
+      if (nn === 'en') {
+        if (DICH[v] !== undefined) {
+          if (!gocAttr.has(el)) gocAttr.set(el, {});
+          if (!(a in gocAttr.get(el))) gocAttr.get(el)[a] = v;
+          el.setAttribute(a, DICH[v]);
+        }
+      } else if (gocAttr.has(el) && a in gocAttr.get(el)) {
+        el.setAttribute(a, gocAttr.get(el)[a]);
+      }
+    }
+  });
+  if (nn === 'vi') gocAttr.clear();
+}
+
+/* cặp hình sáng/tối ở bước 4 không có data-base (hiện cố định một bản mỗi theme) */
+function dichHaicap() {
+  document.querySelectorAll('.haicap img').forEach(i => {
+    const m = i.src.match(/^(.*?)(-en)?-(light|dark)\.png$/);
+    if (m) i.src = m[1] + (nn === 'en' ? '-en' : '') + '-' + m[3] + '.png';
+  });
+}
+
+function dungGallery() {
+  const C = nn === 'en' ? CASES_EN : CASES;
+  gal.innerHTML = C.map(c => `
+  <div class="de">
+    <h3>${c.ten}</h3>
+    <details><summary>${nn === 'en' ? 'Show the brief' : 'Xem đề bài'}</summary><p class="q">${c.de}</p></details>
+    <div class="cot4" style="margin-top:14px">
+      ${MODELS.map((m, i) => `
+      <figure class="fig rv" data-base="images/cmp/${c.id}/${m[0]}">
+        <figcaption><b>${m[1]}</b><span>${c.ket[i][0]}</span></figcaption>
+        <img data-base="images/cmp/${c.id}/${m[0]}" src="images/cmp/${c.id}/${m[0]}-${dark ? 'dark' : 'light'}.png" alt="${m[1]}: ${c.ten}" loading="lazy">
+        <p>${c.ket[i][1]}</p>
+      </figure>`).join('')}
+    </div>
+  </div>`).join('');
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+}
+
+const nnBtn = document.getElementById('nn');
+function apNgonNgu(moi) {
+  nn = moi;
+  localStorage.setItem('nn', nn);
+  document.documentElement.lang = nn === 'en' ? 'en' : 'vi';
+  nnBtn.textContent = nn === 'en' ? 'VI' : 'EN';
+  nnBtn.setAttribute('aria-label', nn === 'en' ? 'Đổi sang tiếng Việt' : 'Switch to English');
+  apDungTheme();          /* cập nhật ảnh theo theme + hậu tố -en */
+  dichHaicap();
+  dichText();
+  dichAttr();
+  dungGallery();
+  /* hero: MVCC có bản EN, các hình còn lại giữ nguyên */
+  const mv = document.querySelector('#figswitch button[data-ten="MVCC Postgres"]');
+  if (mv) {
+    mv.dataset.svg = nn === 'en'
+      ? mv.dataset.svg.replace('mvcc-snapshot.svg', 'mvcc-snapshot-en.svg')
+      : mv.dataset.svg.replace('mvcc-snapshot-en.svg', 'mvcc-snapshot.svg');
+    if (mv.classList.contains('on')) veSvg(mv.dataset.svg, mv.dataset.ten);
+  }
+}
+nnBtn.onclick = () => apNgonNgu(nn === 'en' ? 'vi' : 'en');
+if (nn === 'en') apNgonNgu('en');
 </script>
 </body>
 </html>
