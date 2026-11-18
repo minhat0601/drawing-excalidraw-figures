@@ -53,11 +53,11 @@ section{padding:72px 0}
 /* nav */
 nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(8px);
   background:color-mix(in srgb,var(--paper) 82%,transparent);border-bottom:1px solid var(--line)}
-nav .wrap{display:flex;align-items:center;gap:16px;height:60px}
+nav .wrap{display:flex;align-items:center;gap:16px;height:60px;max-width:1280px}
 .logo{display:flex;align-items:center;gap:10px;font:21px var(--hand);color:var(--ink);text-decoration:none;white-space:nowrap}
 nav .links{display:flex;gap:2px;margin-left:auto}
 nav .hdbtn{display:flex;gap:8px;align-items:center;flex:none;margin-left:auto}
-nav .links a{color:var(--muted);text-decoration:none;font-size:14.5px;padding:6px 11px;border-radius:99px}
+nav .links a{color:var(--muted);text-decoration:none;font-size:14.5px;padding:6px 11px;border-radius:99px;white-space:nowrap}
 nav .links a:hover{color:var(--l4);background:var(--fill-soft)}
 #theme{border:1px solid var(--line);background:var(--card);color:var(--ink);
   font:700 13px var(--sans);padding:7px 15px;border-radius:99px;cursor:pointer;transition:.2s;
@@ -240,8 +240,10 @@ footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
 #lb figcaption{position:fixed;bottom:18px;left:0;right:0;text-align:center;color:#fff;
   font:17px var(--hand);text-shadow:0 1px 6px rgba(0,0,0,.5)}
 
-@media(max-width:1000px){
+@media(max-width:1150px){
   nav .links{display:none}
+}
+@media(max-width:1000px){
   .hero .wrap{grid-template-columns:minmax(0,1fr);gap:40px}
   .figcard svg{height:min(360px,48vh)}
   .muc4{grid-template-columns:repeat(2,1fr)}
