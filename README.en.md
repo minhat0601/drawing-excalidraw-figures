@@ -5,7 +5,7 @@
 <p align="center"><img src="docs/images/examples/11-sequence-en-light.png" alt="Sequence figure drawn by the skill" width="620"></p>
 
 Turn a technical passage, or a rough idea that exists only as words, into a hand-drawn Excalidraw figure - not a row of boxes joined by arrows, but a figure where time becomes length, data becomes cells with real values, and a limit becomes a line.
-A skill for Claude Code, or any agent that can read SKILL.md: you hand over the text, the agent writes a short JSON spec, runs one command, and gets four files.
+A skill for Claude Code, Codex CLI, or any agent that can read SKILL.md: you hand over the text, the agent writes a short JSON spec, runs one command, and gets four files.
 
 ```
 fig.excalidraw   the source scene - drop it on excalidraw.com to keep editing
@@ -72,6 +72,27 @@ For Claude Code to use it as a skill, put the whole folder into your skills dire
 mkdir -p ~/.claude/skills
 cp -R drawing-excalidraw-figures ~/.claude/skills/
 ```
+
+Codex CLI reads the same `SKILL.md` standard - only the install folder differs.
+One clone serves both through a symlink:
+
+```bash
+mkdir -p ~/.codex/skills
+ln -s ~/.claude/skills/drawing-excalidraw-figures ~/.codex/skills/drawing-excalidraw-figures
+```
+
+## Other agents: Antigravity, Cursor, Gemini CLI, Copilot
+
+At its core the skill is a Markdown brief plus a Python CLI, so any agent that can read files and run commands can use it - Antigravity, Cursor, Windsurf, Gemini CLI, the GitHub Copilot coding agent.
+For tools without a skills folder, add a few lines to their rules file (`AGENTS.md`, `.cursor/rules`, `.windsurfrules`, `.github/copilot-instructions.md`):
+
+```text
+When asked to draw a diagram, read <path-to-the-repo>/SKILL.md
+and follow its six-step workflow exactly.
+```
+
+Step 6 (looking at both PNGs) needs a multimodal agent; every major model qualifies.
+A text-only model can still draw - you just open the PNGs yourself.
 
 `ve.py` walks up from its own location to find `engine/`, so it works placed under `~/.claude/skills/` or inside a larger project's `.claude/skills/`.
 

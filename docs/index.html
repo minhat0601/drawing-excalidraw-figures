@@ -532,8 +532,11 @@ footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
 <span class="g">✓ 03-byte-cells: 46 phần tử · 688×282 · chữ nhỏ nhất 14.5px</span>
 
 <span class="c"># đặt vào chỗ Claude Code tìm skill</span>
-<span class="k">$</span> git clone https://github.com/nv-minh/drawing-excalidraw-figures.git ~/.claude/skills/drawing-excalidraw-figures</pre>
-    <p class="note">Sau đó chỉ cần nói <em>"vẽ hình cho đoạn này"</em> trong bất kỳ dự án nào - skill tự nhận việc. Quy trình đầy đủ sáu bước và bộ luật hình nằm trong <a href="https://github.com/nv-minh/drawing-excalidraw-figures/blob/main/SKILL.md">SKILL.md</a>.</p>
+<span class="k">$</span> git clone https://github.com/nv-minh/drawing-excalidraw-figures.git ~/.claude/skills/drawing-excalidraw-figures
+
+<span class="c"># Codex CLI đọc cùng chuẩn SKILL.md - một bản dùng cho cả hai</span>
+<span class="k">$</span> ln -s ~/.claude/skills/drawing-excalidraw-figures ~/.codex/skills/drawing-excalidraw-figures</pre>
+    <p class="note">Sau đó chỉ cần nói <em>"vẽ hình cho đoạn này"</em> trong bất kỳ dự án nào - skill tự nhận việc. Codex CLI đọc cùng chuẩn SKILL.md, chỉ khác thư mục cài như trên. Tool khác (Antigravity, Cursor, Gemini CLI, Copilot): thêm vài dòng trỏ về SKILL.md trong file rules của tool đó. Quy trình đầy đủ sáu bước và bộ luật hình nằm trong <a href="https://github.com/nv-minh/drawing-excalidraw-figures/blob/main/SKILL.md">SKILL.md</a>.</p>
   </div>
 </section>
 
@@ -853,10 +856,13 @@ const DICH = {
   '# chạy thử ngay một template có sẵn': '# try a bundled template right away',
   '✓ 03-byte-cells: 46 phần tử · 688×282 · chữ nhỏ nhất 14.5px': '✓ 03-byte-cells: 46 elements · 688×282 · smallest text 14.5px',
   '# đặt vào chỗ Claude Code tìm skill': '# put it where Claude Code looks for skills',
+  '# Codex CLI đọc cùng chuẩn SKILL.md - một bản dùng cho cả hai': '# Codex CLI reads the same SKILL.md standard - one clone serves both',
   'Sau đó chỉ cần nói': 'After that just say ',
   '"vẽ hình cho đoạn này"': '"draw a figure for this passage"',
   'trong bất kỳ dự án nào - skill tự nhận việc. Quy trình đầy đủ sáu bước và bộ luật hình nằm trong':
     ' in any project - the skill picks up the job. The full six-step workflow and the drawing rules live in ',
+  'Codex CLI đọc cùng chuẩn SKILL.md, chỉ khác thư mục cài như trên. Tool khác (Antigravity, Cursor, Gemini CLI, Copilot): thêm vài dòng trỏ về SKILL.md trong file rules của tool đó.':
+    'Codex CLI reads the same SKILL.md standard from its own skills folder, as above. Other tools (Antigravity, Cursor, Gemini CLI, Copilot): point their rules file at SKILL.md with a few lines.',
   /* footer + thuộc tính */
   'Vẽ hình cho tài liệu kỹ thuật, blog và câu trả lời phỏng vấn.': 'Figures for technical docs, blogs and interview answers.',
   'Mã nguồn mở · Excalidraw (MIT) · font Nunito, Patrick Hand, IBM Plex Mono ·':

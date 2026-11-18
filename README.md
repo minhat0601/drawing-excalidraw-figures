@@ -5,7 +5,7 @@
 <p align="center"><img src="docs/images/examples/11-sequence-light.png" alt="Hình sequence vẽ bằng skill" width="620"></p>
 
 Biến một đoạn văn kỹ thuật, hay một ý tưởng còn thô mới chỉ có chữ, thành hình Excalidraw nét vẽ tay - không phải hàng hộp nối mũi tên, mà hình làm cho thời gian thành độ dài, dữ liệu thành ô có giá trị thật, giới hạn thành một đường kẻ.
-Skill cho Claude Code, hoặc agent nào đọc được SKILL.md: bạn đưa đoạn văn, agent viết spec JSON ngắn, chạy một lệnh, ra bốn file.
+Skill cho Claude Code, Codex CLI, hoặc agent nào đọc được SKILL.md: bạn đưa đoạn văn, agent viết spec JSON ngắn, chạy một lệnh, ra bốn file.
 
 ```
 fig.excalidraw   cảnh gốc - kéo vào excalidraw.com để sửa tiếp
@@ -72,6 +72,27 @@ open /tmp/fig/03-byte-cells-light.png
 mkdir -p ~/.claude/skills
 cp -R drawing-excalidraw-figures ~/.claude/skills/
 ```
+
+Codex CLI đọc cùng chuẩn `SKILL.md`, chỉ khác thư mục cài.
+Một bản duy nhất phục vụ cả hai bằng symlink:
+
+```bash
+mkdir -p ~/.codex/skills
+ln -s ~/.claude/skills/drawing-excalidraw-figures ~/.codex/skills/drawing-excalidraw-figures
+```
+
+## Agent khác: Antigravity, Cursor, Gemini CLI, Copilot
+
+Skill về bản chất là một bản dẫn Markdown cộng một CLI Python, nên agent nào đọc được file và chạy được lệnh đều dùng được - Antigravity, Cursor, Windsurf, Gemini CLI, GitHub Copilot coding agent.
+Tool không có thư mục skill thì thêm vài dòng vào file rules của nó (`AGENTS.md`, `.cursor/rules`, `.windsurfrules`, `.github/copilot-instructions.md`):
+
+```text
+Khi được yêu cầu vẽ sơ đồ, đọc <đường-dẫn-đến-repo>/SKILL.md
+và làm theo đúng quy trình sáu bước trong đó.
+```
+
+Bước 6 (soi hai PNG) cần agent nhìn được ảnh; các model chính đều làm được.
+Model không đa phương tiện vẫn vẽ được, chỉ cần bạn tự mở PNG ra soi.
 
 `ve.py` tự tìm thư mục `engine/` đi lên từ vị trí của nó, nên đặt ở `.claude/skills/` của người dùng hay của một dự án lớn hơn đều chạy được.
 
