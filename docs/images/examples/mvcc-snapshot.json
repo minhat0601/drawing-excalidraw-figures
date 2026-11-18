@@ -22,7 +22,7 @@
  {"t":"text","x":440,"y":170,"text":"SELECT 2","size":14,"color":"muted"},
  {"t":"text","x":558,"y":170,"text":"COMMIT","size":14,"color":"muted"},
  {"t":"box","id":"b1","x":290,"y":188,"w":150,"h":30,"text":"B: INSERT + COMMIT","size":14,"fill":"soft"},
- {"t":"arrow","from":"b1","to":"kq2","color":"l4","text":"SELECT 2 thấy","size":14},
+ {"t":"arrow","from":"b1","to":"kq2","toSide":"bottom","color":"l4","text":"SELECT 2 thấy","size":14},
  {"t":"text","x":120,"y":232,"text":"hai câu SELECT giống hệt nhau, hai kết quả","size":16,"color":"muted"},
 
  {"t":"text","x":0,"y":304,"text":"REPEATABLE READ","size":20},
@@ -48,7 +48,7 @@
  {"t":"text","x":322,"y":470,"text":"B COMMIT","size":14,"color":"muted"},
  {"t":"text","x":440,"y":470,"text":"SELECT 2","size":14,"color":"muted"},
  {"t":"text","x":558,"y":470,"text":"COMMIT","size":14,"color":"muted"},
- {"t":"text","x":608,"y":470,"text":"SELECT sau COMMIT","size":14,"color":"muted"},
+ {"t":"text","x":624,"y":470,"text":"sau COMMIT","size":14,"color":"muted"},
  {"t":"box","id":"b2","x":290,"y":488,"w":150,"h":30,"text":"B: INSERT + COMMIT","size":14,"fill":"soft"},
  {"t":"text","x":290,"y":524,"text":"dòng mới: A không được phép thấy","size":14,"color":"muted"},
  {"t":"text","x":120,"y":560,"text":"số chỉ đổi khi transaction đã kết thúc","size":16,"color":"muted"}
