@@ -955,7 +955,8 @@ function dichHaicap() {
 }
 
 function dungGallery() {
-  const C = nn === 'en' ? CASES_EN : CASES;
+  /* CASES_EN chỉ chứa bản dịch (ten/de/ket); id và thứ tự lấy từ CASES gốc */
+  const C = nn === 'en' ? CASES.map((c, i) => ({...c, ...CASES_EN[i]})) : CASES;
   gal.innerHTML = C.map(c => `
   <div class="de">
     <h3>${c.ten}</h3>
