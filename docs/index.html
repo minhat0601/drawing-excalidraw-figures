@@ -178,6 +178,12 @@ h1{font:400 clamp(38px,4.4vw,56px)/1.14 var(--hand);margin:0 0 18px;letter-spaci
 .mau figcaption{flex:1;display:flex;align-items:flex-end}
 .mau figcaption{font:16px var(--hand);color:var(--muted);padding:8px 2px 0}
 
+#demo-mau-moi{margin-top:38px}
+#demo-mau-moi h3{font:24px var(--hand);margin:0}
+#demo-mau-moi p{color:var(--muted);margin:5px 0 0}
+#demo-mau-moi .mau{margin-top:18px}
+.demo-zoom{padding:0;border:0;background:none;border-radius:8px;width:100%;display:block}
+
 /* so sánh */
 .sosanh{background:var(--card);border-block:1px solid var(--line)}
 .sosanh .lead{font-size:17px;color:var(--muted);max-width:70ch;margin:4px 0 26px}
@@ -465,14 +471,52 @@ footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
         <ul><li>vòng nhân quả</li><li>ma trận 2x2</li><li>phễu</li><li>concept map</li><li><a href="https://github.com/minhat0601/drawing-excalidraw-figures/blob/main/examples/30-mind-map.json">Mind map</a></li><li><a href="https://github.com/minhat0601/drawing-excalidraw-figures/blob/main/examples/31-assumption-map.json">Assumption map</a></li><li><a href="https://github.com/minhat0601/drawing-excalidraw-figures/blob/main/examples/32-story-map.json">Story map</a></li></ul>
       </div>
     </div>
+    <div id="demo-mau-moi">
+      <h3>Demo 8 mẫu mới</h3>
+      <p>Bấm ảnh để phóng to. Bấm tên mẫu để mở spec JSON.</p>
+      <div class="mau">
+        <figure>
+          <button type="button" class="demo-zoom"><img data-base="images/examples/30-mind-map" src="images/examples/30-mind-map-light.png" alt="Mind map" loading="lazy"></button>
+          <figcaption><a href="https://github.com/minhat0601/drawing-excalidraw-figures/blob/main/examples/30-mind-map.json">Mind map</a></figcaption>
+        </figure>
+        <figure>
+          <button type="button" class="demo-zoom"><img data-base="images/examples/31-assumption-map" src="images/examples/31-assumption-map-light.png" alt="Assumption map" loading="lazy"></button>
+          <figcaption><a href="https://github.com/minhat0601/drawing-excalidraw-figures/blob/main/examples/31-assumption-map.json">Assumption map</a></figcaption>
+        </figure>
+        <figure>
+          <button type="button" class="demo-zoom"><img data-base="images/examples/32-story-map" src="images/examples/32-story-map-light.png" alt="Story map" loading="lazy"></button>
+          <figcaption><a href="https://github.com/minhat0601/drawing-excalidraw-figures/blob/main/examples/32-story-map.json">Story map</a></figcaption>
+        </figure>
+        <figure>
+          <button type="button" class="demo-zoom"><img data-base="images/examples/33-request-walkthrough" src="images/examples/33-request-walkthrough-light.png" alt="Request walkthrough" loading="lazy"></button>
+          <figcaption><a href="https://github.com/minhat0601/drawing-excalidraw-figures/blob/main/examples/33-request-walkthrough.json">Request walkthrough</a></figcaption>
+        </figure>
+        <figure>
+          <button type="button" class="demo-zoom"><img data-base="images/examples/34-async-job-lifecycle" src="images/examples/34-async-job-lifecycle-light.png" alt="Async job lifecycle" loading="lazy"></button>
+          <figcaption><a href="https://github.com/minhat0601/drawing-excalidraw-figures/blob/main/examples/34-async-job-lifecycle.json">Async job lifecycle</a></figcaption>
+        </figure>
+        <figure>
+          <button type="button" class="demo-zoom"><img data-base="images/examples/35-pr-impact-map" src="images/examples/35-pr-impact-map-light.png" alt="PR impact map" loading="lazy"></button>
+          <figcaption><a href="https://github.com/minhat0601/drawing-excalidraw-figures/blob/main/examples/35-pr-impact-map.json">PR impact map</a></figcaption>
+        </figure>
+        <figure>
+          <button type="button" class="demo-zoom"><img data-base="images/examples/36-incident-timeline" src="images/examples/36-incident-timeline-light.png" alt="Incident timeline" loading="lazy"></button>
+          <figcaption><a href="https://github.com/minhat0601/drawing-excalidraw-figures/blob/main/examples/36-incident-timeline.json">Incident timeline</a></figcaption>
+        </figure>
+        <figure>
+          <button type="button" class="demo-zoom"><img data-base="images/examples/37-trace-waterfall" src="images/examples/37-trace-waterfall-light.png" alt="Trace waterfall" loading="lazy"></button>
+          <figcaption><a href="https://github.com/minhat0601/drawing-excalidraw-figures/blob/main/examples/37-trace-waterfall.json">Trace waterfall</a></figcaption>
+        </figure>
+      </div>
+    </div>
     <div class="mau">
-      <figure><img data-base="images/examples/mvcc-snapshot" src="images/examples/mvcc-snapshot-light.png" alt="MVCC Postgres: ảnh chụp lấy lúc nào" loading="lazy"><figcaption>MVCC Postgres: ảnh chụp lấy lúc nào</figcaption></figure>
-      <figure><img data-base="images/examples/11-sequence" src="images/examples/11-sequence-light.png" alt="Sequence có khung alt" loading="lazy"><figcaption>sequence với khung alt/else</figcaption></figure>
-      <figure><img data-base="images/examples/22-swimlane" src="images/examples/22-swimlane-light.png" alt="Swimlane nghiệp vụ" loading="lazy"><figcaption>swimlane nghiệp vụ ba vai</figcaption></figure>
-      <figure><img data-base="images/examples/24-er-crowfoot" src="images/examples/24-er-crowfoot-light.png" alt="ER crow's foot" loading="lazy"><figcaption>ER với chân quạ và PK/FK</figcaption></figure>
-      <figure><img data-base="images/examples/08-metaphor-token-bucket" src="images/examples/08-metaphor-token-bucket-light.png" alt="Ẩn dụ xô token" loading="lazy"><figcaption>ẩn dụ cái xô token</figcaption></figure>
-      <figure><img data-base="images/examples/16-layer-lanes" src="images/examples/16-layer-lanes-light.png" alt="Layer lanes" loading="lazy"><figcaption>layer lanes: tầng nào làm việc gì</figcaption></figure>
-      <figure><img data-base="images/examples/05-threshold" src="images/examples/05-threshold-light.png" alt="Thanh so ngưỡng" loading="lazy"><figcaption>thanh vượt ngưỡng nét đứt</figcaption></figure>
+      <figure><img data-localized data-base="images/examples/mvcc-snapshot" src="images/examples/mvcc-snapshot-light.png" alt="MVCC Postgres: ảnh chụp lấy lúc nào" loading="lazy"><figcaption>MVCC Postgres: ảnh chụp lấy lúc nào</figcaption></figure>
+      <figure><img data-localized data-base="images/examples/11-sequence" src="images/examples/11-sequence-light.png" alt="Sequence có khung alt" loading="lazy"><figcaption>sequence với khung alt/else</figcaption></figure>
+      <figure><img data-localized data-base="images/examples/22-swimlane" src="images/examples/22-swimlane-light.png" alt="Swimlane nghiệp vụ" loading="lazy"><figcaption>swimlane nghiệp vụ ba vai</figcaption></figure>
+      <figure><img data-localized data-base="images/examples/24-er-crowfoot" src="images/examples/24-er-crowfoot-light.png" alt="ER crow's foot" loading="lazy"><figcaption>ER với chân quạ và PK/FK</figcaption></figure>
+      <figure><img data-localized data-base="images/examples/08-metaphor-token-bucket" src="images/examples/08-metaphor-token-bucket-light.png" alt="Ẩn dụ xô token" loading="lazy"><figcaption>ẩn dụ cái xô token</figcaption></figure>
+      <figure><img data-localized data-base="images/examples/16-layer-lanes" src="images/examples/16-layer-lanes-light.png" alt="Layer lanes" loading="lazy"><figcaption>layer lanes: tầng nào làm việc gì</figcaption></figure>
+      <figure><img data-localized data-base="images/examples/05-threshold" src="images/examples/05-threshold-light.png" alt="Thanh so ngưỡng" loading="lazy"><figcaption>thanh vượt ngưỡng nét đứt</figcaption></figure>
     </div>
   </div>
 </section>
@@ -570,8 +614,7 @@ function apDungTheme(){
   document.getElementById('icon-den').style.display = dark ? 'none' : '';
   document.getElementById('icon-sang').style.display = dark ? '' : 'none';
   document.querySelectorAll('img[data-base]').forEach(i => {
-    /* hình trong examples/ có bản tiếng Anh: chèn -en trước hậu tố theme */
-    const en = nn === 'en' && i.dataset.base.startsWith('images/examples/') ? '-en' : '';
+    const en = nn === 'en' && i.hasAttribute('data-localized') ? '-en' : '';
     i.src = i.dataset.base + en + (dark ? '-dark.png' : '-light.png');
   });
 }
@@ -714,7 +757,10 @@ document.querySelectorAll('.ytuong figure').forEach(f => {
   img.addEventListener('click', () => moLb(f, f.querySelector('.mdl .on').textContent + ': ' + cap.textContent));
 });
 document.querySelectorAll('.mau figure').forEach(f => {
-  f.addEventListener('click', () => moLb(f, f.querySelector('figcaption').textContent));
+  f.addEventListener('click', e => {
+    if (e.target.closest('a')) return;
+    moLb(f, f.querySelector('figcaption').textContent);
+  });
 });
 document.querySelectorAll('#icontabs button').forEach(b => b.addEventListener('click', () => {
   document.querySelectorAll('#icontabs button').forEach(x => x.classList.toggle('on', x === b));
@@ -791,6 +837,8 @@ const DICH = {
   '✗ lỗi cứng dừng ngay; • nhắc nhẹ để bạn tự quyết. Cái đo được bằng máy thì máy gác - hình có đọc được hay không là việc của mắt.':
     '✗ hard errors stop the run; • soft reminders are your call. What a machine can measure, the machine gates - whether the figure reads is your eye’s job.',
   /* loại hình */
+  'Demo 8 mẫu mới': 'Eight new template demos',
+  'Bấm ảnh để phóng to. Bấm tên mẫu để mở spec JSON.': 'Select an image to zoom in. Select a template name to open its JSON spec.',
   '37 loại hình có template sẵn': '37 figure types with ready templates',
   'Trong Claude Code, câu “vẽ ý tưởng này” chọn hình theo cấu trúc của note. Câu “vẽ flow chạy” chọn hình theo code, diff, Log hoặc Trace đang có.': 'In Claude Code, “draw this idea” uses the structure of your notes to choose a figure. “Draw how this runs” uses the available code, diff, logs, or trace.',
   'Luồng và nghiệp vụ': 'Flows and business', 'Dữ liệu': 'Data', 'Thời gian và ngưỡng': 'Time and thresholds',
