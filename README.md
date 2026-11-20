@@ -7,6 +7,8 @@
 Biến một đoạn văn kỹ thuật, hay một ý tưởng còn thô mới chỉ có chữ, thành hình Excalidraw nét vẽ tay - không phải hàng hộp nối mũi tên, mà hình làm cho thời gian thành độ dài, dữ liệu thành ô có giá trị thật, giới hạn thành một đường kẻ.
 Skill cho Claude Code, Codex CLI, hoặc agent nào đọc được SKILL.md: bạn đưa đoạn văn, agent viết spec JSON ngắn, chạy một lệnh, ra bốn file.
 
+[Xem demo 8 mẫu mới](#demo-8-mẫu-mới)
+
 ```
 fig.excalidraw   cảnh gốc - kéo vào excalidraw.com để sửa tiếp
 fig.svg          SVG tĩnh, màu theo token var(--token), chạy chế độ sáng lẫn tối
@@ -125,6 +127,26 @@ Các template ban đầu gồm request flow, anatomy, byte cells, timeline, thre
 Tám mẫu bổ sung gồm Mind map, Assumption map, Story map, Request walkthrough, Async job lifecycle, PR impact map, Incident timeline và Trace waterfall. Mỗi mẫu là một spec JSON chạy được, với nhãn tiếng Việt.
 
 Trong Claude Code, “vẽ ý tưởng này” chọn hình theo cấu trúc của note. “Vẽ flow chạy” chọn theo nguồn đang có, chẳng hạn đặt đường dẫn code cạnh từng bước hoặc đặt các span lên cùng trục thời gian.
+
+### Demo 8 mẫu mới
+
+Bấm tên mẫu để mở spec JSON và thử render.
+
+| [Mind map](examples/30-mind-map.json) | [Assumption map](examples/31-assumption-map.json) |
+| --- | --- |
+| <picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/examples/30-mind-map-dark.png"><img alt="Gom ý cho app ghi chú" src="docs/images/examples/30-mind-map-light.png" width="365"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/examples/31-assumption-map-dark.png"><img alt="Giả định cần kiểm chứng trước MVP" src="docs/images/examples/31-assumption-map-light.png" width="365"></picture> |
+
+| [Story map](examples/32-story-map.json) | [Request walkthrough](examples/33-request-walkthrough.json) |
+| --- | --- |
+| <picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/examples/32-story-map-dark.png"><img alt="Chia hành trình người dùng thành MVP và V2" src="docs/images/examples/32-story-map-light.png" width="365"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/examples/33-request-walkthrough-dark.png"><img alt="Lần theo POST /orders và nhánh 401" src="docs/images/examples/33-request-walkthrough-light.png" width="365"></picture> |
+
+| [Async job lifecycle](examples/34-async-job-lifecycle.json) | [PR impact map](examples/35-pr-impact-map.json) |
+| --- | --- |
+| <picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/examples/34-async-job-lifecycle-dark.png"><img alt="Worker thử lại job và chuyển vào DLQ" src="docs/images/examples/34-async-job-lifecycle-light.png" width="365"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/examples/35-pr-impact-map-dark.png"><img alt="So sánh luồng gửi email trước và sau PR" src="docs/images/examples/35-pr-impact-map-light.png" width="365"></picture> |
+
+| [Incident timeline](examples/36-incident-timeline.json) | [Trace waterfall](examples/37-trace-waterfall.json) |
+| --- | --- |
+| <picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/examples/36-incident-timeline-dark.png"><img alt="Đặt Deploy, cảnh báo và rollback trên cùng trục giờ" src="docs/images/examples/36-incident-timeline-light.png" width="365"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/examples/37-trace-waterfall-dark.png"><img alt="Đọc thời lượng và các span chạy song song" src="docs/images/examples/37-trace-waterfall-light.png" width="365"></picture> |
 
 ## Màu là nghĩa
 

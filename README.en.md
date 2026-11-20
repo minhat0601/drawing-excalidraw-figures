@@ -7,6 +7,8 @@
 Turn a technical passage, or a rough idea that exists only as words, into a hand-drawn Excalidraw figure - not a row of boxes joined by arrows, but a figure where time becomes length, data becomes cells with real values, and a limit becomes a line.
 A skill for Claude Code, Codex CLI, or any agent that can read SKILL.md: you hand over the text, the agent writes a short JSON spec, runs one command, and gets four files.
 
+[See all eight new demos](#eight-new-template-demos)
+
 ```
 fig.excalidraw   the source scene - drop it on excalidraw.com to keep editing
 fig.svg          static SVG, colors as var(--token), correct in light and dark mode
@@ -125,6 +127,26 @@ The original set covers request flow, anatomy, byte cells, timeline, threshold, 
 Eight further templates cover mind maps, assumption maps, story maps, request walkthroughs, async job lifecycles, PR impact maps, incident timelines, and Trace waterfalls. Each example is a runnable JSON spec.
 
 Claude Code selects a template based on the question and the source. Loose notes can become a mind map, source code can become a request walkthrough, and span timing can become a Trace waterfall.
+
+### Eight new template demos
+
+Select a template name to open its runnable JSON spec. The figures use Vietnamese labels.
+
+| [Mind map](examples/30-mind-map.json) | [Assumption map](examples/31-assumption-map.json) |
+| --- | --- |
+| <picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/examples/30-mind-map-dark.png"><img alt="Grouping ideas for a notes app" src="docs/images/examples/30-mind-map-light.png" width="365"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/examples/31-assumption-map-dark.png"><img alt="Assumptions to test before the MVP" src="docs/images/examples/31-assumption-map-light.png" width="365"></picture> |
+
+| [Story map](examples/32-story-map.json) | [Request walkthrough](examples/33-request-walkthrough.json) |
+| --- | --- |
+| <picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/examples/32-story-map-dark.png"><img alt="Splitting the user journey into MVP and V2" src="docs/images/examples/32-story-map-light.png" width="365"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/examples/33-request-walkthrough-dark.png"><img alt="Following POST /orders and its 401 branch" src="docs/images/examples/33-request-walkthrough-light.png" width="365"></picture> |
+
+| [Async job lifecycle](examples/34-async-job-lifecycle.json) | [PR impact map](examples/35-pr-impact-map.json) |
+| --- | --- |
+| <picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/examples/34-async-job-lifecycle-dark.png"><img alt="A Worker retries a job and sends it to the DLQ" src="docs/images/examples/34-async-job-lifecycle-light.png" width="365"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/examples/35-pr-impact-map-dark.png"><img alt="Comparing email delivery before and after a PR" src="docs/images/examples/35-pr-impact-map-light.png" width="365"></picture> |
+
+| [Incident timeline](examples/36-incident-timeline.json) | [Trace waterfall](examples/37-trace-waterfall.json) |
+| --- | --- |
+| <picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/examples/36-incident-timeline-dark.png"><img alt="Putting deployment, alert, and rollback on one timeline" src="docs/images/examples/36-incident-timeline-light.png" width="365"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/examples/37-trace-waterfall-dark.png"><img alt="Reading span durations and overlap" src="docs/images/examples/37-trace-waterfall-light.png" width="365"></picture> |
 
 ## Color is meaning
 
