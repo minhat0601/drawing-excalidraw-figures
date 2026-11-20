@@ -1,0 +1,22 @@
+{"_": "Align before and after across the same call sites. Highlight the behavior that changed and show the observable effect.",
+ "elements": [
+ {"t":"text","x":0,"y":0,"text":"PR · Chặn gửi email trùng","size":26,"color":"ink"},
+ {"t":"text","x":0,"y":38,"text":"Ví dụ minh họa · cùng một webhook tới hai lần","size":15,"color":"muted"},
+ {"t":"text","x":130,"y":92,"text":"Trước PR","size":20,"color":"ink"},
+ {"t":"text","x":406,"y":92,"text":"Sau PR","size":20,"color":"l4"},
+ {"t":"text","x":0,"y":152,"text":"Caller","size":17,"color":"muted"},
+ {"t":"text","x":0,"y":248,"text":"Handler","size":17,"color":"muted"},
+ {"t":"text","x":0,"y":348,"text":"Side effect","size":17,"color":"muted"},
+ {"t":"box","id":"b1","x":130,"y":133,"w":206,"h":56,"text":"Webhook: evt_42","size":17,"color":"ink"},
+ {"t":"box","id":"a1","x":406,"y":133,"w":206,"h":56,"text":"Webhook: evt_42","size":17,"color":"ink"},
+ {"t":"box","id":"b2","x":130,"y":228,"w":206,"h":58,"text":"Xử lý cả hai lần","size":17,"color":"ink"},
+ {"t":"box","id":"a2","x":406,"y":228,"w":206,"h":58,"text":"Bỏ qua event ID cũ","size":17,"color":"l4","fill":"l4"},
+ {"t":"box","id":"b3","x":130,"y":327,"w":206,"h":58,"text":"Queue nhận 2 job","size":17,"color":"err","fill":"err"},
+ {"t":"box","id":"a3","x":406,"y":327,"w":206,"h":58,"text":"Queue nhận 1 job","size":17,"color":"node","fill":"node"},
+ {"t":"arrow","from":"b1","to":"b2"},
+ {"t":"arrow","from":"b2","to":"b3"},
+ {"t":"arrow","from":"a1","to":"a2"},
+ {"t":"arrow","from":"a2","to":"a3"},
+ {"t":"line","points":[[0,417],[612,417]],"color":"muted"},
+ {"t":"text","x":0,"y":435,"text":"Điểm đổi trong diff minh họa · webhook/handler.ts:44","size":15,"color":"muted"}
+]}

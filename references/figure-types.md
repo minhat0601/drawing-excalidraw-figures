@@ -556,6 +556,38 @@ Then the idea is a spectrum: draw one axis with options as points on it.
 **Common failure:** every concept linked to every other.
 Go back to the "This idea really says that" sentence of step 1 and keep only the edges that serve it.
 
+## 30 Mind map
+
+Use a right-facing `tree` with `lines: true` to group loose notes under a central idea. Each level should answer “what belongs under this topic?” Keep siblings in the writer's words. When the edges need verbs like “causes” or “depends on”, use a concept map.
+
+## 31 Assumption map
+
+Place available evidence and assumptions in separate regions. Link each consequential assumption to the decision or experiment it can change. Keep the source of evidence visible and phrase untested claims as things to check. Use `box`, `line`, and short notes.
+
+## 32 Story map
+
+Keep user activities in a fixed reading order across the top. Align stories under their activity. Use one horizontal slice per release and make sure the MVP spans the activities it needs to complete the journey. Keep any unassigned story visible if it matters, without assigning it to a release yourself.
+
+## 33 Request walkthrough
+
+Start at the actual entry point in the project and follow the code to the response and side effects. Put short `file:line` references beside the important steps and label any path inferred from code. Include a distinct branch only when the source supports it. Use a narrow vertical spine with room for evidence on the side.
+
+## 34 Async job lifecycle
+
+Show the Queue and Worker handoffs in a short sequence panel. Put job states in a separate panel so a message and a state transition read differently. Name the trigger for each retry and terminal outcome. Copy attempt counts, backoff and DLQ behavior from code or config when present.
+
+## 35 PR impact map
+
+Use the same rows for caller, changed step and effect on both sides of a before/after. Find the changed step in the diff and follow enough surrounding code to show its effect. Cite the hunk or revision and visually accent the change.
+
+## 36 Incident timeline
+
+Place observations on one clock with explicit units, time zone and source. Use proportional spacing for comparable timestamps. Keep hypotheses in a distinct note and list the evidence that could confirm them. Leave timing gaps visible if the record is incomplete.
+
+## 37 Trace waterfall
+
+Use a shared horizontal time scale. Draw each span as a bar starting at its offset from the Trace origin, with width proportional to its duration. Give overlapping spans their own rows and preserve parent/child context where it matters. Report timing as recorded, including gaps; elapsed request time comes from the root span.
+
 ## Rare figure types
 
 | Need to show | How to build |

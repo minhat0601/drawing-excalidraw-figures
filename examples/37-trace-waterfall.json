@@ -1,0 +1,20 @@
+{"_": "Map span start offsets and durations onto a common scale. Horizontal overlap means spans ran concurrently. Timing data here is illustrative.",
+ "elements": [
+ {"t":"text","x":0,"y":0,"text":"Trace · POST /orders mất 800 ms","size":26,"color":"ink"},
+ {"t":"text","x":0,"y":40,"text":"Ví dụ minh họa · mốc 0 ms tính từ lúc request vào API","size":15,"color":"muted"},
+ {"t":"line","points":[[151,99],[151,359]],"color":"muted","dashed":true},
+ {"t":"line","points":[[256,99],[256,359]],"color":"muted","dashed":true},
+ {"t":"line","points":[[361,99],[361,359]],"color":"muted","dashed":true},
+ {"t":"line","points":[[466,99],[466,359]],"color":"muted","dashed":true},
+ {"t":"line","points":[[571,99],[571,359]],"color":"muted","dashed":true},
+ {"t":"text","x":0,"y":108,"text":"API · 800 ms","size":17,"color":"ink"},
+ {"t":"text","x":0,"y":174,"text":"DB · 180 ms","size":17,"color":"ink"},
+ {"t":"text","x":0,"y":237,"text":"Inventory · 480 ms","size":17,"color":"ink"},
+ {"t":"text","x":0,"y":300,"text":"Shipping · 310 ms","size":17,"color":"ink"},
+ {"t":"box","id":"api","x":151,"y":102,"w":420,"h":30,"text":"","size":17,"color":"l4","fill":"l4"},
+ {"t":"box","id":"db","x":172,"y":168,"w":94.5,"h":30,"text":"","size":17,"color":"ink","fill":"soft"},
+ {"t":"box","id":"inventory","x":266.5,"y":231,"w":252,"h":30,"text":"","size":17,"color":"warn","fill":"warn"},
+ {"t":"box","id":"shipping","x":308.5,"y":294,"w":162.75,"h":30,"text":"","size":17,"color":"ink","fill":"soft"},
+ {"t":"axis","x":151,"y":365,"length":458,"gap":105,"ticks":["0","200","400","600","800"],"label":"ms"},
+ {"t":"text","x":0,"y":414,"text":"Inventory và Shipping chạy song song từ 300 đến 610 ms.","size":15,"color":"muted"}
+]}

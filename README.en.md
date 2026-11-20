@@ -112,11 +112,13 @@ A text-only model can still draw - you just open the PNGs yourself.
 Run `python3 scripts/ve.py spec.json` and the four files appear.
 Full syntax of every element: `references/spec.md`.
 
-## Twenty-nine figure types with ready templates
+## 37 figure types with ready templates
 
-`examples/` holds 29 templates: request flow, anatomy, byte cells, timeline, threshold, before/after, two views, physical metaphor, failure branch, decision tree, sequence (including alt/opt/loop), state machine, ER table, hash ring, code evidence, layer lanes, progressive series, layer stack, curve, icon, swimlane, composite state, ER crow's foot, system two flows, causal loop, 2x2 matrix, funnel, concept map.
+The original set covers request flow, anatomy, byte cells, timeline, threshold, before/after, two views, physical metaphor, failure branch, decision tree, sequence (including alt/opt/loop), state machine, ER table, hash ring, code evidence, layer lanes, progressive series, layer stack, curve, icon, swimlane, composite state, ER crow's foot, system two flows, causal loop, 2x2 matrix, funnel, concept map.
 
-Each template is a runnable JSON spec with English labels.
+Eight further templates cover mind maps, assumption maps, story maps, request walkthroughs, async job lifecycles, PR impact maps, incident timelines, and Trace waterfalls. Each example is a runnable JSON spec.
+
+Claude Code selects a template based on the question and the source. Loose notes can become a mind map, source code can become a request walkthrough, and span timing can become a Trace waterfall.
 
 ## Color is meaning
 
@@ -144,16 +146,16 @@ engine/             the real render engine (Excalidraw + Playwright Chromium)
 .cache/             prebuilt Excalidraw bundle; rebuild with scripts/excalidraw-bundle.mjs
 assets/             icons.json 188 icons + Nunito, Patrick Hand, IBM Plex Mono fonts
 references/         figure-type rules, spec syntax, visual language, review checklist
-examples/           29 template spec JSONs
+examples/           template spec JSONs
 evals/              evaluation briefs
-tests/              unit tests for theme/renderer + a golden render of all 29 examples
+tests/              unit tests for theme/renderer + a golden render of all examples
 docs/               landing page + the four-model comparison
 ```
 
 ## Tests
 
 Setup: `pip install -r requirements.txt pytest` (the golden render additionally needs `playwright install chromium`).
-`python3 -m pytest` runs 69 tests: units for the color system (`engine/theme.py`), the token gate and spec compiler (`scripts/ve.py`), icon building (`scripts/build_icons.py`), and a golden render that runs the real `ve.py` over all 29 examples, then checks for off-token colors, raw lit hexes and valid `.excalidraw` scenes.
+`python3 -m pytest` runs 69 tests: units for the color system (`engine/theme.py`), the token gate and spec compiler (`scripts/ve.py`), icon building (`scripts/build_icons.py`), and a golden render that runs the real `ve.py` over all examples, then checks for off-token colors, raw lit hexes and valid `.excalidraw` scenes.
 Skip the render (~80 seconds): `python3 -m pytest -m "not slow"`.
 GitHub Actions runs the whole suite in `.github/workflows/tests.yml`; the bundle and fonts are committed, so CI needs no Node and runs offline.
 

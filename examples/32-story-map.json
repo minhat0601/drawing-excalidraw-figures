@@ -1,0 +1,20 @@
+{"_": "Put user activities in reading order, with stories aligned beneath each activity and horizontal release slices.",
+ "elements": [
+ {"t":"text","x":0,"y":0,"text":"Story map · Lưu và tìm lại lỗi","size":26,"color":"ink"},
+ {"t":"text","x":0,"y":70,"text":"Hành trình","size":17,"color":"muted"},
+ {"t":"box","id":"s1","x":120,"y":56,"w":144,"h":52,"text":"Ghi lại","size":17,"color":"ink"},
+ {"t":"box","id":"s2","x":302,"y":56,"w":144,"h":52,"text":"Tìm lại","size":17,"color":"ink"},
+ {"t":"box","id":"s3","x":484,"y":56,"w":144,"h":52,"text":"Dùng lại","size":17,"color":"ink"},
+ {"t":"arrow","from":"s1","to":"s2"},
+ {"t":"arrow","from":"s2","to":"s3"},
+ {"t":"line","points":[[0,126],[638,126]],"color":"muted"},
+ {"t":"text","x":0,"y":162,"text":"MVP","size":19,"color":"l4"},
+ {"t":"box","id":"m1","x":120,"y":146,"w":144,"h":64,"text":"Dán stack\ntrace","size":17,"color":"l4","fill":"l4"},
+ {"t":"box","id":"m2","x":302,"y":146,"w":144,"h":64,"text":"Tìm theo\nmã lỗi","size":17,"color":"l4","fill":"l4"},
+ {"t":"box","id":"m3","x":484,"y":146,"w":144,"h":64,"text":"Mở ghi\nchú cũ","size":17,"color":"l4","fill":"l4"},
+ {"t":"line","points":[[0,230],[638,230]],"color":"muted","dashed":true},
+ {"t":"text","x":0,"y":269,"text":"V2","size":19,"color":"muted"},
+ {"t":"box","id":"v1","x":120,"y":250,"w":144,"h":64,"text":"Lưu từ IDE","size":17,"color":"ink"},
+ {"t":"box","id":"v2","x":302,"y":250,"w":144,"h":64,"text":"Lọc theo\nproject","size":17,"color":"ink"},
+ {"t":"box","id":"v3","x":484,"y":250,"w":144,"h":64,"text":"Gửi link\ncho team","size":17,"color":"ink"}
+]}

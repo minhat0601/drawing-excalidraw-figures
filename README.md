@@ -112,11 +112,13 @@ Model không đa phương tiện vẫn vẽ được, chỉ cần bạn tự m�
 Chạy `python3 scripts/ve.py spec.json` là ra bốn file.
 Cú pháp đầy đủ của mọi phần tử: `references/spec.md`.
 
-## Hai mươi chín loại hình có template sẵn
+## 37 loại hình có template sẵn
 
-`examples/` chứa 29 template: request flow, anatomy, byte cells, timeline, threshold, before/after, two views, ẩn dụ vật lý, failure branch, decision tree, sequence (kể cả alt/opt/loop), state machine, ER table, hash ring, code evidence, layer lanes, progressive series, layer stack, curve, icon, swimlane, composite state, ER crow's foot, system two flows, vòng nhân quả, ma trận 2x2, phễu, concept map.
+Các template ban đầu gồm request flow, anatomy, byte cells, timeline, threshold, before/after, two views, ẩn dụ vật lý, failure branch, decision tree, sequence (kể cả alt/opt/loop), state machine, ER table, hash ring, code evidence, layer lanes, progressive series, layer stack, curve, icon, swimlane, composite state, ER crow's foot, system two flows, vòng nhân quả, ma trận 2x2, phễu, concept map.
 
-Mỗi template là một spec JSON chạy được, nhãn tiếng Việt.
+Tám mẫu bổ sung gồm Mind map, Assumption map, Story map, Request walkthrough, Async job lifecycle, PR impact map, Incident timeline và Trace waterfall. Mỗi mẫu là một spec JSON chạy được, với nhãn tiếng Việt.
+
+Trong Claude Code, “vẽ ý tưởng này” chọn hình theo cấu trúc của note. “Vẽ flow chạy” chọn theo nguồn đang có, chẳng hạn đặt đường dẫn code cạnh từng bước hoặc đặt các span lên cùng trục thời gian.
 
 ## Màu là nghĩa
 
@@ -144,16 +146,16 @@ engine/             engine render thật (Excalidraw + Playwright Chromium)
 .cache/             bundle Excalidraw dựng sẵn; dựng lại bằng scripts/excalidraw-bundle.mjs
 assets/             icons.json 188 icon + font Nunito, Patrick Hand, IBM Plex Mono
 references/         luật loại hình, cú pháp spec, ngôn ngữ hình, checklist soi hình
-examples/           29 template spec JSON
+examples/           template spec JSON
 evals/              bộ đề đánh giá
-tests/              unit cho theme/renderer + golden render cả 29 ví dụ
+tests/              unit cho theme/renderer + golden render tất cả ví dụ
 docs/               landing page + bộ so sánh bốn model
 ```
 
 ## Tests
 
 Chuẩn bị: `pip install -r requirements.txt pytest` (riêng golden render cần `playwright install chromium`).
-`python3 -m pytest` chạy 69 phép thử: unit cho hệ màu (`engine/theme.py`), cổng token và biên dịch spec (`scripts/ve.py`), dựng icon (`scripts/build_icons.py`), và một golden render chạy `ve.py` thật trên cả 29 ví dụ rồi soát màu ngoài token, hex lit thô, cảnh `.excalidraw` hợp lệ.
+`python3 -m pytest` chạy 69 phép thử: unit cho hệ màu (`engine/theme.py`), cổng token và biên dịch spec (`scripts/ve.py`), dựng icon (`scripts/build_icons.py`), và một golden render chạy `ve.py` thật trên tất cả ví dụ rồi soát màu ngoài token, hex lit thô, cảnh `.excalidraw` hợp lệ.
 Muốn bỏ bước render (~80 giây): `python3 -m pytest -m "not slow"`.
 GitHub Actions chạy đủ cả bộ ở `.github/workflows/tests.yml`; bundle và font đã commit trong repo nên CI không cần Node và chạy offline.
 

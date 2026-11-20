@@ -1,0 +1,22 @@
+{"_": "Align events on one clock. Annotations distinguish observed evidence from an unverified explanation.",
+ "elements": [
+ {"t":"text","x":0,"y":0,"text":"Sự cố API sau Deploy","size":26,"color":"ink"},
+ {"t":"text","x":0,"y":39,"text":"Ví dụ minh họa · giờ UTC · mỗi vạch cách 5 phút","size":15,"color":"muted"},
+ {"t":"text","x":0,"y":112,"text":"Deploy v42","size":18,"color":"l4"},
+ {"t":"text","x":210,"y":112,"text":"Alert 5xx","size":18,"color":"err"},
+ {"t":"text","x":422,"y":112,"text":"Rollback","size":18,"color":"node"},
+ {"t":"line","points":[[44,143],[44,196]],"color":"muted"},
+ {"t":"line","points":[[254,143],[254,196]],"color":"muted"},
+ {"t":"line","points":[[464,143],[464,196]],"color":"muted"},
+ {"t":"axis","x":44,"y":200,"length":572,"gap":105,"ticks":["09:00","09:05","09:10","09:15","09:20","09:25"]},
+ {"t":"ellipse","x":38,"y":194,"w":12,"h":12,"color":"l4","fill":"l4"},
+ {"t":"ellipse","x":248,"y":194,"w":12,"h":12,"color":"err","fill":"err"},
+ {"t":"ellipse","x":458,"y":194,"w":12,"h":12,"color":"node","fill":"node"},
+ {"t":"line","points":[[359,207],[359,262]],"color":"muted"},
+ {"t":"line","points":[[569,207],[569,262]],"color":"muted"},
+ {"t":"text","x":247,"y":273,"text":"5xx đạt 18%","size":17,"color":"err"},
+ {"t":"text","x":471,"y":273,"text":"5xx về dưới 1%","size":17,"color":"node"},
+ {"t":"line","points":[[0,326],[616,326]],"color":"muted"},
+ {"t":"text","x":0,"y":347,"text":"Giả thuyết cần kiểm tra","size":20,"color":"ink"},
+ {"t":"text","x":0,"y":387,"text":"Pool kết nối cạn. Đối chiếu thêm metric pool và Log timeout.","size":15,"color":"muted"}
+]}

@@ -1,0 +1,16 @@
+{"_": "Separate available evidence and untested assumptions, then show the decision each assumption can change.",
+ "elements": [
+ {"t":"text","x":0,"y":0,"text":"Có nên thêm nút lưu stack trace?","size":26,"color":"ink"},
+ {"t":"text","x":0,"y":63,"text":"Đã thấy trong phỏng vấn","size":19,"color":"node"},
+ {"t":"text","x":317,"y":63,"text":"Cần kiểm chứng","size":19,"color":"warn"},
+ {"t":"box","id":"e","x":0,"y":104,"w":279,"h":72,"text":"Dev hay dán stack trace\nvào chat nội bộ","size":17,"color":"node","fill":"node"},
+ {"t":"box","id":"a1","x":317,"y":104,"w":320,"h":72,"text":"A1 · Dev sẽ tìm lại lỗi\nnếu lưu ngay trong IDE","size":17,"color":"warn","fill":"warn"},
+ {"t":"box","id":"a2","x":317,"y":196,"w":320,"h":72,"text":"A2 · Dev sẵn sàng lọc thông tin\nnhạy cảm trước khi lưu","size":17,"color":"warn","fill":"warn"},
+ {"t":"line","points":[[304,74],[304,268]],"color":"muted"},
+ {"t":"text","x":0,"y":209,"text":"Quyết định MVP","size":19,"color":"l4"},
+ {"t":"box","id":"d","x":0,"y":240,"w":279,"h":68,"text":"Thử nút lưu trong IDE","size":17,"color":"l4","fill":"l4"},
+ {"t":"line","points":[[0,335],[637,335]],"color":"muted"},
+ {"t":"text","x":0,"y":351,"text":"Cách kiểm chứng","size":19,"color":"ink"},
+ {"t":"text","x":0,"y":388,"text":"A1 · Cho dev thử prototype, rồi giao bài tìm lại một lỗi cũ.","size":15,"color":"muted"},
+ {"t":"text","x":0,"y":415,"text":"A2 · Quan sát bước lọc thông tin. Nếu quá vướng, thử lưu mã lỗi.","size":15,"color":"muted"}
+]}
