@@ -1,0 +1,86 @@
+{
+  "_": "A low-fidelity, editable click-flow sketch. Three mobile states share the same screen layout; arrows represent transitions.",
+  "elements": [
+    {"t": "text", "x": 0, "y": 0, "text": "Prototype · Mã hết hạn tại quầy", "size": 28, "color": "ink"},
+    {"t": "group", "dx": 0, "dy": 0, "elements": [
+      {"t": "text", "x": 0, "y": 55, "text": "1 · Đang hiệu lực", "size": 18, "color": "ink"},
+      {"t": "group", "dx": 0, "dy": 90, "elements": [
+        {"t": "box", "x": 0, "y": 0, "w": 180, "h": 291, "id": "active", "color": "ink", "under": true},
+        {"t": "line", "points": [[74, 14], [106, 14]], "color": "muted"},
+        {"t": "line", "points": [[70, 278], [110, 278]], "color": "muted"}
+      ]},
+      {"t": "text", "x": 16, "y": 128, "text": "Đơn DH-2042", "size": 18, "color": "ink"},
+      {"t": "line", "points": [[16, 155], [164, 155]], "color": "muted", "weight": 1},
+      {"t": "group", "dx": 62, "dy": 172, "elements": [
+        {"t": "box", "x": 0, "y": 0, "w": 21, "h": 21, "sharp": true, "weight": 1},
+        {"t": "box", "x": 7, "y": 7, "w": 7, "h": 7, "sharp": true, "fill": "l4", "weight": 1},
+        {"t": "box", "x": 35, "y": 0, "w": 21, "h": 21, "sharp": true, "weight": 1},
+        {"t": "box", "x": 42, "y": 7, "w": 7, "h": 7, "sharp": true, "fill": "l4", "weight": 1},
+        {"t": "box", "x": 0, "y": 35, "w": 21, "h": 21, "sharp": true, "weight": 1},
+        {"t": "box", "x": 7, "y": 42, "w": 7, "h": 7, "sharp": true, "fill": "l4", "weight": 1},
+        {"t": "box", "x": 21, "y": 28, "w": 7, "h": 7, "sharp": true, "fill": "l4", "weight": 1},
+        {"t": "box", "x": 28, "y": 14, "w": 7, "h": 7, "sharp": true, "fill": "l4", "weight": 1},
+        {"t": "box", "x": 35, "y": 35, "w": 7, "h": 7, "sharp": true, "fill": "l4", "weight": 1},
+        {"t": "box", "x": 42, "y": 28, "w": 7, "h": 7, "sharp": true, "fill": "l4", "weight": 1},
+        {"t": "box", "x": 49, "y": 42, "w": 7, "h": 7, "sharp": true, "fill": "l4", "weight": 1},
+        {"t": "box", "x": 28, "y": 49, "w": 7, "h": 7, "sharp": true, "fill": "l4", "weight": 1},
+        {"t": "box", "x": 42, "y": 49, "w": 7, "h": 7, "sharp": true, "fill": "l4", "weight": 1}
+      ]},
+      {"t": "text", "x": 64, "y": 232, "text": "A-042", "size": 19, "color": "ink"},
+      {"t": "text", "x": 16, "y": 271, "text": "Còn hiệu lực", "size": 15, "color": "muted"},
+      {"t": "group", "dx": 16, "dy": 313, "elements": [
+        {"t": "box", "x": 0, "y": 0, "w": 148, "h": 38, "text": "Đóng", "size": 16, "fill": "l4"}
+      ]}
+    ]},
+    {"t": "group", "dx": 224, "dy": 0, "elements": [
+      {"t": "text", "x": 0, "y": 55, "text": "2 · Hết hạn", "size": 18, "color": "ink"},
+      {"t": "group", "dx": 0, "dy": 90, "elements": [
+        {"t": "box", "x": 0, "y": 0, "w": 180, "h": 291, "id": "expired", "color": "ink", "under": true},
+        {"t": "line", "points": [[74, 14], [106, 14]], "color": "muted"},
+        {"t": "line", "points": [[70, 278], [110, 278]], "color": "muted"}
+      ]},
+      {"t": "text", "x": 16, "y": 128, "text": "Đơn DH-2042", "size": 18, "color": "ink"},
+      {"t": "line", "points": [[16, 155], [164, 155]], "color": "muted", "weight": 1},
+      {"t": "box", "x": 16, "y": 167, "w": 148, "h": 76, "text": "Mã đã hết hạn", "size": 17, "color": "ink", "fill": "err"},
+      {"t": "text", "x": 16, "y": 271, "text": "Đơn vẫn giữ tại quầy", "size": 15, "color": "muted"},
+      {"t": "group", "dx": 16, "dy": 313, "elements": [
+        {"t": "box", "x": 0, "y": 0, "w": 148, "h": 38, "text": "Tạo mã mới", "size": 16, "fill": "l4"}
+      ]}
+    ]},
+    {"t": "group", "dx": 448, "dy": 0, "elements": [
+      {"t": "text", "x": 0, "y": 55, "text": "3 · Mã mới", "size": 18, "color": "ink"},
+      {"t": "group", "dx": 0, "dy": 90, "elements": [
+        {"t": "box", "x": 0, "y": 0, "w": 180, "h": 291, "id": "renewed", "color": "ink", "under": true},
+        {"t": "line", "points": [[74, 14], [106, 14]], "color": "muted"},
+        {"t": "line", "points": [[70, 278], [110, 278]], "color": "muted"}
+      ]},
+      {"t": "text", "x": 16, "y": 128, "text": "Đơn DH-2042", "size": 18, "color": "ink"},
+      {"t": "line", "points": [[16, 155], [164, 155]], "color": "muted", "weight": 1},
+      {"t": "group", "dx": 62, "dy": 172, "elements": [
+        {"t": "box", "x": 0, "y": 0, "w": 21, "h": 21, "sharp": true, "weight": 1},
+        {"t": "box", "x": 7, "y": 7, "w": 7, "h": 7, "sharp": true, "fill": "l4", "weight": 1},
+        {"t": "box", "x": 35, "y": 0, "w": 21, "h": 21, "sharp": true, "weight": 1},
+        {"t": "box", "x": 42, "y": 7, "w": 7, "h": 7, "sharp": true, "fill": "l4", "weight": 1},
+        {"t": "box", "x": 0, "y": 35, "w": 21, "h": 21, "sharp": true, "weight": 1},
+        {"t": "box", "x": 7, "y": 42, "w": 7, "h": 7, "sharp": true, "fill": "l4", "weight": 1},
+        {"t": "box", "x": 21, "y": 28, "w": 7, "h": 7, "sharp": true, "fill": "l4", "weight": 1},
+        {"t": "box", "x": 28, "y": 14, "w": 7, "h": 7, "sharp": true, "fill": "l4", "weight": 1},
+        {"t": "box", "x": 35, "y": 35, "w": 7, "h": 7, "sharp": true, "fill": "l4", "weight": 1},
+        {"t": "box", "x": 42, "y": 28, "w": 7, "h": 7, "sharp": true, "fill": "l4", "weight": 1},
+        {"t": "box", "x": 49, "y": 42, "w": 7, "h": 7, "sharp": true, "fill": "l4", "weight": 1},
+        {"t": "box", "x": 49, "y": 28, "w": 7, "h": 7, "sharp": true, "fill": "l4", "weight": 1},
+        {"t": "box", "x": 7, "y": 21, "w": 7, "h": 7, "sharp": true, "fill": "l4", "weight": 1}
+      ]},
+      {"t": "text", "x": 64, "y": 232, "text": "A-043", "size": 19, "color": "ink"},
+      {"t": "text", "x": 16, "y": 271, "text": "Đưa mã này tại quầy", "size": 15, "color": "muted"},
+      {"t": "group", "dx": 16, "dy": 313, "elements": [
+        {"t": "box", "x": 0, "y": 0, "w": 148, "h": 38, "text": "Đóng", "size": 16, "fill": "l4"}
+      ]}
+    ]},
+    {"t": "arrow", "from": "active", "to": "expired", "color": "muted", "fromSide": "right", "toSide": "left"},
+    {"t": "arrow", "from": "expired", "to": "renewed", "color": "muted", "fromSide": "right", "toSide": "left"},
+    {"t": "text", "x": 0, "y": 408, "text": "Hệ thống báo hết hạn", "size": 15, "color": "muted"},
+    {"t": "text", "x": 224, "y": 408, "text": "Khách chọn Tạo mã mới", "size": 15, "color": "muted"},
+    {"t": "text", "x": 448, "y": 408, "text": "Khách đưa mã A-043", "size": 15, "color": "muted"}
+  ]
+}

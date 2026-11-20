@@ -178,10 +178,11 @@ h1{font:400 clamp(38px,4.4vw,56px)/1.14 var(--hand);margin:0 0 18px;letter-spaci
 .mau figcaption{flex:1;display:flex;align-items:flex-end}
 .mau figcaption{font:16px var(--hand);color:var(--muted);padding:8px 2px 0}
 
-#demo-mau-moi{margin-top:38px}
-#demo-mau-moi h3{font:24px var(--hand);margin:0}
-#demo-mau-moi p{color:var(--muted);margin:5px 0 0}
-#demo-mau-moi .mau{margin-top:18px}
+:is(#demo-mau-moi,#whiteboard){margin-top:38px}
+:is(#demo-mau-moi,#whiteboard) h3{font:24px var(--hand);margin:0}
+:is(#demo-mau-moi,#whiteboard) p{color:var(--muted);margin:5px 0 0}
+:is(#demo-mau-moi,#whiteboard) .mau{margin-top:18px}
+#whiteboard .mau figcaption{gap:8px;flex-wrap:wrap}
 .demo-zoom{padding:0;border:0;background:none;border-radius:8px;width:100%;display:block}
 
 /* so sánh */
@@ -447,7 +448,7 @@ footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
 
 <section id="loai-hinh" style="padding-top:20px">
   <div class="wrap">
-    <h2>37 loại hình có template sẵn</h2>
+    <h2>40 loại hình có template sẵn</h2>
     <p class="lead" style="font-size:16.5px;color:var(--muted);max-width:70ch;margin:4px 0 0">Trong Claude Code, câu “vẽ ý tưởng này” chọn hình theo cấu trúc của note. Câu “vẽ flow chạy” chọn hình theo code, diff, Log hoặc Trace đang có.</p>
     <div class="nhom">
       <div>
@@ -506,6 +507,25 @@ footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
         <figure>
           <button type="button" class="demo-zoom"><img data-base="images/examples/37-trace-waterfall" src="images/examples/37-trace-waterfall-light.png" alt="Trace waterfall" loading="lazy"></button>
           <figcaption><a href="https://github.com/minhat0601/drawing-excalidraw-figures/blob/main/examples/37-trace-waterfall.json">Trace waterfall</a></figcaption>
+        </figure>
+      </div>
+    </div>
+    <div id="whiteboard">
+      <h3>Whiteboard và prototype</h3>
+      <p>Cùng một tình huống nhận hàng tại quầy qua cảnh minh họa, storyboard và prototype.</p>
+      <p><a href="https://github.com/minhat0601/drawing-excalidraw-figures/blob/main/assets/whiteboard-parts.json">Spec bộ chi tiết</a> · <a href="images/examples/whiteboard-parts.excalidraw" download>Canvas để copy chi tiết</a></p>
+      <div class="mau">
+        <figure>
+          <button type="button" class="demo-zoom"><img data-base="images/examples/38-whiteboard-scene" src="images/examples/38-whiteboard-scene-light.png" alt="Khách đưa mã cho nhân viên tại quầy nhận hàng" loading="lazy"></button>
+          <figcaption><a href="https://github.com/minhat0601/drawing-excalidraw-figures/blob/main/examples/38-whiteboard-scene.json">Minh họa bối cảnh</a><span>·</span><a href="images/examples/38-whiteboard-scene.excalidraw" download>File Excalidraw</a></figcaption>
+        </figure>
+        <figure>
+          <button type="button" class="demo-zoom"><img data-base="images/examples/39-storyboard" src="images/examples/39-storyboard-light.png" alt="Bốn khung từ mã hết hạn đến lúc nhận hàng" loading="lazy"></button>
+          <figcaption><a href="https://github.com/minhat0601/drawing-excalidraw-figures/blob/main/examples/39-storyboard.json">Storyboard</a><span>·</span><a href="images/examples/39-storyboard.excalidraw" download>File Excalidraw</a></figcaption>
+        </figure>
+        <figure>
+          <button type="button" class="demo-zoom"><img data-base="images/examples/40-wireframe-prototype" src="images/examples/40-wireframe-prototype-light.png" alt="Ba màn hình thể hiện cách tạo lại mã nhận hàng" loading="lazy"></button>
+          <figcaption><a href="https://github.com/minhat0601/drawing-excalidraw-figures/blob/main/examples/40-wireframe-prototype.json">Prototype</a><span>·</span><a href="images/examples/40-wireframe-prototype.excalidraw" download>File Excalidraw</a></figcaption>
         </figure>
       </div>
     </div>
@@ -837,9 +857,18 @@ const DICH = {
   '✗ lỗi cứng dừng ngay; • nhắc nhẹ để bạn tự quyết. Cái đo được bằng máy thì máy gác - hình có đọc được hay không là việc của mắt.':
     '✗ hard errors stop the run; • soft reminders are your call. What a machine can measure, the machine gates - whether the figure reads is your eye’s job.',
   /* loại hình */
+  'Whiteboard và prototype': 'Whiteboard and prototypes',
+  'Cùng một tình huống nhận hàng tại quầy qua cảnh minh họa, storyboard và prototype.': 'The same pickup scenario shown as a scene, a storyboard, and a prototype.',
+  'Spec bộ chi tiết': 'Reusable parts spec',
+  'Canvas để copy chi tiết': 'Editable parts canvas',
+  'File Excalidraw': 'Excalidraw file',
+  'Minh họa bối cảnh': 'Whiteboard scene',
+  'Khách đưa mã cho nhân viên tại quầy nhận hàng': 'A customer presents a pickup code at the counter',
+  'Bốn khung từ mã hết hạn đến lúc nhận hàng': 'Four panels from opening the code to picking up the parcel',
+  'Ba màn hình thể hiện cách tạo lại mã nhận hàng': 'Three screens showing how the customer renews the pickup code',
   'Demo 8 mẫu mới': 'Eight new template demos',
   'Bấm ảnh để phóng to. Bấm tên mẫu để mở spec JSON.': 'Select an image to zoom in. Select a template name to open its JSON spec.',
-  '37 loại hình có template sẵn': '37 figure types with ready templates',
+  '40 loại hình có template sẵn': '40 figure types with ready templates',
   'Trong Claude Code, câu “vẽ ý tưởng này” chọn hình theo cấu trúc của note. Câu “vẽ flow chạy” chọn hình theo code, diff, Log hoặc Trace đang có.': 'In Claude Code, “draw this idea” uses the structure of your notes to choose a figure. “Draw how this runs” uses the available code, diff, logs, or trace.',
   'Luồng và nghiệp vụ': 'Flows and business', 'Dữ liệu': 'Data', 'Thời gian và ngưỡng': 'Time and thresholds',
   'Trực giác': 'Intuition', 'Ý tưởng': 'Ideas',

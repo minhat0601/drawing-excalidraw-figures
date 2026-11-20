@@ -1,6 +1,6 @@
 ---
 name: drawing-excalidraw-figures
-description: Draws hand-drawn Excalidraw figures (real .excalidraw scenes plus themed SVG) that explain a technical mechanism, a business flow, or a rough idea written only in words - architecture and request flows, system design with read/write paths, sequence diagrams with alt/opt/loop, code-backed walkthroughs, async jobs, PR impact, incident timelines, Trace waterfalls, mind maps, assumption maps, story maps, business processes in swimlanes, state machines and lifecycles, ER and class diagrams, data-structure anatomy, byte layouts, timelines, hash rings, decision trees, charts, layer stacks, before/after pairs, failure paths, causal loops, 2x2 matrices, funnels, concept maps, physical metaphors. Use this whenever a lesson, doc, note, pitch or answer needs a picture, when a page is a wall of text, when someone has a half-formed idea and wants to see its shape, when an existing figure is only generic boxes and arrows, or when asked to "vẽ hình", "vẽ sơ đồ", "vẽ Excalidraw", "vẽ sequence", "vẽ luồng nghiệp vụ", "vẽ swimlane", "vẽ state", "vẽ kiến trúc hệ thống", "minh hoạ cơ chế", "thêm hình cho bài", "mô hình hoá ý tưởng", "vẽ ý tưởng này", "vẽ flow chạy", "biến note thành sơ đồ", "giải thích bằng hình", "diagram this", "visualize this idea", even if Excalidraw is not named.
+description: Draws editable Excalidraw whiteboards with light and dark previews. Use for technical figures, rough ideas, scenes with people, storyboards, UI wireframes and low-fidelity prototypes, including “vẽ cảnh”, “vẽ trải nghiệm”, “vẽ người”, “phác UI” and “vẽ prototype”. Covers technical mechanisms, business flows and rough ideas - architecture and request flows, system design with read/write paths, sequence diagrams with alt/opt/loop, code-backed walkthroughs, async jobs, PR impact, incident timelines, Trace waterfalls, mind maps, assumption maps, story maps, business processes in swimlanes, state machines and lifecycles, ER and class diagrams, data-structure anatomy, byte layouts, timelines, hash rings, decision trees, charts, layer stacks, before/after pairs, failure paths, causal loops, 2x2 matrices, funnels, concept maps, physical metaphors. Use this whenever a lesson, doc, note, pitch or answer needs a picture, when a page is a wall of text, when someone has a half-formed idea and wants to see its shape, when an existing figure is only generic boxes and arrows, or when asked to "vẽ hình", "vẽ sơ đồ", "vẽ Excalidraw", "vẽ sequence", "vẽ luồng nghiệp vụ", "vẽ swimlane", "vẽ state", "vẽ kiến trúc hệ thống", "minh hoạ cơ chế", "thêm hình cho bài", "mô hình hoá ý tưởng", "vẽ ý tưởng này", "vẽ flow chạy", "biến note thành sơ đồ", "giải thích bằng hình", "diagram this", "visualize this idea", even if Excalidraw is not named.
 ---
 
 # Drawing Excalidraw figures
@@ -86,10 +86,15 @@ Start from the reader's question and the available source. Use a figure type the
 | “PR này đổi flow ở đâu?” with a diff, PR or two revisions | PR impact map | `35-pr-impact-map` |
 | “Vẽ lại flow lúc gặp sự cố” with timestamped Logs or alerts | Incident timeline | `36-incident-timeline` |
 | “Flow này chậm ở đâu?” with span start times and durations | Trace waterfall | `37-trace-waterfall` |
+| “Vẽ cảnh ở quầy” or “vẽ người đang nhận hàng” with one moment and setting | Whiteboard scene | `38-whiteboard-scene` |
+| “Vẽ trải nghiệm từ lúc mở mã đến khi nhận kiện” with successive moments | Storyboard | `39-storyboard` |
+| “Phác UI”, “vẽ wireframe” or “vẽ prototype” with interface controls or screen states | Wireframe prototype | `40-wireframe-prototype` |
 
 A stronger structure in the source wins over the default mind map: a feedback loop uses a causal loop, named relationships use a concept map, and a trade-off uses a matrix or before/after. A proposed implementation can use request flow or sequence with the proposal labelled. A business handoff across roles uses a swimlane. With code alone, a request walkthrough shows the path inferred from the source. For latency or concurrency questions, prefer a Trace waterfall when span timings are available.
 
 For code, PR, Log and Trace sources, keep a provenance note or callouts for the key steps: `file:line` and revision for code, base/head or changed hunk for a diff, timestamp and time zone for a Log, span or Trace ID and unit for a Trace if available. Mark which details come from static code, which were observed at runtime and which are proposals or hypotheses. Replace the example's fictional values and paths with facts from the user's source.
+
+For a scene, storyboard or prototype, read `references/whiteboard.md` and reuse the editable parts in `assets/whiteboard-parts.json`. Select a storyboard when the person, setting or experience changes across moments. Select a wireframe when screen layout, controls or transitions are the subject. Mark invented UI copy and product rules as illustrative.
 
 For a rough idea with one of the following structures, pick its template:
 
@@ -141,7 +146,7 @@ For a technical source, or when the table above does not fit, pick from the full
 | Concepts joined by named relations | Concept map | `29-concept-map` |
 
 `references/figure-types.md` describes each type: when to use it, when not to, how to build it, where it breaks.
-Read the section of the chosen type before writing the spec.
+Read the section of the chosen type before writing the spec. The three whiteboard types share their own reference above.
 Then run the seven-line pre-render checklist in `references/lessons-from-runs.md`: it removes the mistakes that cost the most rounds in testing.
 A lesson about the mechanism inside a technology almost never wants a plain request flow.
 Use sequence for interactions, state diagrams for transitions, and swimlanes for ownership. A composite like the async job lifecycle puts its sequence and state views in separate panels.
@@ -221,6 +226,7 @@ The skill stops at producing correct files; it does not edit the site's engine o
 |---|---|
 | `references/figure-types.md` | After picking the type, before writing the spec |
 | `references/spec.md` | You need the exact syntax of an element |
+| `references/whiteboard.md` | Drawing people in a scene, a storyboard or a UI prototype |
 | `references/visual-language.md` | Unsure which shape for what, color, layout, arrow labels |
 | `references/lessons-from-runs.md` | Before the first render (checklist), and when a figure needs more than three rounds |
 | `references/review.md` | After every render |

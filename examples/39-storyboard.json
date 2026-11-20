@@ -1,0 +1,119 @@
+{
+  "_": "Show four moments in reading order. Each moment has one action and an editable scene or screen.",
+  "elements": [
+    {"t": "text", "x": 0, "y": 0, "text": "Từ mã nhận hàng đến lúc lấy kiện", "size": 28, "color": "ink"},
+    {"t": "group", "dx": 0, "dy": 58, "elements": [
+      {"t": "box", "x": 0, "y": 0, "w": 303, "h": 239, "color": "muted", "under": true},
+      {"t": "text", "x": 14, "y": 10, "text": "1. Mở mã", "size": 20, "color": "ink"},
+      {"t": "group", "dx": 113, "dy": 43, "elements": [
+        {"t": "box", "x": 0, "y": 0, "w": 70, "h": 144, "color": "ink", "under": true},
+        {"t": "line", "points": [[19, 14], [51, 14]], "color": "muted"},
+        {"t": "line", "points": [[15, 131], [55, 131]], "color": "muted"}
+      ]},
+      {"t": "group", "dx": 128, "dy": 90, "elements": [
+        {"t": "box", "x": 0, "y": 0, "w": 15, "h": 15, "sharp": true, "weight": 1},
+        {"t": "box", "x": 5, "y": 5, "w": 5, "h": 5, "sharp": true, "fill": "l4", "weight": 1},
+        {"t": "box", "x": 25, "y": 0, "w": 15, "h": 15, "sharp": true, "weight": 1},
+        {"t": "box", "x": 30, "y": 5, "w": 5, "h": 5, "sharp": true, "fill": "l4", "weight": 1},
+        {"t": "box", "x": 0, "y": 25, "w": 15, "h": 15, "sharp": true, "weight": 1},
+        {"t": "box", "x": 5, "y": 30, "w": 5, "h": 5, "sharp": true, "fill": "l4", "weight": 1},
+        {"t": "box", "x": 15, "y": 20, "w": 5, "h": 5, "sharp": true, "fill": "l4", "weight": 1},
+        {"t": "box", "x": 20, "y": 10, "w": 5, "h": 5, "sharp": true, "fill": "l4", "weight": 1},
+        {"t": "box", "x": 25, "y": 25, "w": 5, "h": 5, "sharp": true, "fill": "l4", "weight": 1},
+        {"t": "box", "x": 30, "y": 20, "w": 5, "h": 5, "sharp": true, "fill": "l4", "weight": 1},
+        {"t": "box", "x": 35, "y": 30, "w": 5, "h": 5, "sharp": true, "fill": "l4", "weight": 1},
+        {"t": "box", "x": 20, "y": 35, "w": 5, "h": 5, "sharp": true, "fill": "l4", "weight": 1},
+        {"t": "box", "x": 30, "y": 35, "w": 5, "h": 5, "sharp": true, "fill": "l4", "weight": 1}
+      ]},
+      {"t": "text", "x": 126, "y": 137, "text": "A-042", "size": 15, "color": "muted"},
+      {"t": "text", "x": 14, "y": 207, "text": "Khách tìm mã trong đơn hàng.", "size": 15, "color": "muted"}
+    ]},
+    {"t": "group", "dx": 326, "dy": 58, "elements": [
+      {"t": "box", "x": 0, "y": 0, "w": 303, "h": 239, "color": "muted", "under": true},
+      {"t": "text", "x": 14, "y": 10, "text": "2. Mã hết hạn", "size": 20, "color": "ink"},
+      {"t": "box", "x": 103, "y": 42, "w": 98, "h": 31, "text": "Mã hết hạn", "size": 15, "fill": "err"},
+      {"t": "group", "dx": 33, "dy": 65, "elements": [
+        {"t": "ellipse", "x": 30, "y": 0, "w": 38, "h": 40, "fill": "soft"},
+        {"t": "ellipse", "x": 54, "y": 14, "w": 4, "h": 4, "color": "ink"},
+        {"t": "line", "points": [[39, 44], [57, 44], [64, 79], [35, 81]], "color": "ink", "closed": true, "fill": "l4"},
+        {"t": "line", "points": [[49, 47], [61, 66], [83, 58]], "color": "ink", "weight": 3},
+        {"t": "line", "points": [[49, 48], [35, 64], [28, 76]], "color": "ink", "weight": 3},
+        {"t": "line", "points": [[48, 81], [33, 108], [23, 113]], "color": "ink", "weight": 3},
+        {"t": "line", "points": [[48, 81], [66, 108], [77, 113]], "color": "ink", "weight": 3}
+      ]},
+      {"t": "group", "dx": 117, "dy": 80, "elements": [
+        {"t": "box", "x": 0, "y": 0, "w": 46, "h": 69, "color": "ink", "under": true},
+        {"t": "line", "points": [[7, 14], [39, 14]], "color": "muted"},
+        {"t": "line", "points": [[3, 56], [43, 56]], "color": "muted"},
+        {"t": "group", "dx": 10, "dy": 22, "elements": [
+          {"t": "box", "x": 0, "y": 0, "w": 9, "h": 9, "sharp": true, "weight": 1},
+          {"t": "box", "x": 3, "y": 3, "w": 3, "h": 3, "sharp": true, "fill": "l4", "weight": 1},
+          {"t": "box", "x": 15, "y": 0, "w": 9, "h": 9, "sharp": true, "weight": 1},
+          {"t": "box", "x": 18, "y": 3, "w": 3, "h": 3, "sharp": true, "fill": "l4", "weight": 1},
+          {"t": "box", "x": 0, "y": 15, "w": 9, "h": 9, "sharp": true, "weight": 1},
+          {"t": "box", "x": 3, "y": 18, "w": 3, "h": 3, "sharp": true, "fill": "l4", "weight": 1},
+          {"t": "box", "x": 9, "y": 12, "w": 3, "h": 3, "sharp": true, "fill": "l4", "weight": 1},
+          {"t": "box", "x": 12, "y": 6, "w": 3, "h": 3, "sharp": true, "fill": "l4", "weight": 1},
+          {"t": "box", "x": 15, "y": 15, "w": 3, "h": 3, "sharp": true, "fill": "l4", "weight": 1},
+          {"t": "box", "x": 18, "y": 12, "w": 3, "h": 3, "sharp": true, "fill": "l4", "weight": 1},
+          {"t": "box", "x": 21, "y": 18, "w": 3, "h": 3, "sharp": true, "fill": "l4", "weight": 1},
+          {"t": "box", "x": 12, "y": 21, "w": 3, "h": 3, "sharp": true, "fill": "l4", "weight": 1},
+          {"t": "box", "x": 18, "y": 21, "w": 3, "h": 3, "sharp": true, "fill": "l4", "weight": 1}
+        ]}
+      ]},
+      {"t": "group", "dx": 176, "dy": 70, "elements": [
+        {"t": "line", "points": [[14, 43], [14, 89], [32, 89], [32, 111]], "color": "muted"},
+        {"t": "line", "points": [[14, 88], [12, 112]], "color": "muted"},
+        {"t": "ellipse", "x": 30, "y": 0, "w": 38, "h": 40, "fill": "soft"},
+        {"t": "ellipse", "x": 39, "y": 14, "w": 4, "h": 4, "color": "ink"},
+        {"t": "line", "points": [[39, 44], [57, 44], [64, 79], [35, 81]], "color": "ink", "closed": true, "fill": "node"},
+        {"t": "line", "points": [[49, 47], [34, 61], [12, 56]], "color": "ink", "weight": 3},
+        {"t": "line", "points": [[49, 48], [63, 69], [69, 76]], "color": "ink", "weight": 3},
+        {"t": "line", "points": [[48, 82], [77, 87], [80, 111]], "color": "ink", "sharp": true, "weight": 3},
+        {"t": "line", "points": [[48, 82], [68, 91], [67, 111]], "color": "ink", "sharp": true, "weight": 3}
+      ]},
+      {"t": "text", "x": 14, "y": 207, "text": "Nhân viên báo mã cũ hết hạn.", "size": 15, "color": "muted"}
+    ]},
+    {"t": "group", "dx": 0, "dy": 315, "elements": [
+      {"t": "box", "x": 0, "y": 0, "w": 303, "h": 239, "color": "muted", "under": true},
+      {"t": "text", "x": 14, "y": 10, "text": "3. Tạo mã mới", "size": 20, "color": "ink"},
+      {"t": "box", "x": 84, "y": 46, "w": 135, "h": 147, "under": true},
+      {"t": "line", "points": [[139, 58], [163, 58]], "color": "muted"},
+      {"t": "text", "x": 96, "y": 75, "text": "Mã mới", "size": 17, "color": "ink"},
+      {"t": "text", "x": 96, "y": 103, "text": "A-043", "size": 22, "color": "ink"},
+      {"t": "box", "x": 96, "y": 143, "w": 111, "h": 35, "text": "Xong", "size": 16, "fill": "l4"},
+      {"t": "text", "x": 14, "y": 207, "text": "Khách tạo mã ngay trong app.", "size": 15, "color": "muted"}
+    ]},
+    {"t": "group", "dx": 326, "dy": 315, "elements": [
+      {"t": "box", "x": 0, "y": 0, "w": 303, "h": 239, "color": "muted", "under": true},
+      {"t": "text", "x": 14, "y": 10, "text": "4. Nhận hàng", "size": 20, "color": "ink"},
+      {"t": "box", "x": 104, "y": 46, "w": 108, "h": 32, "text": "Đã xác nhận", "size": 15, "fill": "node"},
+      {"t": "group", "dx": 28, "dy": 65, "elements": [
+        {"t": "ellipse", "x": 30, "y": 0, "w": 38, "h": 40, "fill": "soft"},
+        {"t": "ellipse", "x": 54, "y": 14, "w": 4, "h": 4, "color": "ink"},
+        {"t": "line", "points": [[39, 44], [57, 44], [64, 79], [35, 81]], "color": "ink", "closed": true, "fill": "l4"},
+        {"t": "line", "points": [[49, 47], [61, 66], [83, 58]], "color": "ink", "weight": 3},
+        {"t": "line", "points": [[49, 48], [35, 64], [28, 76]], "color": "ink", "weight": 3},
+        {"t": "line", "points": [[48, 81], [33, 108], [23, 113]], "color": "ink", "weight": 3},
+        {"t": "line", "points": [[48, 81], [66, 108], [77, 113]], "color": "ink", "weight": 3}
+      ]},
+      {"t": "group", "dx": 108, "dy": 112, "elements": [
+        {"t": "box", "x": 0, "y": 0, "w": 80, "h": 56, "sharp": true, "fill": "soft"},
+        {"t": "line", "points": [[35, 0], [35, 15], [45, 15], [45, 0]], "color": "muted", "sharp": true},
+        {"t": "line", "points": [[11, 43], [28, 43]], "color": "muted"}
+      ]},
+      {"t": "group", "dx": 185, "dy": 70, "elements": [
+        {"t": "line", "points": [[14, 43], [14, 89], [32, 89], [32, 111]], "color": "muted"},
+        {"t": "line", "points": [[14, 88], [12, 112]], "color": "muted"},
+        {"t": "ellipse", "x": 30, "y": 0, "w": 38, "h": 40, "fill": "soft"},
+        {"t": "ellipse", "x": 39, "y": 14, "w": 4, "h": 4, "color": "ink"},
+        {"t": "line", "points": [[39, 44], [57, 44], [64, 79], [35, 81]], "color": "ink", "closed": true, "fill": "node"},
+        {"t": "line", "points": [[49, 47], [34, 61], [12, 56]], "color": "ink", "weight": 3},
+        {"t": "line", "points": [[49, 48], [63, 69], [69, 76]], "color": "ink", "weight": 3},
+        {"t": "line", "points": [[48, 82], [77, 87], [80, 111]], "color": "ink", "sharp": true, "weight": 3},
+        {"t": "line", "points": [[48, 82], [68, 91], [67, 111]], "color": "ink", "sharp": true, "weight": 3}
+      ]},
+      {"t": "text", "x": 14, "y": 207, "text": "Nhân viên xác nhận rồi giao kiện.", "size": 15, "color": "muted"}
+    ]}
+  ]
+}

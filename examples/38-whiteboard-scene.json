@@ -1,0 +1,74 @@
+{
+  "_": "One editable vignette showing a customer presenting a pickup code, with a clerk behind the counter and a parcel within reach.",
+  "elements": [
+    {"t": "text", "x": 0, "y": 0, "text": "Đưa mã nhận hàng tại quầy", "size": 28, "color": "ink"},
+    {"t": "text", "x": 0, "y": 39, "text": "Tình huống minh họa", "size": 15, "color": "muted"},
+    {"t": "box", "x": 319, "y": 82, "w": 204, "h": 46, "text": "QUẦY NHẬN HÀNG", "size": 18, "fill": "soft"},
+    {"t": "box", "x": 532, "y": 151, "w": 82, "h": 155, "color": "muted", "under": true},
+    {"t": "line", "points": [[533, 207], [613, 207]], "color": "muted"},
+    {"t": "line", "points": [[533, 260], [613, 260]], "color": "muted"},
+    {"t": "box", "x": 543, "y": 168, "w": 42, "h": 35, "sharp": true, "fill": "soft", "color": "muted"},
+    {"t": "box", "x": 561, "y": 224, "w": 39, "h": 31, "sharp": true, "fill": "soft", "color": "muted"},
+    {"t": "box", "x": 542, "y": 277, "w": 38, "h": 25, "sharp": true, "fill": "soft", "color": "muted"},
+    {"t": "line", "points": [[45, 272], [75, 272]], "color": "muted"},
+    {"t": "line", "points": [[60, 272], [60, 326]], "color": "muted"},
+    {"t": "box", "x": 42, "y": 247, "w": 35, "h": 24, "sharp": true, "fill": "soft", "color": "muted"},
+    {"t": "line", "points": [[25, 336], [633, 336]], "color": "muted"},
+    {"t": "group", "dx": 145, "dy": 201, "id": "customer", "elements": [
+      {"t": "ellipse", "x": 30, "y": 0, "w": 38, "h": 40, "fill": "soft"},
+      {"t": "ellipse", "x": 54, "y": 14, "w": 4, "h": 4, "color": "ink"},
+      {"t": "line", "points": [[39, 44], [57, 44], [64, 79], [35, 81]], "color": "ink", "closed": true, "fill": "l4"},
+      {"t": "line", "points": [[49, 47], [61, 66], [83, 58]], "color": "ink", "weight": 3},
+      {"t": "line", "points": [[49, 48], [35, 64], [28, 76]], "color": "ink", "weight": 3},
+      {"t": "line", "points": [[48, 81], [33, 108], [23, 113]], "color": "ink", "weight": 3},
+      {"t": "line", "points": [[48, 81], [66, 108], [77, 113]], "color": "ink", "weight": 3}
+    ]},
+    {"t": "group", "dx": 229, "dy": 201, "id": "phone", "elements": [
+      {"t": "box", "x": 0, "y": 0, "w": 46, "h": 69, "color": "ink", "under": true},
+      {"t": "line", "points": [[7, 14], [39, 14]], "color": "muted"},
+      {"t": "line", "points": [[3, 56], [43, 56]], "color": "muted"},
+      {"t": "group", "dx": 10, "dy": 22, "elements": [
+        {"t": "box", "x": 0, "y": 0, "w": 9, "h": 9, "sharp": true, "weight": 1},
+        {"t": "box", "x": 3, "y": 3, "w": 3, "h": 3, "sharp": true, "fill": "l4", "weight": 1},
+        {"t": "box", "x": 15, "y": 0, "w": 9, "h": 9, "sharp": true, "weight": 1},
+        {"t": "box", "x": 18, "y": 3, "w": 3, "h": 3, "sharp": true, "fill": "l4", "weight": 1},
+        {"t": "box", "x": 0, "y": 15, "w": 9, "h": 9, "sharp": true, "weight": 1},
+        {"t": "box", "x": 3, "y": 18, "w": 3, "h": 3, "sharp": true, "fill": "l4", "weight": 1},
+        {"t": "box", "x": 9, "y": 12, "w": 3, "h": 3, "sharp": true, "fill": "l4", "weight": 1},
+        {"t": "box", "x": 12, "y": 6, "w": 3, "h": 3, "sharp": true, "fill": "l4", "weight": 1},
+        {"t": "box", "x": 15, "y": 15, "w": 3, "h": 3, "sharp": true, "fill": "l4", "weight": 1},
+        {"t": "box", "x": 18, "y": 12, "w": 3, "h": 3, "sharp": true, "fill": "l4", "weight": 1},
+        {"t": "box", "x": 21, "y": 18, "w": 3, "h": 3, "sharp": true, "fill": "l4", "weight": 1},
+        {"t": "box", "x": 12, "y": 21, "w": 3, "h": 3, "sharp": true, "fill": "l4", "weight": 1},
+        {"t": "box", "x": 18, "y": 21, "w": 3, "h": 3, "sharp": true, "fill": "l4", "weight": 1}
+      ]}
+    ]},
+    {"t": "group", "dx": 331, "dy": 191, "id": "clerk", "elements": [
+      {"t": "line", "points": [[14, 43], [14, 89], [32, 89], [32, 111]], "color": "muted"},
+      {"t": "line", "points": [[14, 88], [12, 112]], "color": "muted"},
+      {"t": "ellipse", "x": 30, "y": 0, "w": 38, "h": 40, "fill": "soft"},
+      {"t": "ellipse", "x": 39, "y": 14, "w": 4, "h": 4, "color": "ink"},
+      {"t": "line", "points": [[39, 44], [57, 44], [64, 79], [35, 81]], "color": "ink", "closed": true, "fill": "node"},
+      {"t": "line", "points": [[49, 47], [34, 61], [12, 56]], "color": "ink", "weight": 3},
+      {"t": "line", "points": [[49, 48], [63, 69], [69, 76]], "color": "ink", "weight": 3},
+      {"t": "line", "points": [[48, 82], [77, 87], [80, 111]], "color": "ink", "sharp": true, "weight": 3},
+      {"t": "line", "points": [[48, 82], [68, 91], [67, 111]], "color": "ink", "sharp": true, "weight": 3}
+    ]},
+    {"t": "group", "dx": 315, "dy": 243, "id": "counter", "elements": [
+      {"t": "box", "x": 0, "y": 0, "w": 190, "h": 16, "sharp": true, "fill": "soft"},
+      {"t": "box", "x": 12, "y": 16, "w": 166, "h": 72, "sharp": true, "fill": "soft"},
+      {"t": "line", "points": [[32, 66], [160, 66]], "color": "muted"}
+    ]},
+    {"t": "group", "dx": 431, "dy": 193, "id": "parcel", "elements": [
+      {"t": "box", "x": 0, "y": 0, "w": 61, "h": 50, "sharp": true, "fill": "soft"},
+      {"t": "line", "points": [[25.5, 0], [25.5, 15], [35.5, 15], [35.5, 0]], "color": "muted", "sharp": true},
+      {"t": "line", "points": [[11, 37], [28, 37]], "color": "muted"}
+    ]},
+    {"t": "text", "x": 157, "y": 350, "text": "Khách", "size": 18, "color": "ink"},
+    {"t": "text", "x": 356, "y": 350, "text": "Nhân viên", "size": 18, "color": "ink"},
+    {"t": "text", "x": 172, "y": 133, "text": "Mã nhận hàng", "size": 20, "color": "l4"},
+    {"t": "line", "points": [[225, 164], [249, 194]], "color": "l4"},
+    {"t": "text", "x": 427, "y": 144, "text": "Kiện hàng", "size": 20, "color": "ink"},
+    {"t": "line", "points": [[456, 173], [462, 187]], "color": "muted"}
+  ]
+}

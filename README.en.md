@@ -120,7 +120,7 @@ A text-only model can still draw - you just open the PNGs yourself.
 Run `python3 scripts/ve.py spec.json` and the four files appear.
 Full syntax of every element: `references/spec.md`.
 
-## 37 figure types with ready templates
+## 40 figure types with ready templates
 
 The original set covers request flow, anatomy, byte cells, timeline, threshold, before/after, two views, physical metaphor, failure branch, decision tree, sequence (including alt/opt/loop), state machine, ER table, hash ring, code evidence, layer lanes, progressive series, layer stack, curve, icon, swimlane, composite state, ER crow's foot, system two flows, causal loop, 2x2 matrix, funnel, concept map.
 
@@ -147,6 +147,17 @@ Select a template name to open its runnable JSON spec. The figures use Vietnames
 | [Incident timeline](examples/36-incident-timeline.json) | [Trace waterfall](examples/37-trace-waterfall.json) |
 | --- | --- |
 | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/examples/36-incident-timeline-dark.png"><img alt="Putting deployment, alert, and rollback on one timeline" src="docs/images/examples/36-incident-timeline-light.png" width="365"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/examples/37-trace-waterfall-dark.png"><img alt="Reading span durations and overlap" src="docs/images/examples/37-trace-waterfall-light.png" width="365"></picture> |
+
+### Whiteboard and prototypes
+
+The same pickup scenario is shown as a scene, a storyboard, and a low-fidelity prototype.
+
+| [Whiteboard scene](examples/38-whiteboard-scene.json) | [Storyboard](examples/39-storyboard.json) | [Prototype](examples/40-wireframe-prototype.json) |
+| --- | --- | --- |
+| <picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/examples/38-whiteboard-scene-dark.png"><img alt="A customer presents a pickup code at the counter" src="docs/images/examples/38-whiteboard-scene-light.png" width="240"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/examples/39-storyboard-dark.png"><img alt="Four panels from opening the code to picking up the parcel" src="docs/images/examples/39-storyboard-light.png" width="240"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/examples/40-wireframe-prototype-dark.png"><img alt="Three screens showing how the customer renews the pickup code" src="docs/images/examples/40-wireframe-prototype-light.png" width="240"></picture> |
+| [Excalidraw](docs/images/examples/38-whiteboard-scene.excalidraw) | [Excalidraw](docs/images/examples/39-storyboard.excalidraw) | [Excalidraw](docs/images/examples/40-wireframe-prototype.excalidraw) |
+
+[Reusable parts spec](assets/whiteboard-parts.json) · [Editable parts canvas](docs/images/examples/whiteboard-parts.excalidraw)
 
 ## Color is meaning
 
