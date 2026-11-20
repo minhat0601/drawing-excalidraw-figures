@@ -56,7 +56,7 @@ không đoán, mọi luật đều có nguồn ghi trong `references/sources.md`
 Yêu cầu: Python 3.11+, Playwright Chromium, và font nằm sẵn trong `assets/fonts/` (không tải gì từ mạng lúc render).
 
 ```bash
-git clone https://github.com/nv-minh/drawing-excalidraw-figures.git
+git clone https://github.com/minhat0601/drawing-excalidraw-figures.git
 cd drawing-excalidraw-figures
 pip install -r requirements.txt
 python3 -m playwright install chromium
@@ -71,6 +71,12 @@ open /tmp/fig/03-byte-cells-light.png
 ```bash
 mkdir -p ~/.claude/skills
 cp -R drawing-excalidraw-figures ~/.claude/skills/
+```
+
+Nếu đã cài bằng Git và đang ở nhánh `main`, cập nhật bản skill như sau.
+
+```bash
+git -C ~/.claude/skills/drawing-excalidraw-figures pull --ff-only origin main
 ```
 
 Codex CLI đọc cùng chuẩn `SKILL.md`, chỉ khác thư mục cài.

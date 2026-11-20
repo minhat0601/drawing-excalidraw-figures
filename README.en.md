@@ -56,7 +56,7 @@ nothing guessed, every rule has its source recorded in `references/sources.md`.
 Requirements: Python 3.11+, Playwright Chromium, and the fonts already in `assets/fonts/` (nothing is fetched from the network while rendering).
 
 ```bash
-git clone https://github.com/nv-minh/drawing-excalidraw-figures.git
+git clone https://github.com/minhat0601/drawing-excalidraw-figures.git
 cd drawing-excalidraw-figures
 pip install -r requirements.txt
 python3 -m playwright install chromium
@@ -71,6 +71,12 @@ For Claude Code to use it as a skill, put the whole folder into your skills dire
 ```bash
 mkdir -p ~/.claude/skills
 cp -R drawing-excalidraw-figures ~/.claude/skills/
+```
+
+If you installed the skill with Git and are on `main`, update the installed copy with the following command.
+
+```bash
+git -C ~/.claude/skills/drawing-excalidraw-figures pull --ff-only origin main
 ```
 
 Codex CLI reads the same `SKILL.md` standard - only the install folder differs.
