@@ -1,0 +1,6 @@
+{"_": "Group loose notes around a central idea. Branches express membership; use a concept map when the relationships need named verbs.",
+ "elements": [
+ {"t":"text","x":0,"y":0,"text":"App ghi chú cho dev","size":26,"color":"ink"},
+ {"t":"tree","id":"notes","x":0,"y":55,"dir":"right","lines":true,"nw":172,"nh":36,"dx":11,"dy":47,"size":17,"edgeColor":"muted","root":{"text":"Kho ghi chú","color":"l4","fill":"l4","children":[{"text":"Gom nhanh","fill":"soft","children":[{"text":"Dán stack trace","shape":"box","sharp":true},{"text":"Lưu lệnh CLI","shape":"box","sharp":true}]},{"text":"Tìm lại","fill":"soft","children":[{"text":"Tìm theo project","shape":"box","sharp":true},{"text":"Tìm theo lỗi","shape":"box","sharp":true}]},{"text":"Chia sẻ","fill":"soft","children":[{"text":"Gửi link cho team","shape":"box","sharp":true}]}],"fillStyle":"solid","sharp":true}},
+ {"t":"text","x":0,"y":319,"text":"Ví dụ từ note brainstorm. Các nhánh gom ý theo nhu cầu.","size":15,"color":"muted"}
+]}

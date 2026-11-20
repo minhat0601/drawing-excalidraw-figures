@@ -1,6 +1,6 @@
 ---
 name: drawing-excalidraw-figures
-description: Draws hand-drawn Excalidraw figures (real .excalidraw scenes plus themed SVG) that explain a technical mechanism, a business flow, or a rough idea written only in words - architecture and request flows, system design with read/write paths, sequence diagrams with alt/opt/loop, business processes in swimlanes, state machines and lifecycles, ER and class diagrams, data-structure anatomy, byte layouts, timelines, hash rings, decision trees, charts, layer stacks, before/after pairs, failure paths, causal loops, 2x2 matrices, funnels, concept maps, physical metaphors. Use this whenever a lesson, doc, note, pitch or answer needs a picture, when a page is a wall of text, when someone has a half-formed idea and wants to see its shape, when an existing figure is only generic boxes and arrows, or when asked to "vẽ hình", "vẽ sơ đồ", "vẽ Excalidraw", "vẽ sequence", "vẽ luồng nghiệp vụ", "vẽ swimlane", "vẽ state", "vẽ kiến trúc hệ thống", "minh hoạ cơ chế", "thêm hình cho bài", "mô hình hoá ý tưởng", "vẽ ý tưởng này", "biến note thành sơ đồ", "giải thích bằng hình", "diagram this", "visualize this idea", even if Excalidraw is not named.
+description: Draws hand-drawn Excalidraw figures (real .excalidraw scenes plus themed SVG) that explain a technical mechanism, a business flow, or a rough idea written only in words - architecture and request flows, system design with read/write paths, sequence diagrams with alt/opt/loop, code-backed walkthroughs, async jobs, PR impact, incident timelines, Trace waterfalls, mind maps, assumption maps, story maps, business processes in swimlanes, state machines and lifecycles, ER and class diagrams, data-structure anatomy, byte layouts, timelines, hash rings, decision trees, charts, layer stacks, before/after pairs, failure paths, causal loops, 2x2 matrices, funnels, concept maps, physical metaphors. Use this whenever a lesson, doc, note, pitch or answer needs a picture, when a page is a wall of text, when someone has a half-formed idea and wants to see its shape, when an existing figure is only generic boxes and arrows, or when asked to "vẽ hình", "vẽ sơ đồ", "vẽ Excalidraw", "vẽ sequence", "vẽ luồng nghiệp vụ", "vẽ swimlane", "vẽ state", "vẽ kiến trúc hệ thống", "minh hoạ cơ chế", "thêm hình cho bài", "mô hình hoá ý tưởng", "vẽ ý tưởng này", "vẽ flow chạy", "biến note thành sơ đồ", "giải thích bằng hình", "diagram this", "visualize this idea", even if Excalidraw is not named.
 ---
 
 # Drawing Excalidraw figures
@@ -51,7 +51,7 @@ Read the source and write a short fact list in your working notes, not in a file
 - **Real values**: numbers from the lab, key names, sizes, limits.
   Copy them from the source, never from memory.
 
-When the source does not say who acts, what triggers a step, or what happens on failure, ask the person who gave the task before drawing.
+If a missing actor, trigger, or failure outcome is central to the question, ask before drawing. Otherwise, draw the supported portion and flag the gap.
 Do not invent a branch or a number: a figure with a made-up value teaches something false.
 Placeholder rows that only show structure (ids 1, 2, 3 in a join table) are allowed when the source gives a schema and no data; say in the hand-off that they are examples.
 A value you derive (12 - 8 = 4 byte) is fine when the subtraction is visible in the figure.
@@ -74,7 +74,24 @@ This list is the checklist for step 6.
 
 ### 3. Pick the figure type by what must be seen
 
-For a rough idea, first name the structure of the idea from the idea list, then take the type it points to:
+Start from the reader's question and the available source. Use a figure type the user explicitly requests. Otherwise, resolve short prompts like “vẽ ý tưởng này” or “vẽ flow chạy” from the current conversation and any files, diff, Logs or Trace the user refers to. Look for the entry point in the project when the user names a feature, endpoint or job. Ask a short question only if no relevant source is available or two interpretations would put different claims in the figure.
+
+| Intent and source | Figure type | Template in `examples/` |
+|---|---|---|
+| “Vẽ ý tưởng này” from loose notes that group around one topic | Mind map | `30-mind-map` |
+| “Ý tưởng này dựa vào giả định nào?” with evidence or claims to test | Assumption map | `31-assumption-map` |
+| “Vẽ luồng người dùng và chia MVP/V2” with activities and scope | Story map | `32-story-map` |
+| “Vẽ flow chạy” of an endpoint or feature in the current repo | Request walkthrough | `33-request-walkthrough` |
+| “Job chạy lại thế nào?” with a Queue, Worker or retry policy | Async job lifecycle | `34-async-job-lifecycle` |
+| “PR này đổi flow ở đâu?” with a diff, PR or two revisions | PR impact map | `35-pr-impact-map` |
+| “Vẽ lại flow lúc gặp sự cố” with timestamped Logs or alerts | Incident timeline | `36-incident-timeline` |
+| “Flow này chậm ở đâu?” with span start times and durations | Trace waterfall | `37-trace-waterfall` |
+
+A stronger structure in the source wins over the default mind map: a feedback loop uses a causal loop, named relationships use a concept map, and a trade-off uses a matrix or before/after. A proposed implementation can use request flow or sequence with the proposal labelled. A business handoff across roles uses a swimlane. With code alone, a request walkthrough shows the path inferred from the source. For latency or concurrency questions, prefer a Trace waterfall when span timings are available.
+
+For code, PR, Log and Trace sources, keep a provenance note or callouts for the key steps: `file:line` and revision for code, base/head or changed hunk for a diff, timestamp and time zone for a Log, span or Trace ID and unit for a Trace if available. Mark which details come from static code, which were observed at runtime and which are proposals or hypotheses. Replace the example's fictional values and paths with facts from the user's source.
+
+For a rough idea with one of the following structures, pick its template:
 
 | The idea is shaped like | Figure type | Template in `examples/` |
 |---|---|---|
@@ -127,7 +144,7 @@ For a technical source, or when the table above does not fit, pick from the full
 Read the section of the chosen type before writing the spec.
 Then run the seven-line pre-render checklist in `references/lessons-from-runs.md`: it removes the mistakes that cost the most rounds in testing.
 A lesson about the mechanism inside a technology almost never wants a plain request flow.
-Interaction over time is a sequence, the life of one entity is a state diagram, who does what is a swimlane: do not mix two of those three in one figure.
+Use sequence for interactions, state diagrams for transitions, and swimlanes for ownership. A composite like the async job lifecycle puts its sequence and state views in separate panels.
 Supporting pieces are fine: a timeline may carry a small `plot`, an ER figure a `table` of rows, any figure a `code` block.
 
 ### 4. Write the spec
@@ -152,8 +169,10 @@ A file name given by the person who asked wins.
 ### 5. Render
 
 ```bash
-python3 .claude/skills/drawing-excalidraw-figures/scripts/ve.py <spec.json> [--out dir] [--col N]
+python3 "${CLAUDE_SKILL_DIR}/scripts/ve.py" <spec.json> [--out dir] [--col N]
 ```
+
+In Claude Code, the path points to the skill that was loaded, including a personal install. In other hosts, use the actual absolute path to the skill directory.
 
 The tool prints one summary line per figure, then the paths of the two PNGs to open.
 A `✗` line is a hard error to fix (text overflow, shape grown by Excalidraw, text too small).

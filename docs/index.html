@@ -288,7 +288,7 @@ footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
     </div>
     <div class="hdbtn">
       <button id="nn" aria-label="Change language">EN</button>
-      <a class="gh" href="https://github.com/nv-minh/drawing-excalidraw-figures" target="_blank" rel="noopener" aria-label="Mã nguồn trên GitHub">
+      <a class="gh" href="https://github.com/minhat0601/drawing-excalidraw-figures" target="_blank" rel="noopener" aria-label="Mã nguồn trên GitHub">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><span>GitHub</span>
       </a>
       <button id="theme" aria-label="Đổi chế độ sáng tối"><svg id="icon-den" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M20.5 14.5 A 8.5 8.5 0 1 1 9.5 3.5 A 7 7 0 0 0 20.5 14.5 Z"/></svg><svg id="icon-sang" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true" style="display:none"><circle cx="12" cy="12" r="4.5"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg><span id="theme-lbl">Chế độ tối</span></button>
@@ -304,7 +304,7 @@ footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
       </h1>
       <p class="mo">Skill vẽ hình cho Claude Code: bạn đưa một đoạn văn kỹ thuật - hoặc một ý tưởng còn thô mới chỉ có chữ - agent viết một spec JSON ngắn, một lệnh là ra <b>hình Excalidraw thật</b> - kéo vào excalidraw.com sửa tiếp được, đúng màu ở cả chế độ sáng và tối, render offline.</p>
       <div class="cta">
-        <div class="term"><code><span class="k">git clone</span> https://github.com/nv-minh/drawing-excalidraw-figures.git<br>&nbsp;&nbsp;~/.claude/skills/drawing-excalidraw-figures</code><button id="copy">Chép</button></div>
+        <div class="term"><code><span class="k">git clone</span> https://github.com/minhat0601/drawing-excalidraw-figures.git<br>&nbsp;&nbsp;~/.claude/skills/drawing-excalidraw-figures</code><button id="copy">Chép</button></div>
       </div>
       <p class="xemthem">Chưa tin? <a href="#so-sanh">Xem 32 hình do 4 model AI vẽ cùng một bộ đề</a>.</p>
     </div>
@@ -441,12 +441,12 @@ footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
 
 <section id="loai-hinh" style="padding-top:20px">
   <div class="wrap">
-    <h2>Hai mươi chín loại hình, template sẵn</h2>
-    <p class="lead" style="font-size:16.5px;color:var(--muted);max-width:70ch;margin:4px 0 0">Mỗi loại một template JSON chạy được - chép ra, sửa chữ, là có hình.</p>
+    <h2>37 loại hình có template sẵn</h2>
+    <p class="lead" style="font-size:16.5px;color:var(--muted);max-width:70ch;margin:4px 0 0">Trong Claude Code, câu “vẽ ý tưởng này” chọn hình theo cấu trúc của note. Câu “vẽ flow chạy” chọn hình theo code, diff, Log hoặc Trace đang có.</p>
     <div class="nhom">
       <div>
         <h3>Luồng và nghiệp vụ</h3>
-        <ul><li>request flow</li><li>sequence alt/loop</li><li>swimlane theo vai</li><li>state lồng nhau</li><li>system hai luồng</li><li>failure branch</li><li>decision tree</li></ul>
+        <ul><li>request flow</li><li>sequence alt/loop</li><li>swimlane theo vai</li><li>state lồng nhau</li><li>system hai luồng</li><li>failure branch</li><li>decision tree</li><li><a href="https://github.com/minhat0601/drawing-excalidraw-figures/blob/main/examples/33-request-walkthrough.json">Request walkthrough</a></li><li><a href="https://github.com/minhat0601/drawing-excalidraw-figures/blob/main/examples/34-async-job-lifecycle.json">Async job lifecycle</a></li><li><a href="https://github.com/minhat0601/drawing-excalidraw-figures/blob/main/examples/35-pr-impact-map.json">PR impact map</a></li></ul>
       </div>
       <div>
         <h3>Dữ liệu</h3>
@@ -454,7 +454,7 @@ footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
       </div>
       <div>
         <h3>Thời gian và ngưỡng</h3>
-        <ul><li>timeline</li><li>threshold</li><li>curve</li><li>before / after</li><li>progressive series</li><li>code evidence</li></ul>
+        <ul><li>timeline</li><li>threshold</li><li>curve</li><li>before / after</li><li>progressive series</li><li>code evidence</li><li><a href="https://github.com/minhat0601/drawing-excalidraw-figures/blob/main/examples/36-incident-timeline.json">Incident timeline</a></li><li><a href="https://github.com/minhat0601/drawing-excalidraw-figures/blob/main/examples/37-trace-waterfall.json">Trace waterfall</a></li></ul>
       </div>
       <div>
         <h3>Trực giác</h3>
@@ -462,7 +462,7 @@ footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
       </div>
       <div>
         <h3>Ý tưởng</h3>
-        <ul><li>vòng nhân quả</li><li>ma trận 2x2</li><li>phễu</li><li>concept map</li></ul>
+        <ul><li>vòng nhân quả</li><li>ma trận 2x2</li><li>phễu</li><li>concept map</li><li><a href="https://github.com/minhat0601/drawing-excalidraw-figures/blob/main/examples/30-mind-map.json">Mind map</a></li><li><a href="https://github.com/minhat0601/drawing-excalidraw-figures/blob/main/examples/31-assumption-map.json">Assumption map</a></li><li><a href="https://github.com/minhat0601/drawing-excalidraw-figures/blob/main/examples/32-story-map.json">Story map</a></li></ul>
       </div>
     </div>
     <div class="mau">
@@ -532,18 +532,21 @@ footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
 <span class="g">✓ 03-byte-cells: 46 phần tử · 688×282 · chữ nhỏ nhất 14.5px</span>
 
 <span class="c"># đặt vào chỗ Claude Code tìm skill</span>
-<span class="k">$</span> git clone https://github.com/nv-minh/drawing-excalidraw-figures.git ~/.claude/skills/drawing-excalidraw-figures
+<span class="k">$</span> git clone https://github.com/minhat0601/drawing-excalidraw-figures.git ~/.claude/skills/drawing-excalidraw-figures
+
+<span class="c"># cập nhật bản cài Git đang ở main</span>
+<span class="k">$</span> git -C ~/.claude/skills/drawing-excalidraw-figures pull --ff-only origin main
 
 <span class="c"># Codex CLI đọc cùng chuẩn SKILL.md - một bản dùng cho cả hai</span>
 <span class="k">$</span> ln -s ~/.claude/skills/drawing-excalidraw-figures ~/.codex/skills/drawing-excalidraw-figures</pre>
-    <p class="note">Sau đó chỉ cần nói <em>"vẽ hình cho đoạn này"</em> trong bất kỳ dự án nào - skill tự nhận việc. Codex CLI đọc cùng chuẩn SKILL.md, chỉ khác thư mục cài như trên. Tool khác (Antigravity, Cursor, Gemini CLI, Copilot): thêm vài dòng trỏ về SKILL.md trong file rules của tool đó. Quy trình đầy đủ sáu bước và bộ luật hình nằm trong <a href="https://github.com/nv-minh/drawing-excalidraw-figures/blob/main/SKILL.md">SKILL.md</a>.</p>
+    <p class="note">Sau đó chỉ cần nói <em>"vẽ hình cho đoạn này"</em> trong bất kỳ dự án nào - skill tự nhận việc. Codex CLI đọc cùng chuẩn SKILL.md, chỉ khác thư mục cài như trên. Tool khác (Antigravity, Cursor, Gemini CLI, Copilot): thêm vài dòng trỏ về SKILL.md trong file rules của tool đó. Quy trình đầy đủ sáu bước và bộ luật hình nằm trong <a href="https://github.com/minhat0601/drawing-excalidraw-figures/blob/main/SKILL.md">SKILL.md</a>.</p>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
     <span>Vẽ hình cho tài liệu kỹ thuật, blog và câu trả lời phỏng vấn.</span>
-    <span>Mã nguồn mở · Excalidraw (MIT) · font Nunito, Patrick Hand, IBM Plex Mono · <a href="https://github.com/nv-minh/drawing-excalidraw-figures">GitHub</a></span>
+    <span>Mã nguồn mở · Excalidraw (MIT) · font Nunito, Patrick Hand, IBM Plex Mono · <a href="https://github.com/minhat0601/drawing-excalidraw-figures">GitHub</a></span>
   </div>
 </footer>
 
@@ -610,7 +613,7 @@ veSvg('images/hero/sequence-cache-aside.svg', 'cache-aside');
 /* ── copy ──────────────────────────────────────────────────────── */
 const copyBtn = document.getElementById('copy');
 copyBtn.onclick = async () => {
-  await navigator.clipboard.writeText('git clone https://github.com/nv-minh/drawing-excalidraw-figures.git ~/.claude/skills/drawing-excalidraw-figures');
+  await navigator.clipboard.writeText('git clone https://github.com/minhat0601/drawing-excalidraw-figures.git ~/.claude/skills/drawing-excalidraw-figures');
   copyBtn.textContent = nn === 'en' ? 'Copied' : 'Đã chép'; setTimeout(() => copyBtn.textContent = nn === 'en' ? 'Copy' : 'Chép', 1600);
 };
 
@@ -788,8 +791,8 @@ const DICH = {
   '✗ lỗi cứng dừng ngay; • nhắc nhẹ để bạn tự quyết. Cái đo được bằng máy thì máy gác - hình có đọc được hay không là việc của mắt.':
     '✗ hard errors stop the run; • soft reminders are your call. What a machine can measure, the machine gates - whether the figure reads is your eye’s job.',
   /* loại hình */
-  'Hai mươi chín loại hình, template sẵn': 'Twenty-nine figure types, ready templates',
-  'Mỗi loại một template JSON chạy được - chép ra, sửa chữ, là có hình.': 'Each type ships a runnable JSON template - copy it, change the words, done.',
+  '37 loại hình có template sẵn': '37 figure types with ready templates',
+  'Trong Claude Code, câu “vẽ ý tưởng này” chọn hình theo cấu trúc của note. Câu “vẽ flow chạy” chọn hình theo code, diff, Log hoặc Trace đang có.': 'In Claude Code, “draw this idea” uses the structure of your notes to choose a figure. “Draw how this runs” uses the available code, diff, logs, or trace.',
   'Luồng và nghiệp vụ': 'Flows and business', 'Dữ liệu': 'Data', 'Thời gian và ngưỡng': 'Time and thresholds',
   'Trực giác': 'Intuition', 'Ý tưởng': 'Ideas',
   'swimlane theo vai': 'swimlane by role', 'state lồng nhau': 'nested states', 'system hai luồng': 'two-flow system',
@@ -855,6 +858,7 @@ const DICH = {
     '# engine, Excalidraw bundle and fonts already live in the repo - rendering needs no network',
   '# chạy thử ngay một template có sẵn': '# try a bundled template right away',
   '✓ 03-byte-cells: 46 phần tử · 688×282 · chữ nhỏ nhất 14.5px': '✓ 03-byte-cells: 46 elements · 688×282 · smallest text 14.5px',
+  '# cập nhật bản cài Git đang ở main': '# update an existing Git install on main',
   '# đặt vào chỗ Claude Code tìm skill': '# put it where Claude Code looks for skills',
   '# Codex CLI đọc cùng chuẩn SKILL.md - một bản dùng cho cả hai': '# Codex CLI reads the same SKILL.md standard - one clone serves both',
   'Sau đó chỉ cần nói': 'After that just say ',
