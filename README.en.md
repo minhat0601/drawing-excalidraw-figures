@@ -120,7 +120,7 @@ A text-only model can still draw - you just open the PNGs yourself.
 Run `python3 scripts/ve.py spec.json` and the four files appear.
 Full syntax of every element: `references/spec.md`.
 
-## 40 figure types with ready templates
+## 43 figure types with ready templates
 
 The original set covers request flow, anatomy, byte cells, timeline, threshold, before/after, two views, physical metaphor, failure branch, decision tree, sequence (including alt/opt/loop), state machine, ER table, hash ring, code evidence, layer lanes, progressive series, layer stack, curve, icon, swimlane, composite state, ER crow's foot, system two flows, causal loop, 2x2 matrix, funnel, concept map.
 
@@ -158,6 +158,15 @@ The same pickup scenario is shown as a scene, a storyboard, and a low-fidelity p
 | [Excalidraw](docs/images/examples/38-whiteboard-scene.excalidraw) | [Excalidraw](docs/images/examples/39-storyboard.excalidraw) | [Excalidraw](docs/images/examples/40-wireframe-prototype.excalidraw) |
 
 [Reusable parts spec](assets/whiteboard-parts.json) · [Editable parts canvas](docs/images/examples/whiteboard-parts.excalidraw)
+
+### Advanced whiteboards
+
+Fictional examples based on common delivery, invoicing and facilitation workflows. Each canvas combines several editable regions.
+
+| [Service blueprint](examples/41-service-blueprint.json) | [UI review board](examples/42-ui-review-board.json) | [Workshop board](examples/43-workshop-board.json) |
+| --- | --- | --- |
+| <picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/examples/41-service-blueprint-dark.png"><img alt="Redelivering a parcel after a missed delivery" src="docs/images/examples/41-service-blueprint-light.png" width="240"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/examples/42-ui-review-board-dark.png"><img alt="Reviewing the interface for retrying failed invoices" src="docs/images/examples/42-ui-review-board-light.png" width="240"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/examples/43-workshop-board-dark.png"><img alt="A workshop on reducing order status calls" src="docs/images/examples/43-workshop-board-light.png" width="240"></picture> |
+| [Excalidraw](docs/images/examples/41-service-blueprint.excalidraw) | [Excalidraw](docs/images/examples/42-ui-review-board.excalidraw) | [Excalidraw](docs/images/examples/43-workshop-board.excalidraw) |
 
 ## Color is meaning
 

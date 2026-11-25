@@ -178,11 +178,11 @@ h1{font:400 clamp(38px,4.4vw,56px)/1.14 var(--hand);margin:0 0 18px;letter-spaci
 .mau figcaption{flex:1;display:flex;align-items:flex-end}
 .mau figcaption{font:16px var(--hand);color:var(--muted);padding:8px 2px 0}
 
-:is(#demo-mau-moi,#whiteboard){margin-top:38px}
-:is(#demo-mau-moi,#whiteboard) h3{font:24px var(--hand);margin:0}
-:is(#demo-mau-moi,#whiteboard) p{color:var(--muted);margin:5px 0 0}
-:is(#demo-mau-moi,#whiteboard) .mau{margin-top:18px}
-#whiteboard .mau figcaption{gap:8px;flex-wrap:wrap}
+:is(#demo-mau-moi,#whiteboard,#whiteboard-nang-cao){margin-top:38px}
+:is(#demo-mau-moi,#whiteboard,#whiteboard-nang-cao) h3{font:24px var(--hand);margin:0}
+:is(#demo-mau-moi,#whiteboard,#whiteboard-nang-cao) p{color:var(--muted);margin:5px 0 0}
+:is(#demo-mau-moi,#whiteboard,#whiteboard-nang-cao) .mau{margin-top:18px}
+:is(#whiteboard,#whiteboard-nang-cao) .mau figcaption{gap:8px;flex-wrap:wrap}
 .demo-zoom{padding:0;border:0;background:none;border-radius:8px;width:100%;display:block}
 
 /* so sánh */
@@ -448,7 +448,7 @@ footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
 
 <section id="loai-hinh" style="padding-top:20px">
   <div class="wrap">
-    <h2>40 loại hình có template sẵn</h2>
+    <h2>43 loại hình có template sẵn</h2>
     <p class="lead" style="font-size:16.5px;color:var(--muted);max-width:70ch;margin:4px 0 0">Trong Claude Code, câu “vẽ ý tưởng này” chọn hình theo cấu trúc của note. Câu “vẽ flow chạy” chọn hình theo code, diff, Log hoặc Trace đang có.</p>
     <div class="nhom">
       <div>
@@ -526,6 +526,24 @@ footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
         <figure>
           <button type="button" class="demo-zoom"><img data-base="images/examples/40-wireframe-prototype" src="images/examples/40-wireframe-prototype-light.png" alt="Ba màn hình thể hiện cách tạo lại mã nhận hàng" loading="lazy"></button>
           <figcaption><a href="https://github.com/minhat0601/drawing-excalidraw-figures/blob/main/examples/40-wireframe-prototype.json">Prototype</a><span>·</span><a href="images/examples/40-wireframe-prototype.excalidraw" download>File Excalidraw</a></figcaption>
+        </figure>
+      </div>
+    </div>
+    <div id="whiteboard-nang-cao">
+      <h3>Whiteboard nâng cao</h3>
+      <p>Giao lại đơn sau một lần giao hụt, review màn hình hóa đơn và chốt thử nghiệm sau workshop.</p>
+      <div class="mau">
+        <figure>
+          <button type="button" class="demo-zoom"><img data-base="images/examples/41-service-blueprint" src="images/examples/41-service-blueprint-light.png" alt="Giao lại một đơn sau khi khách vắng nhà" loading="lazy"></button>
+          <figcaption><a href="https://github.com/minhat0601/drawing-excalidraw-figures/blob/main/examples/41-service-blueprint.json">Service blueprint</a><span>·</span><a href="images/examples/41-service-blueprint.excalidraw" download>File Excalidraw</a></figcaption>
+        </figure>
+        <figure>
+          <button type="button" class="demo-zoom"><img data-base="images/examples/42-ui-review-board" src="images/examples/42-ui-review-board-light.png" alt="Review màn hình gửi lại hóa đơn lỗi" loading="lazy"></button>
+          <figcaption><a href="https://github.com/minhat0601/drawing-excalidraw-figures/blob/main/examples/42-ui-review-board.json">UI review board</a><span>·</span><a href="images/examples/42-ui-review-board.excalidraw" download>File Excalidraw</a></figcaption>
+        </figure>
+        <figure>
+          <button type="button" class="demo-zoom"><img data-base="images/examples/43-workshop-board" src="images/examples/43-workshop-board-light.png" alt="Workshop giảm số cuộc gọi hỏi trạng thái đơn" loading="lazy"></button>
+          <figcaption><a href="https://github.com/minhat0601/drawing-excalidraw-figures/blob/main/examples/43-workshop-board.json">Workshop board</a><span>·</span><a href="images/examples/43-workshop-board.excalidraw" download>File Excalidraw</a></figcaption>
         </figure>
       </div>
     </div>
@@ -857,6 +875,11 @@ const DICH = {
   '✗ lỗi cứng dừng ngay; • nhắc nhẹ để bạn tự quyết. Cái đo được bằng máy thì máy gác - hình có đọc được hay không là việc của mắt.':
     '✗ hard errors stop the run; • soft reminders are your call. What a machine can measure, the machine gates - whether the figure reads is your eye’s job.',
   /* loại hình */
+  'Whiteboard nâng cao': 'Advanced whiteboards',
+  'Giao lại đơn sau một lần giao hụt, review màn hình hóa đơn và chốt thử nghiệm sau workshop.': 'Redeliver a parcel, review an invoicing interface, and agree on an experiment in a workshop.',
+  'Giao lại một đơn sau khi khách vắng nhà': 'Redelivering a parcel after a missed delivery',
+  'Review màn hình gửi lại hóa đơn lỗi': 'Reviewing the interface for retrying failed invoices',
+  'Workshop giảm số cuộc gọi hỏi trạng thái đơn': 'A workshop on reducing order status calls',
   'Whiteboard và prototype': 'Whiteboard and prototypes',
   'Cùng một tình huống nhận hàng tại quầy qua cảnh minh họa, storyboard và prototype.': 'The same pickup scenario shown as a scene, a storyboard, and a prototype.',
   'Spec bộ chi tiết': 'Reusable parts spec',
@@ -868,7 +891,7 @@ const DICH = {
   'Ba màn hình thể hiện cách tạo lại mã nhận hàng': 'Three screens showing how the customer renews the pickup code',
   'Demo 8 mẫu mới': 'Eight new template demos',
   'Bấm ảnh để phóng to. Bấm tên mẫu để mở spec JSON.': 'Select an image to zoom in. Select a template name to open its JSON spec.',
-  '40 loại hình có template sẵn': '40 figure types with ready templates',
+  '43 loại hình có template sẵn': '43 figure types with ready templates',
   'Trong Claude Code, câu “vẽ ý tưởng này” chọn hình theo cấu trúc của note. Câu “vẽ flow chạy” chọn hình theo code, diff, Log hoặc Trace đang có.': 'In Claude Code, “draw this idea” uses the structure of your notes to choose a figure. “Draw how this runs” uses the available code, diff, logs, or trace.',
   'Luồng và nghiệp vụ': 'Flows and business', 'Dữ liệu': 'Data', 'Thời gian và ngưỡng': 'Time and thresholds',
   'Trực giác': 'Intuition', 'Ý tưởng': 'Ideas',

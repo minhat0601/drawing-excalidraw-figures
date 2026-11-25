@@ -1,0 +1,63 @@
+{
+  "_": "Facilitation canvas with a brief, movable notes, clustered observations, dot votes, and a decision with an owned experiment.",
+  "elements": [
+    {"t":"text","x":0,"y":0,"text":"Workshop · Giảm câu hỏi “Đơn tôi ở đâu?”","size":28,"color":"ink"},
+    {"t":"text","x":0,"y":38,"text":"Tình huống mô phỏng · 45 phút · CSKH, vận hành, sản phẩm","size":15,"color":"muted"},
+    {"t":"text","x":0,"y":69,"text":"Câu hỏi của buổi làm việc","size":18,"color":"ink"},
+    {"t":"text","x":0,"y":94,"text":"Khách cần thấy thông tin gì trước khi phải gọi hỏi trạng thái?","size":15,"color":"muted"},
+    {"t":"group","dx":0,"dy":130,"elements":[
+      {"t":"box","x":0,"y":0,"w":322,"h":241,"under":true,"color":"muted"},
+      {"t":"badge","x":13,"y":12,"n":1,"d":24,"size":15,"color":"l4"},
+      {"t":"text","x":48,"y":11,"text":"Gom tín hiệu","size":19,"color":"ink"},
+      {"t":"text","x":260,"y":15,"text":"8 phút","size":15,"color":"muted"},
+      {"t":"line","points":[[13,47],[309,47]],"color":"muted","weight":1},
+      {"t":"box","x":14,"y":63,"w":134,"h":68,"text":"App chỉ hiện\n“đang giao”","size":16,"fill":"warn"},
+      {"t":"box","x":174,"y":63,"w":134,"h":68,"text":"SMS thiếu\nkhoảng giờ đến","size":16,"fill":"warn"},
+      {"t":"box","x":14,"y":149,"w":134,"h":68,"text":"Khách gọi sau\nlần giao hụt","size":16,"fill":"soft"},
+      {"t":"box","x":174,"y":149,"w":134,"h":68,"text":"Thêm ghi chú","size":16,"color":"muted","dashed":true}
+    ]},
+    {"t":"group","dx":350,"dy":130,"elements":[
+      {"t":"box","x":0,"y":0,"w":322,"h":241,"under":true,"color":"muted"},
+      {"t":"badge","x":13,"y":12,"n":2,"d":24,"size":15,"color":"l4"},
+      {"t":"text","x":48,"y":11,"text":"Gom cụm","size":19,"color":"ink"},
+      {"t":"text","x":260,"y":15,"text":"10 phút","size":15,"color":"muted"},
+      {"t":"line","points":[[13,47],[309,47]],"color":"muted","weight":1},
+      {"t":"text","x":15,"y":64,"text":"Thiếu thông tin trước giao","size":17,"color":"ink"},
+      {"t":"box","x":14,"y":91,"w":134,"h":49,"text":"Trạng thái chung","size":15,"fill":"warn"},
+      {"t":"box","x":173,"y":91,"w":134,"h":49,"text":"Thiếu khung giờ","size":15,"fill":"warn"},
+      {"t":"text","x":15,"y":157,"text":"Thiếu hướng xử lý sau giao hụt","size":17,"color":"ink"},
+      {"t":"box","x":14,"y":186,"w":293,"h":34,"text":"Khách chưa thấy cách chọn ca giao lại","size":15,"fill":"soft"}
+    ]},
+    {"t":"group","dx":0,"dy":393,"elements":[
+      {"t":"box","x":0,"y":0,"w":322,"h":241,"under":true,"color":"muted"},
+      {"t":"badge","x":13,"y":12,"n":3,"d":24,"size":15,"color":"l4"},
+      {"t":"text","x":48,"y":11,"text":"Bỏ phiếu","size":19,"color":"ink"},
+      {"t":"text","x":260,"y":15,"text":"7 phút","size":15,"color":"muted"},
+      {"t":"line","points":[[13,47],[309,47]],"color":"muted","weight":1},
+      {"t":"text","x":14,"y":62,"text":"Ba người, mỗi người hai chấm.","size":15,"color":"muted"},
+      {"t":"text","x":14,"y":91,"text":"Hiện khung giờ giao","size":17,"color":"ink"},
+      {"t":"ellipse","x":251,"y":98,"w":10,"h":10,"color":"l4","fill":"l4","weight":1},
+      {"t":"ellipse","x":266,"y":98,"w":10,"h":10,"color":"l4","fill":"l4","weight":1},
+      {"t":"ellipse","x":281,"y":98,"w":10,"h":10,"color":"l4","fill":"l4","weight":1},
+      {"t":"ellipse","x":296,"y":98,"w":10,"h":10,"color":"l4","fill":"l4","weight":1},
+      {"t":"line","points":[[14,128],[307,128]],"color":"muted","weight":1},
+      {"t":"text","x":14,"y":143,"text":"Link đổi ca sau giao hụt","size":17,"color":"ink"},
+      {"t":"ellipse","x":281,"y":149,"w":10,"h":10,"color":"l4","fill":"l4","weight":1},
+      {"t":"ellipse","x":296,"y":149,"w":10,"h":10,"color":"l4","fill":"l4","weight":1},
+      {"t":"line","points":[[14,180],[307,180]],"color":"muted","weight":1},
+      {"t":"box","x":14,"y":192,"w":293,"h":34,"text":"Ưu tiên thử khung giờ giao","size":16,"fill":"l4"}
+    ]},
+    {"t":"group","dx":350,"dy":393,"elements":[
+      {"t":"box","x":0,"y":0,"w":322,"h":241,"under":true,"color":"muted"},
+      {"t":"badge","x":13,"y":12,"n":4,"d":24,"size":15,"color":"l4"},
+      {"t":"text","x":48,"y":11,"text":"Chốt thử nghiệm","size":19,"color":"ink"},
+      {"t":"text","x":260,"y":15,"text":"20 phút","size":15,"color":"muted"},
+      {"t":"line","points":[[13,47],[309,47]],"color":"muted","weight":1},
+      {"t":"text","x":15,"y":62,"text":"Thử khung giờ trên trang trạng thái","size":17,"color":"ink"},
+      {"t":"text","x":15,"y":93,"text":"Phạm vi · một tuyến giao nội thành","size":15,"color":"muted"},
+      {"t":"text","x":15,"y":121,"text":"Phụ trách · Mai, team sản phẩm","size":15,"color":"muted"},
+      {"t":"text","x":15,"y":149,"text":"Đọc kết quả · sau 7 ngày","size":15,"color":"muted"},
+      {"t":"box","x":14,"y":178,"w":294,"h":54,"text":"Đo số cuộc gọi hỏi trạng thái\ntrên mỗi 100 đơn","size":15,"fill":"node"}
+    ]}
+  ]
+}

@@ -120,7 +120,7 @@ Model không đa phương tiện vẫn vẽ được, chỉ cần bạn tự m�
 Chạy `python3 scripts/ve.py spec.json` là ra bốn file.
 Cú pháp đầy đủ của mọi phần tử: `references/spec.md`.
 
-## 40 loại hình có template sẵn
+## 43 loại hình có template sẵn
 
 Các template ban đầu gồm request flow, anatomy, byte cells, timeline, threshold, before/after, two views, ẩn dụ vật lý, failure branch, decision tree, sequence (kể cả alt/opt/loop), state machine, ER table, hash ring, code evidence, layer lanes, progressive series, layer stack, curve, icon, swimlane, composite state, ER crow's foot, system two flows, vòng nhân quả, ma trận 2x2, phễu, concept map.
 
@@ -158,6 +158,15 @@ Cùng một tình huống nhận hàng tại quầy qua ba góc nhìn. Cảnh mi
 | [Excalidraw](docs/images/examples/38-whiteboard-scene.excalidraw) | [Excalidraw](docs/images/examples/39-storyboard.excalidraw) | [Excalidraw](docs/images/examples/40-wireframe-prototype.excalidraw) |
 
 [Spec bộ chi tiết dùng chung](assets/whiteboard-parts.json) · [Canvas để copy chi tiết](docs/images/examples/whiteboard-parts.excalidraw)
+
+### Whiteboard nâng cao
+
+Ba tình huống mô phỏng từ các quy trình thường gặp trong giao hàng, gửi hóa đơn và điều phối workshop. Mỗi canvas kết hợp nhiều vùng nội dung có thể chỉnh sửa.
+
+| [Service blueprint](examples/41-service-blueprint.json) | [UI review board](examples/42-ui-review-board.json) | [Workshop board](examples/43-workshop-board.json) |
+| --- | --- | --- |
+| <picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/examples/41-service-blueprint-dark.png"><img alt="Giao lại một đơn sau khi khách vắng nhà" src="docs/images/examples/41-service-blueprint-light.png" width="240"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/examples/42-ui-review-board-dark.png"><img alt="Review màn hình gửi lại hóa đơn lỗi" src="docs/images/examples/42-ui-review-board-light.png" width="240"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/images/examples/43-workshop-board-dark.png"><img alt="Workshop giảm số cuộc gọi hỏi trạng thái đơn" src="docs/images/examples/43-workshop-board-light.png" width="240"></picture> |
+| [Excalidraw](docs/images/examples/41-service-blueprint.excalidraw) | [Excalidraw](docs/images/examples/42-ui-review-board.excalidraw) | [Excalidraw](docs/images/examples/43-workshop-board.excalidraw) |
 
 ## Màu là nghĩa
 

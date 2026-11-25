@@ -1,10 +1,13 @@
-# Whiteboard scenes, storyboards and wireframes
+# Whiteboard scenes, prototypes and collaborative boards
 
 | What the reader should see | Start from |
 |---|---|
 | Where people and objects sit in one moment, and what is happening between them | `examples/38-whiteboard-scene.json` |
 | How the experience changes from one moment to the next | `examples/39-storyboard.json` |
 | What the user sees on each screen and which action or condition moves to the next state | `examples/40-wireframe-prototype.json` |
+| What customers see and who works behind each handoff | `examples/41-service-blueprint.json` |
+| What is wrong in the current UI, the proposed fix, and how to verify it | `examples/42-ui-review-board.json` |
+| How a group collects observations, votes and commits to a next step | `examples/43-workshop-board.json` |
 
 ## Reuse editable parts
 
@@ -32,11 +35,9 @@ Open `assets/whiteboard-parts.json` and copy the group by its `id`. Set its `dx`
 - **Fictional states.** Labels such as A-042 and A-043 and the QR-shaped marks in these demos are illustrative. For a real product or workflow, take copy and transitions from the source and flag any proposal.
 - **Render review.** Open the light and dark PNGs. Check that the pose or transition reads without the caption, and that the text and controls remain legible at the intended width.
 
-## Adapt the parts to other briefs
+## Compose a board with several regions
 
-| Brief | How to lay it out |
-|---|---|
-| Review an interface with the team | Put one screen in the middle, add numbered callouts beside the controls, and place a proposed revision next to it. |
-| Show a service across roles and screens | Align customer actions, screens, staff actions and background steps in lanes. Use a scene or screen close-up at important handoffs. |
-| Plan a physical space or event | Draw a simple plan, put people and objects at the relevant places, then mark entrances, queues and movement. Use distances only when the source supplies them. |
-| Set up a workshop board | Give each exercise its own region, put prompts above blank cards, and leave room for participants to move or add cards. |
+- **Service blueprint.** Align all lanes to the same customer stages. Include the evidence a customer sees, their actions, the frontstage, backstage work, and supporting systems. Put the line of visibility between frontstage and backstage. Annotate a failure or handoff, such as selecting a delivery slot that fills up before confirmation.
+- **UI review.** Use the same scenario on both sides of the current/proposed pair. Anchor numbered findings to specific controls or states and pair them with acceptance checks. Recreate the relevant portion of a screenshot with editable shapes when needed. Label proposals and assumptions.
+- **Workshop.** Put the question and available time up front. Give each activity its own region and leave space to add input. Use blank cards or labelled examples on a live board. Add actual votes to a recap when supplied. End with a decision or experiment, an owner, and when and how to read the result.
+- **Space or event plan.** Place people and props in an overhead sketch, then mark entrances, queues and movement. Use distances only when the source supplies them.
